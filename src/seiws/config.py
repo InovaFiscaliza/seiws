@@ -27,12 +27,10 @@ PARAMETROS = {
 CHAVES_API = {
     "homologação": {
         "processos_bloqueio_sites": {
-            "chave_api": os.getenv("SEI_HM_API_KEY"),
+            "chave_api": os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
         },
         "Instrucao_processos_fiscalizacao": {
-            "chave_api": os.getenv(
-                "SEI_HM_API_KEY"
-            ),  # TODO: Mudar isso quando for testar para o InovaFiscaliza
+            "chave_api": os.getenv("SEI_HM_API_KEY_INSTRUCAO"),
         },
     },
     "produção": {
