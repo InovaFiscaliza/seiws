@@ -3,6 +3,7 @@ from pathlib import Path
 
 from dotenv import find_dotenv, load_dotenv
 from zeep import Client
+from config import PARAMETROS, CHAVES_API, TIPOS_DE_PROCESSO
 
 load_dotenv(find_dotenv(), override=True)
 
@@ -21,10 +22,30 @@ logging.basicConfig(
 )
 
 
+class InvalidTipoProcessoError(Exception):
+    pass
+
+
 class SeiClient:
     def __init__(self, tipo_de_processo: str, homologação: bool = False):
+        self.tipo_processo = tipo_de_processo
         self.homologação = homologação
+        self.categoria_processo = self._validate_tipo_processo()
+        self.chave_api = self._get_chave_api()
+        self.default_parameters = PARAMETROS
         self.instanciar_cliente()
+
+    def _validate_tipo_processo(self):
+        for categoria, processos in TIPOS_DE_PROCESSO.items():
+            if self.tipo_processo in processos:
+                return categoria
+        raise InvalidTipoProcessoError(
+            f"Tipo de processo inválido: {self.tipo_processo}"
+        )
+
+    def _get_chave_api(self):
+        environment = "homologação" if self.homologação else "produção"
+        return CHAVES_API[environment][self.categoria_processo]["chave_api"]
 
     def instanciar_cliente(
         self,
