@@ -1,12 +1,15 @@
 import logging
 from pathlib import Path
 
-from config import (
+
+from dotenv import find_dotenv, load_dotenv
+from fastcore.basics import snake2camel
+from zeep import Client
+
+from .config import (
     AMBIENTES_DE_DESENVOLVIMENTO,
     CHAVES_API,
 )
-from dotenv import find_dotenv, load_dotenv
-from zeep import Client
 
 load_dotenv(find_dotenv(), override=True)
 
@@ -74,10 +77,11 @@ class SeiClient:
                 f"Chamando operação: {operation_name} com parâmetros: {kwargs}"
             )
             operation = getattr(self.client.service, operation_name)
+            arguments = {snake2camel(k): v for k, v in kwargs.items()}
             response = operation(
                 SiglaSistema=self.sigla_sistema,
                 IdentificadorServico=self.chave_api,
-                **kwargs,
+                **arguments,
             )
             self.logger.info(f"Resposta recebida: {response}")
             return response
@@ -106,3 +110,9 @@ class SeiClient:
             IdArquivo=id_arquivo,
             Conteudo=conteudo,
         )
+
+
+if __name__ == "__main__":
+    import os
+
+    client = SeiClient(chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO"))
