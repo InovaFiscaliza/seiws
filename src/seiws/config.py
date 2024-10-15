@@ -25,20 +25,25 @@ IDENTIFICADOR_POR_PROCESSO = {
 }
 
 CHAVES_API = {
-    "homologação": {
-        "processos_bloqueio_sites": {
-            "chave_api": os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
-        },
-        "Instrucao_processos_fiscalizacao": {
-            "chave_api": os.getenv("SEI_HM_API_KEY_INSTRUCAO"),
-        },
-    },
-    "produção": {
-        "processos_bloqueio_sites": {
-            "chave_api": os.getenv("SEI_PD_API_KEY_BLOQUEIO"),
-        },
-        "Instrucao_processos_fiscalizacao": {
-            "chave_api": os.getenv("SEI_PD_API_KEY_INSTRUCAO"),
-        },
-    },
+    "homologação": os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
+    "produção": os.getenv("SEI_PD_API_KEY_BLOQUEIO"),
 }
+
+# CHAVES_API = {
+#     "homologação": {
+#         "processos_bloqueio_sites": {
+#             "chave_api": os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
+#         },
+#         "Instrucao_processos_fiscalizacao": {
+#             "chave_api": os.getenv("SEI_HM_API_KEY_INSTRUCAO"),
+#         },
+#     },
+#     "produção": {
+#         "processos_bloqueio_sites": {
+#             "chave_api": os.getenv("SEI_PD_API_KEY_BLOQUEIO"),
+#         },
+#         "Instrucao_processos_fiscalizacao": {
+#             "chave_api": os.getenv("SEI_PD_API_KEY_INSTRUCAO"),
+#         },
+#     },
+# }
