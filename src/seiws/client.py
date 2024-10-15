@@ -1,9 +1,12 @@
 import logging
 from pathlib import Path
 
+from config import (
+    AMBIENTES_DE_DESENVOLVIMENTO,
+    CHAVES_API,
+)
 from dotenv import find_dotenv, load_dotenv
 from zeep import Client
-from config import PARAMETROS, CHAVES_API, TIPOS_DE_PROCESSO
 
 load_dotenv(find_dotenv(), override=True)
 
@@ -26,26 +29,34 @@ class InvalidTipoProcessoError(Exception):
     pass
 
 
+class InvalidAmbienteError(Exception):
+    pass
+
+
 class SeiClient:
-    def __init__(self, tipo_de_processo: str, homologação: bool = False):
-        self.tipo_processo = tipo_de_processo
-        self.homologação = homologação
-        self.categoria_processo = self._validate_tipo_processo()
-        self.chave_api = self._get_chave_api()
-        self.default_parameters = PARAMETROS
+    def __init__(
+        self,
+        ambiente: str = "homologação",  # Ambiente de desenvolvimento: desenvolvimento, homologação ou produção
+        sigla_sistema: str = "InovaFiscaliza",  # SiglaSistema - Valor informador no cadastro do sistema realizado no SEI
+        chave_api: str = None,  # IdentificacaoServico - Chave de acesso ao Web Service do SEI.
+    ):
+        """
+        Caso não seja informada uma chave api, esta será obtida a partir da chave API padrão do ambiente definida em config.py
+        """
+        self.ambiente = ambiente
+        self.sigla_sistema = sigla_sistema
+        self.chave_api = chave_api
+        self._validar_ambiente()
         self.instanciar_cliente()
 
-    def _validate_tipo_processo(self):
-        for categoria, processos in TIPOS_DE_PROCESSO.items():
-            if self.tipo_processo in processos:
-                return categoria
-        raise InvalidTipoProcessoError(
-            f"Tipo de processo inválido: {self.tipo_processo}"
-        )
+    def _validar_ambiente(self):
+        if self.ambiente not in AMBIENTES_DE_DESENVOLVIMENTO:
+            raise InvalidAmbienteError(f"Ambiente inválido: {self.ambiente}")
+        if self.chave_api is None:
+            self.chave_api = CHAVES_API[self.ambiente]
 
-    def _get_chave_api(self):
-        environment = "homologação" if self.homologação else "produção"
-        return CHAVES_API[environment][self.categoria_processo]["chave_api"]
+    def _validar_tipo_processo(self, tipo_processo: str):
+        pass
 
     def instanciar_cliente(
         self,
@@ -65,7 +76,7 @@ class SeiClient:
             operation = getattr(self.client.service, operation_name)
             response = operation(
                 SiglaSistema=self.sigla_sistema,
-                IdentificadorServico=self.identificador_servico,
+                IdentificadorServico=self.chave_api,
                 **kwargs,
             )
             self.logger.info(f"Resposta recebida: {response}")
