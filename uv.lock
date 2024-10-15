@@ -59,6 +59,18 @@ wheels = [
 ]
 
 [[package]]
+name = "fastcore"
+version = "1.7.16"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "packaging" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/95/19/206c50d92220ec8a8bbf0dd8a7eba03ea00573172d4a9e52d2db3c26d6de/fastcore-1.7.16.tar.gz", hash = "sha256:b49a4f56953dc63f9f4588d9899de4467212aec49ba60f7f65b96e758aef5cc7", size = 77774 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/58/e3/6bb0fc6a9e90ac2ba270066e1db14b64e00e4b5ca8b8fff2bf4daa3d67fa/fastcore-1.7.16-py3-none-any.whl", hash = "sha256:cb57a9768ad19e2f62cc859f04144a4331fd0de1ea47edc5ae97150920ec7b1f", size = 81231 },
+]
+
+[[package]]
 name = "idna"
 version = "3.10"
 source = { registry = "https://pypi.org/simple" }
@@ -116,6 +128,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/b6/17/71e9984cf0570cd202ac0a1c9ed5c1b8889b0fc8dc736f5ef0ffb181c284/lxml-5.3.0-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:df5c7333167b9674aa8ae1d4008fa4bc17a313cc490b2cca27838bbdcc6bb15b", size = 5011053 },
     { url = "https://files.pythonhosted.org/packages/69/68/9f7e6d3312a91e30829368c2b3217e750adef12a6f8eb10498249f4e8d72/lxml-5.3.0-cp313-cp313-win32.whl", hash = "sha256:c802e1c2ed9f0c06a65bc4ed0189d000ada8049312cfeab6ca635e39c9608957", size = 3485634 },
     { url = "https://files.pythonhosted.org/packages/7d/db/214290d58ad68c587bd5d6af3d34e56830438733d0d0856c0275fde43652/lxml-5.3.0-cp313-cp313-win_amd64.whl", hash = "sha256:406246b96d552e0503e17a1006fd27edac678b3fcc9f1be71a2f94b4ff61528d", size = 3814417 },
+]
+
+[[package]]
+name = "packaging"
+version = "24.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/51/65/50db4dda066951078f0a96cf12f4b9ada6e4b811516bf0262c0f4f7064d4/packaging-24.1.tar.gz", hash = "sha256:026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002", size = 148788 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/08/aa/cc0199a5f0ad350994d660967a8efb233fe0416e4639146c089643407ce6/packaging-24.1-py3-none-any.whl", hash = "sha256:5b8f2217dbdbd2f7f384c41c628544e6d52f2d0f53c6d0c3ea61aa5d1d7ff124", size = 53985 },
 ]
 
 [[package]]
@@ -189,12 +210,14 @@ name = "seiws"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "fastcore" },
     { name = "python-dotenv" },
     { name = "zeep" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "fastcore", specifier = ">=1.7.16" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "zeep", specifier = ">=4.2.1" },
 ]
