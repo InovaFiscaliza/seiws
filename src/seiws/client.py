@@ -3,11 +3,12 @@ from pathlib import Path
 
 from dotenv import find_dotenv, load_dotenv
 from zeep import Client
-from zeep.exceptions import Fault
 
 load_dotenv(find_dotenv(), override=True)
 
 WSDL_URL = "https://sei{}.anatel.gov.br/sei/controlador_ws.php?servico=sei"
+WSDL_HM = Path(__file__).parent / "seihm.wsdl"
+WSDL_PD = Path(__file__).parent / "sei.wsdl"
 
 logging.basicConfig(
     level=logging.INFO,  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
@@ -15,15 +16,13 @@ logging.basicConfig(
     handlers=[
         logging.StreamHandler(),  # Output to console
         # Uncomment the next line to log to a file
-        logging.FileHandler("soap_service.log"),
+        logging.FileHandler("servico_sei.log"),
     ],
 )
 
 
 class SeiClient:
-    def __init__(self, identificador: str, chave_api: str, homologação: bool = False):
-        self.identificador = identificador
-        self.chave_api = chave_api
+    def __init__(self, tipo_de_processo: str, homologação: bool = False):
         self.homologação = homologação
         self.instanciar_cliente()
 
@@ -31,9 +30,9 @@ class SeiClient:
         self,
     ):
         self.logger = logging.getLogger(__name__)  # Initialize logger
-        self.wsdl_url = WSDL_URL.format("hm" if self.homologação else "")
+        self.wsdl_file = WSDL_HM if self.homologação else WSDL_PD
         try:
-            self.client = Client(self.wsdl_url)
+            self.client = Client(self.wsdl_file)
         except Exception as e:
             raise Exception("Erro ao criar o cliente SOAP") from e
 
