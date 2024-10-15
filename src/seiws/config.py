@@ -3,7 +3,11 @@ from dotenv import find_dotenv, load_dotenv
 
 load_dotenv(find_dotenv(), override=True)
 
-TIPOS_DE_PROCESSO = {
+AMBIENTES_DE_DESENVOLVIMENTO = ["desenvolvimento", "homologação", "produção"]
+
+# Esse parâmetro é específico para o cadastro de serviços no SEI para o InovaFiscaliza
+# Talvez faça sentido ficar parametrizado somente num módulo de teste.
+IDENTIFICADOR_POR_PROCESSO = {
     "processos_bloqueio_sites": [
         "Demanda Externa: Ministério Público Federal",
         "Demanda Externa: Órgãos Governamentais Federais",
@@ -18,10 +22,6 @@ TIPOS_DE_PROCESSO = {
         "Gestão da Fiscalização: Lacração, Apreensão e Interrupção",
         "Gestão da Fiscalização: Processo de Guarda",
     ],
-}
-
-PARAMETROS = {
-    "SiglaSistema": "Fiscaliza",  # TODO: Mudar isso quando for testar para o InovaFiscaliza
 }
 
 CHAVES_API = {
