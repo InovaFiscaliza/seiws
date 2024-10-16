@@ -93,6 +93,64 @@ class SeiClient:
             self.logger.error(f"Erro ao criar o cliente SOAP: {e}")
             raise
 
+    def atribuir_processo(
+        self,
+        id_unidade: str,
+        protocolo_procedimento: str,
+        id_usuario: str,
+        sin_reabrir: str = "S",
+    ) -> bool:
+        """Atribui um processo a um usuário.
+
+        Args:
+            id_unidade (str): ID da unidade.
+            protocolo_procedimento (str): Protocolo do processo.
+            id_usuario (str): ID do usuário.
+            sin_reabrir (str, optional): Sinal de reabertura. Valores possíveis: S - Sim, N - Não. Valor padrão: S.
+
+        Returns:
+            bool: True se o processo foi atribuído com sucesso, False caso contrário.
+        """
+        assert (
+            sin_reabrir in ["S", "N"]
+        ), f"Valor inválido para sin_reabrir: {sin_reabrir}. Valores possíveis: S - Sim, N - Não"
+        chamada = self._chamar_servico(
+            "atribuirProcesso",
+            id_unidade=id_unidade,
+            protocolo_procedimento=protocolo_procedimento,
+            id_usuario=id_usuario,
+            sin_reabrir=sin_reabrir,
+        )
+
+        return chamada == "1"
+
+    def listar_series(
+        self,
+        id_unidade: str = "",  # Opcional. Filtra a unidade
+        id_tipo_procedimento: str = "",  # Opcional. Filtra o tipo do processo
+    ) -> List[
+        Dict[str, str]
+    ]:  # Retorna uma lista de dicionários com as informações do documento
+        """Lista os documentos de uma unidade com acesso configurado para a chave de acesso informada.
+
+        Returns:
+                List[Dict[str, str]]:
+
+            IdSerie: Identificador do tipo de documento
+            Nome: Nome do tipo de documento
+            Aplicabilidade :
+                    T = Documentos internos e externos
+                    I = documentos internos
+                    E = documentos externos
+                    F = formulários
+
+        """
+        return self._chamar_servico(
+            "listarSeries",
+            id_unidade=id_unidade,
+            id_tipo_procedimento=id_tipo_procedimento,
+        )
+
     def listar_unidades(
         self,
         id_tipo_procedimento: str = "",  # Opcional. Filtra o tipo do processo
@@ -137,29 +195,42 @@ if __name__ == "__main__":
     import os
     from dotenv import find_dotenv, load_dotenv
 
-    from constants import UNIDADES_BLOQUEIO
-
     load_dotenv(find_dotenv(), override=True)
 
-    method = "listar_usuarios"
+    sigla_sistema = "InovaFiscaliza"
 
-    client = SeiClient(chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO"))
+    chave_api = os.getenv("SEI_HM_API_KEY_INSTRUCAO")
 
-    # pprint(getattr(client, method)("110000965"))
+    method = "listar_series"
 
-    # pprint(getattr(client, method)("110000966"))
+    client = SeiClient(
+        sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
+    )
 
-    # client = SeiClient(chave_api=os.getenv("SEI_HM_API_KEY_INSTRUCAO"))
+    pprint(getattr(client, method)())
 
-    unidades = []
+    client = SeiClient(sigla_sistema=sigla_sistema, chave_api=chave_api)
 
-    for unidade in UNIDADES_BLOQUEIO:
-        unidades.extend(getattr(client, method)(unidade["IdUnidade"]))
-
-    print([{a: getattr(d, a) for a in d} for d in unidades])
+    pprint(getattr(client, method)())
 
     # client = SeiClient(
     #     sigla_sistema="Fiscaliza", chave_api=os.getenv("SEI_HM_API_KEY_FISCALIZA")
     # )
 
-    # pprint(getattr(client, method)())
+    # pprint(
+    #     getattr(client, method)(
+    #         id_unidade="110001068",
+    #         protocolo_procedimento="53554.000005/2024-18",
+    #         id_usuario="100001310",
+    #         sin_reabrir="S",
+    #     )
+    # )
+
+    # pprint(
+    #     getattr(client, method)(
+    #         id_unidade="110001068",
+    #         protocolo_procedimento="53554.000005/2024-18",
+    #         id_usuario="100003445",
+    #         sin_reabrir="S",
+    #     )
+    # )
