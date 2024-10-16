@@ -1,10 +1,11 @@
 [project]
 name = "seiws"
 version = "0.1.0"
-description = "Add your description here"
+description = "Cliente para o Web Service do SEI"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "fastcore>=1.7.16",
     "python-dotenv>=1.0.1",
     "zeep>=4.2.1",
 ]
@@ -15,3 +16,8 @@ seiws = "seiws:main"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.3.3",
+]
