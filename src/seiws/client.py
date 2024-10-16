@@ -1,19 +1,19 @@
 import logging
 from pathlib import Path
+from typing import List, Dict
 
 
 from dotenv import find_dotenv, load_dotenv
 from fastcore.basics import snake2camel
 from zeep import Client
 
-from .config import (
+from seiws.config import (
     AMBIENTES_DE_DESENVOLVIMENTO,
-    CHAVES_API,
 )
 
 load_dotenv(find_dotenv(), override=True)
 
-WSDL_URL = "https://sei{}.anatel.gov.br/sei/controlador_ws.php?servico=sei"
+WSDL_URL = "https://{}.anatel.gov.br/sei/controlador_ws.php?servico=sei"
 WSDL_HM = Path(__file__).parent / "seihm.wsdl"
 WSDL_PD = Path(__file__).parent / "sei.wsdl"
 
@@ -33,6 +33,10 @@ class InvalidTipoProcessoError(Exception):
 
 
 class InvalidAmbienteError(Exception):
+    pass
+
+
+class InvalidChaveApiError(Exception):
     pass
 
 
@@ -56,7 +60,7 @@ class SeiClient:
         if self.ambiente not in AMBIENTES_DE_DESENVOLVIMENTO:
             raise InvalidAmbienteError(f"Ambiente inválido: {self.ambiente}")
         if self.chave_api is None:
-            self.chave_api = CHAVES_API[self.ambiente]
+            raise InvalidChaveApiError(f"Chave API inválida: {self.chave_api}")
 
     def _validar_tipo_processo(self, tipo_processo: str):
         pass
@@ -65,54 +69,72 @@ class SeiClient:
         self,
     ):
         self.logger = logging.getLogger(__name__)  # Initialize logger
-        self.wsdl_file = WSDL_HM if self.homologação else WSDL_PD
+        if self.ambiente == "homologação":
+            self.wsdl_file = (
+                str(WSDL_HM) if WSDL_HM.is_file() else WSDL_URL.format("seihm")
+            )
+        elif self.ambiente == "produção":
+            self.wsdl_file = (
+                str(WSDL_PD) if WSDL_PD.is_file() else WSDL_URL.format("sei")
+            )
+        else:
+            raise InvalidAmbienteError(f"Ambiente inválido: {self.ambiente}")
         try:
             self.client = Client(self.wsdl_file)
         except Exception as e:
-            raise Exception("Erro ao criar o cliente SOAP") from e
+            self.logger.error(f"Erro ao criar o cliente SOAP: {e}")
+            raise
 
     def _call_service(self, operation_name: str, **kwargs):
         try:
+            parametros = {
+                "SiglaSistema": self.sigla_sistema,
+                "Ambiente": self.ambiente,
+                **kwargs,
+            }
             self.logger.info(
-                f"Chamando operação: {operation_name} com parâmetros: {kwargs}"
+                f"Chamando operação: {operation_name} com parâmetros: {parametros}"
             )
-            operation = getattr(self.client.service, operation_name)
-            arguments = {snake2camel(k): v for k, v in kwargs.items()}
-            response = operation(
+            operacao = getattr(self.client.service, operation_name)
+            kwargs = {snake2camel(k): v for k, v in kwargs.items()}
+            resposta = operacao(
                 SiglaSistema=self.sigla_sistema,
-                IdentificadorServico=self.chave_api,
-                **arguments,
+                IdentificacaoServico=self.chave_api,
+                **kwargs,
             )
-            self.logger.info(f"Resposta recebida: {response}")
-            return response
+            self.logger.info(f"Resposta recebida: {resposta}")
+            return resposta
         except Exception as e:
             self.logger.error(f"Erro ao chamar a operação {operation_name}: {e}")
             raise
 
-    def adicionar_arquivo(
-        self, id_unidade: str, nome: str, tamanho: str, hash: str, conteudo: str
-    ) -> str:
+    def listar_unidades(
+        self, id_tipo_procedimento: str = "", id_serie: str = ""
+    ) -> List[Dict[str, str]]:
         return self._call_service(
-            "adicionarArquivo",
-            IdUnidade=id_unidade,
-            Nome=nome,
-            Tamanho=tamanho,
-            Hash=hash,
-            Conteudo=conteudo,
-        )
-
-    def adicionar_conteudo_arquivo(
-        self, id_unidade: str, id_arquivo: str, conteudo: str
-    ) -> str:
-        return self._call_service(
-            "adicionarConteudoArquivo",
-            IdUnidade=id_unidade,
-            IdArquivo=id_arquivo,
-            Conteudo=conteudo,
+            "listarUnidades",
+            id_tipo_procedimento=id_tipo_procedimento,
+            id_serie=id_serie,
         )
 
 
 if __name__ == "__main__":
+    from pprint import pprint
     import os
+    from dotenv import find_dotenv, load_dotenv
+
+    load_dotenv(find_dotenv(), override=True)
 
     client = SeiClient(chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO"))
+
+    pprint(client.listar_unidades())
+
+    client.chave_api = os.getenv("SEI_HM_API_KEY_INSTRUCAO")
+
+    pprint(client.listar_unidades())
+
+    client = SeiClient(
+        sigla_sistema="Fiscaliza", chave_api=os.getenv("SEI_HM_API_KEY_FISCALIZA")
+    )
+
+    pprint(client.listar_unidades())
