@@ -124,6 +124,42 @@ class SeiClient:
 
         return chamada == "1"
 
+    def consultar_procedimento(
+        self,
+        id_unidade: str,  # Identificador da unidade no SEI
+        protocolo_procedimento: str,  # Número do processo visível para o usuário, ex: 12.1.000000077-4
+        sin_retornar_assuntos: str = "N",  # S/N - sinalizador para retorno dos assuntos do processo
+        sin_retornar_interessados: str = "N",  # S/N - sinalizador para retorno dos interessados do processo
+        sin_retornar_observacoes: str = "N",  # S/N - sinalizador para retorno das observações das unidades
+        sin_retornar_andamento_geracao: str = "N",  # S/N - sinalizador para retorno do andamento de geração
+        sin_retornar_andamento_conclusao: str = "N",  # S/N - sinalizador para retorno do andamento de conclusão
+        sin_retornar_ultimo_andamento: str = "S",  #  S/N - sinalizador para retorno do último andamento
+        sin_retornar_unidades_procedimento_aberto: str = "S",  # S/N - sinalizador para retorno das unidades onde o processo está aberto
+        sin_retornar_procedimentos_relacionados: str = "N",  # S/N - sinalizador para retorno dos processos relacionados
+        sin_retornar_procedimentos_anexados: str = "N",  # S/N - sinalizador para retorno dos processos anexados
+    ):
+        """Retorna estrutura de dados com informações sobre o processo.
+
+            Observações: Processos sigilosos não são retornados. Cada um dos sinalizadores implica em processamento adicional reali-
+        zado pelo sistema, sendo assim, recomenda-se que seja solicitado o retorno somente para informações estri-
+        tamente necessárias.
+        """
+        # TODO: checar a restrição dos atributos S/N
+        return self._chamar_servico(
+            "consultarProcedimento",
+            id_unidade=id_unidade,
+            protocolo_procedimento=protocolo_procedimento,
+            sin_retornar_assuntos=sin_retornar_assuntos,
+            sin_retornar_interessados=sin_retornar_interessados,
+            sin_retornar_observacoes=sin_retornar_observacoes,
+            sin_retornar_andamento_geracao=sin_retornar_andamento_geracao,
+            sin_retornar_andamento_conclusao=sin_retornar_andamento_conclusao,
+            sin_retornar_ultimo_andamento=sin_retornar_ultimo_andamento,
+            sin_retornar_unidades_procedimento_aberto=sin_retornar_unidades_procedimento_aberto,
+            sin_retornar_procedimentos_relacionados=sin_retornar_procedimentos_relacionados,
+            sin_retornar_procedimentos_anexados=sin_retornar_procedimentos_anexados,
+        )
+
     def listar_series(
         self,
         id_unidade: str = "",  # Opcional. Filtra a unidade
@@ -199,31 +235,10 @@ if __name__ == "__main__":
 
     sigla_sistema = "InovaFiscaliza"
 
-    chave_api = os.getenv("SEI_HM_API_KEY_INSTRUCAO")
-
-    method = "listar_series"
-
-    client = SeiClient(
-        sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
-    )
-
-    pprint(getattr(client, method)())
-
-    client = SeiClient(sigla_sistema=sigla_sistema, chave_api=chave_api)
-
-    pprint(getattr(client, method)())
+    method = "consultar_procedimento"
 
     # client = SeiClient(
-    #     sigla_sistema="Fiscaliza", chave_api=os.getenv("SEI_HM_API_KEY_FISCALIZA")
-    # )
-
-    # pprint(
-    #     getattr(client, method)(
-    #         id_unidade="110001068",
-    #         protocolo_procedimento="53554.000005/2024-18",
-    #         id_usuario="100001310",
-    #         sin_reabrir="S",
-    #     )
+    #     sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
     # )
 
     # pprint(
@@ -234,3 +249,16 @@ if __name__ == "__main__":
     #         sin_reabrir="S",
     #     )
     # )
+
+    client = SeiClient(
+        sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_INSTRUCAO")
+    )
+
+    pprint(
+        getattr(client, method)(
+            id_unidade="110001068",
+            protocolo_procedimento="53554.000005/2024-18",
+            # id_usuario="100001310",
+            # sin_reabrir="S",
+        )
+    )
