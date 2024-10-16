@@ -2,11 +2,11 @@ import logging
 from pathlib import Path
 from typing import List, Dict
 
-
 from dotenv import find_dotenv, load_dotenv
 from fastcore.basics import snake2camel
 from zeep import Client
 
+from seiws.exceptions import InvalidAmbienteError, InvalidChaveApiError
 from seiws.config import (
     AMBIENTES_DE_DESENVOLVIMENTO,
 )
@@ -26,18 +26,6 @@ logging.basicConfig(
         logging.FileHandler("servico_sei.log"),
     ],
 )
-
-
-class InvalidTipoProcessoError(Exception):
-    pass
-
-
-class InvalidAmbienteError(Exception):
-    pass
-
-
-class InvalidChaveApiError(Exception):
-    pass
 
 
 class SeiClient:
@@ -62,8 +50,28 @@ class SeiClient:
         if self.chave_api is None:
             raise InvalidChaveApiError(f"Chave API inválida: {self.chave_api}")
 
-    def _validar_tipo_processo(self, tipo_processo: str):
-        pass
+    def _chamar_servico(self, nome_operacao: str, **kwargs):
+        try:
+            parametros = {
+                "SiglaSistema": self.sigla_sistema,
+                "Ambiente": self.ambiente,
+                **kwargs,
+            }
+            self.logger.info(
+                f"Chamando operação: {nome_operacao} com parâmetros: {parametros}"
+            )
+            operacao = getattr(self.client.service, nome_operacao)
+            kwargs = {snake2camel(k): v for k, v in kwargs.items()}
+            resposta = operacao(
+                SiglaSistema=self.sigla_sistema,
+                IdentificacaoServico=self.chave_api,
+                **kwargs,
+            )
+            self.logger.info(f"Resposta recebida: {resposta}")
+            return resposta
+        except Exception as e:
+            self.logger.error(f"Erro ao chamar a operação {nome_operacao}: {e}")
+            raise
 
     def instanciar_cliente(
         self,
@@ -85,36 +93,30 @@ class SeiClient:
             self.logger.error(f"Erro ao criar o cliente SOAP: {e}")
             raise
 
-    def _call_service(self, operation_name: str, **kwargs):
-        try:
-            parametros = {
-                "SiglaSistema": self.sigla_sistema,
-                "Ambiente": self.ambiente,
-                **kwargs,
-            }
-            self.logger.info(
-                f"Chamando operação: {operation_name} com parâmetros: {parametros}"
-            )
-            operacao = getattr(self.client.service, operation_name)
-            kwargs = {snake2camel(k): v for k, v in kwargs.items()}
-            resposta = operacao(
-                SiglaSistema=self.sigla_sistema,
-                IdentificacaoServico=self.chave_api,
-                **kwargs,
-            )
-            self.logger.info(f"Resposta recebida: {resposta}")
-            return resposta
-        except Exception as e:
-            self.logger.error(f"Erro ao chamar a operação {operation_name}: {e}")
-            raise
-
     def listar_unidades(
-        self, id_tipo_procedimento: str = "", id_serie: str = ""
+        self,
+        id_tipo_procedimento: str = "",  # Opcional. Filtra o tipo do processo
+        id_serie: str = "",  # Opcional. Filtra a tipo de documento
     ) -> List[Dict[str, str]]:
-        return self._call_service(
+        """Lista as unidades com acesso configurado para a chave de acesso informada.
+
+        Args:
+            id_tipo_procedimento (str, optional): Filtra o tipo do processo. Valores possíveis: Qualquer id válido de processo. A string vazia ("") indica que nenhum filtro é aplicado.
+            id_serie (str, optional): Filtra a tipo de documento. Valores possíveis: Qualquer id válido de documento. A string vazia ("") indica que nenhum filtro é aplicado.
+
+        Returns:
+            List[Dict[str, str]]: Lista de unidades com acesso configurado para a chave de acesso informada.
+        """
+        return self._chamar_servico(
             "listarUnidades",
             id_tipo_procedimento=id_tipo_procedimento,
             id_serie=id_serie,
+        )
+
+    def listar_usuarios(self, id_unidade: str) -> List[Dict[str, str]]:
+        return self._chamar_servico(
+            "listarUsuarios",
+            id_unidade=id_unidade,
         )
 
 
