@@ -3040,3 +3040,4023 @@ USUARIOS = [
         "Nome": "Thyago de Oliveira Braun Guimarães",
     },
 ]
+
+SERIES = [{
+    'IdSerie': '46',
+    'Nome': 'Abaixo-Assinado',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '292',
+    'Nome': 'Abertura de Procedimento Licitatório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '8',
+    'Nome': 'Acórdão',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '106',
+    'Nome': 'Acordo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '439',
+    'Nome': 'Acordo de Conduta Pessoal e Profissional',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '517',
+    'Nome': 'Acordo de Cooperação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '231',
+    'Nome': 'Acordo de Cooperação Técnica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '95',
+    'Nome': 'Agenda',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '293',
+    'Nome': 'Alegações',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '48',
+    'Nome': 'Alvará',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '116',
+    'Nome': 'Anais',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '7',
+    'Nome': 'Análise',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '352',
+    'Nome': 'Análise de Aderência Regulatória',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '450',
+    'Nome': 'Análise de Conformidade do Processo de Pagamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '342',
+    'Nome': 'Análise de Reversão de Medida Acautelatória',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '220',
+    'Nome': 'Análise de Riscos da Contratação de TI',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '288',
+    'Nome': 'Anexo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '96',
+    'Nome': 'Anotação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '117',
+    'Nome': 'Anteprojeto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '115',
+    'Nome': 'Apartado Sigiloso',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '118',
+    'Nome': 'Apólice',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '119',
+    'Nome': 'Apostila',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '309',
+    'Nome': 'Apresentação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '31',
+    'Nome': 'AR',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '67',
+    'Nome': 'Ata',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '187',
+    'Nome': 'Ata de Circuito Deliberativo do Conselho Diretor',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '478',
+    'Nome': 'Ata de Deliberação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '285',
+    'Nome': 'Ata de Registro de Preços',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '229',
+    'Nome': 'Ata de Reunião',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '390',
+    'Nome': 'Ata de Reunião do Conselho Consultivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '291',
+    'Nome': 'Ata de Sessão Pública',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '74',
+    'Nome': 'Atestado',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '189',
+    'Nome': 'Atestado de Capacidade Técnica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '244',
+    'Nome': 'Atesto de Documento de Cobrança',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '3',
+    'Nome': 'Ato',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '52',
+    'Nome': 'Áudio',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '120',
+    'Nome': 'Auto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '22',
+    'Nome': 'Auto de Infração',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '297',
+    'Nome': 'Autorização',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '345',
+    'Nome': 'Autorização de Entrada na Anatel Extraexpediente',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '461',
+    'Nome': 'Autorização de Entrada/Saída de Materiais',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '245',
+    'Nome': 'Autorização de Pagamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '452',
+    'Nome': 'Autorização de Ressarcimento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '353',
+    'Nome': 'Avaliação de Desempenho de Estagiário',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '503',
+    'Nome': 'Avaliação de Legítimo Interesse - Dados Pessoais',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '355',
+    'Nome': 'Avaliação Final de Estágio',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '354',
+    'Nome': 'Avaliação Final do Estagiário',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '458',
+    'Nome': 'Avaliação Preliminar de Impacto Regulatório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '121',
+    'Nome': 'Aviso',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '192',
+    'Nome': 'Aviso de Audiência Pública',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '510',
+    'Nome': 'Aviso de Dispensa Eletrônica',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '193',
+    'Nome': 'Aviso de Licitação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '32',
+    'Nome': 'Balancete',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '33',
+    'Nome': 'Balanço',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '122',
+    'Nome': 'Bilhete',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '34',
+    'Nome': 'Boletim',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '294',
+    'Nome': 'Boletim de Concessão de Diárias',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '97',
+    'Nome': 'Boleto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '211',
+    'Nome': 'Calendário',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '296',
+    'Nome': 'Canhoto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '80',
+    'Nome': 'Carta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '472',
+    'Nome': 'Carta Convite',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '310',
+    'Nome': 'Carta de Preposição',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '209',
+    'Nome': 'Cartão',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '123',
+    'Nome': 'Cartaz',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '87',
+    'Nome': 'Carteira',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '527',
+    'Nome': 'Catálogo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '124',
+    'Nome': 'Cédula',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '81',
+    'Nome': 'Certidão',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '405',
+    'Nome': 'Certidão de Admissibilidade Recursal',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '502',
+    'Nome': 'Certidão de Atendimento a Pedido de Vista',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '428',
+    'Nome': 'Certidão de Cancelamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '425',
+    'Nome': 'Certidão de Cancelamento de Distribuição',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '426',
+    'Nome': 'Certidão de Distribuição',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '360',
+    'Nome': 'Certidão de Intimação Cumprida',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '427',
+    'Nome': 'Certidão de Julgamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '406',
+    'Nome': 'Certidão de Redistribuição',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '82',
+    'Nome': 'Certificado',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '239',
+    'Nome': 'Check List de Análise',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '125',
+    'Nome': 'Cheque',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '476',
+    'Nome': 'Citação',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '338',
+    'Nome': 'CNH',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '210',
+    'Nome': 'CNPJ',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '521',
+    'Nome': 'Compromisso Formal - Chamadas Inoportunas',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '538',
+    'Nome': 'Compromisso Formal - Combate ao Spoofing',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '35',
+    'Nome': 'Comprovante',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '14',
+    'Nome': 'Comunicado',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '184',
+    'Nome': 'Comunicado de Cobrança',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '358',
+    'Nome': 'Comunicado de Recesso de Estagiário',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '315',
+    'Nome': 'Comunicado Público',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '298',
+    'Nome': 'Confirmação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '197',
+    'Nome': 'Consulta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '18',
+    'Nome': 'Consulta Interna',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '9',
+    'Nome': 'Consulta Pública',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '36',
+    'Nome': 'Conta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '72',
+    'Nome': 'Conteúdo de Mídia',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '126',
+    'Nome': 'Contracheque',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '112',
+    'Nome': 'Contrarrazões',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '37',
+    'Nome': 'Contrato',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '351',
+    'Nome': 'Contrato de Concessão',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '105',
+    'Nome': 'Convenção',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '232',
+    'Nome': 'Convênio',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '127',
+    'Nome': 'Convite',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '38',
+    'Nome': 'Correspondência',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '30',
+    'Nome': 'Correspondência Eletrônica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '29',
+    'Nome': 'Cota',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '299',
+    'Nome': 'Cotação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '88',
+    'Nome': 'CPF',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '128',
+    'Nome': 'Crachá',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '98',
+    'Nome': 'Credencial',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '129',
+    'Nome': 'Cronograma',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '39',
+    'Nome': 'Croqui',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '130',
+    'Nome': 'Currículo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '40',
+    'Nome': 'Dacon',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '198',
+    'Nome': 'Debênture',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '41',
+    'Nome': 'Decisão',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '83',
+    'Nome': 'Declaração',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '533',
+    'Nome': 'Declaração de Conformidade - Comercialização',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '516',
+    'Nome': 'Declaração de Conformidade - Drone',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '532',
+    'Nome': 'Declaração de Conformidade - Importado Uso Próprio',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '529',
+    'Nome': 'Declaração de Disponibilidade Orçamentária',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '131',
+    'Nome': 'Decreto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '42',
+    'Nome': 'Defesa',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '43',
+    'Nome': 'Degravacão',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '132',
+    'Nome': 'Deliberação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '44',
+    'Nome': 'Demonstração',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '133',
+    'Nome': 'Demonstrativo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '45',
+    'Nome': 'Denúncia',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '134',
+    'Nome': 'Depoimento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '93',
+    'Nome': 'Despacho',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '4',
+    'Nome': 'Despacho Decisório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '5',
+    'Nome': 'Despacho Ordinatório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '374',
+    'Nome': 'Despacho Ordinatório de Encerramento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '6',
+    'Nome': 'Despacho Ordinatório de Instauração',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '335',
+    'Nome': 'Diagnóstico',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '135',
+    'Nome': 'Diário',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '77',
+    'Nome': 'Diploma',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '199',
+    'Nome': 'Diretriz',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '136',
+    'Nome': 'Dissertação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '47',
+    'Nome': 'Documento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '369',
+    'Nome': 'Documento de Formalização de Demanda (DFD)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '216',
+    'Nome': 'Documento de Oficialização de Demanda de TI (DOD)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '392',
+    'Nome': 'Documento de Planejamento de Contratação (DPC)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '137',
+    'Nome': 'Dossiê',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '276',
+    'Nome': 'E-mail',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '68',
+    'Nome': 'Edital',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '429',
+    'Nome': 'Edital de Cancelamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '346',
+    'Nome': 'Edital de Ciência de Eliminação de Documentos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '237',
+    'Nome': 'Edital de Convocação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '185',
+    'Nome': 'Edital de Intimação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '496',
+    'Nome': 'Edital de Seleção',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '138',
+    'Nome': 'Embargos',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '139',
+    'Nome': 'Emenda',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '140',
+    'Nome': 'Escala',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '108',
+    'Nome': 'Esclarecimento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '141',
+    'Nome': 'Escritura',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '49',
+    'Nome': 'Escrituração',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '50',
+    'Nome': 'Estatuto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '339',
+    'Nome': 'Estratégia',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '340',
+    'Nome': 'Estudo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '370',
+    'Nome': 'Estudo Preliminar da Contratação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '219',
+    'Nome': 'Estudo Técnico Preliminar da Contratação de TI',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '336',
+    'Nome': 'Exame',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '142',
+    'Nome': 'Exposição',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '51',
+    'Nome': 'Extrato',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '84',
+    'Nome': 'Fatura',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '143',
+    'Nome': 'Ficha',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '144',
+    'Nome': 'Fluxograma',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '200',
+    'Nome': 'Folder',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '99',
+    'Nome': 'Folha',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '356',
+    'Nome': 'Folha de Ponto Mensal',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '289',
+    'Nome': 'Folheto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '304',
+    'Nome': 'Formulário de Cadastro e Habilitação no SIAFI',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '455',
+    'Nome': 'Formulário de Cadastro e Responsabilidade no SCDP',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '431',
+    'Nome': 'Formulário de Comunicado de Plano de Serviço',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '378',
+    'Nome': 'Formulário de Demanda de Infraestrutura',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '512',
+    'Nome': 'Formulário de Inspeção',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '430',
+    'Nome': 'Formulário de Novo Plano de Serviço',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '86',
+    'Nome': 'Formulário de Ouvidoria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '456',
+    'Nome': 'Formulário de Solicitação de Viagem',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '201',
+    'Nome': 'Grade Curricular',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '146',
+    'Nome': 'Guia',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '256',
+    'Nome': 'Guia de Recebimento de Malote',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '255',
+    'Nome': 'Guia de Remessa de Malote',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '79',
+    'Nome': 'Histórico',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '453',
+    'Nome': 'Histórico Processual',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '109',
+    'Nome': 'Impugnação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '372',
+    'Nome': 'Inclusão em Lista Permanente para Acesso na Anatel',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '202',
+    'Nome': 'Indicação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '217',
+    'Nome': 'Indicação de Integrante Técnico',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '365',
+    'Nome': 'Indicação para Receber Intimações Eletrônicas',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '92',
+    'Nome': 'Informação',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '334',
+    'Nome': 'Informação em Mandado de Segurança',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '16',
+    'Nome': 'Informe',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '300',
+    'Nome': 'Inscrição',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '218',
+    'Nome': 'Instituição da Equipe de Planej. da Contratação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '203',
+    'Nome': 'Instrução',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '495',
+    'Nome': 'Instrução Normativa',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '110',
+    'Nome': 'Intenção',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '477',
+    'Nome': 'Intimação',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '147',
+    'Nome': 'Inventário',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '246',
+    'Nome': 'Lançamento de Pagamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '54',
+    'Nome': 'Laudo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '443',
+    'Nome': 'Laudo Ambiental',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '26',
+    'Nome': 'Laudo de Vistoria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '148',
+    'Nome': 'Lei',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '55',
+    'Nome': 'Licença',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '364',
+    'Nome': 'Licença para Funcionamento de Estação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '100',
+    'Nome': 'Lista',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '266',
+    'Nome': 'Lista de Matérias para Sorteio ao Conselho Diretor',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '375',
+    'Nome': 'Lista de Matérias Sorteadas ao Conselho Diretor',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '287',
+    'Nome': 'Listagem',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '347',
+    'Nome': 'Listagem de Eliminação de Documentos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '56',
+    'Nome': 'Livro',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '454',
+    'Nome': 'Logomarca',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '69',
+    'Nome': 'Mandado',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '149',
+    'Nome': 'Manifesto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '113',
+    'Nome': 'Manual',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '150',
+    'Nome': 'Mapa',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '371',
+    'Nome': 'Mapa de Riscos da Contratação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '212',
+    'Nome': 'Matéria',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '17',
+    'Nome': 'Matéria para Apreciação do Conselho Diretor',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '78',
+    'Nome': 'Material',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '151',
+    'Nome': 'Medida Provisória',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '12',
+    'Nome': 'Memorando',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '13',
+    'Nome': 'Memorando-Circular',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '57',
+    'Nome': 'Memória',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '152',
+    'Nome': 'Memorial',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '153',
+    'Nome': 'Mensagem',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '362',
+    'Nome': 'Metodologia',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '204',
+    'Nome': 'Minuta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '518',
+    'Nome': 'Minuta de Acordo de Cooperação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '269',
+    'Nome': 'Minuta de Acordo de Cooperação Técnica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '284',
+    'Nome': 'Minuta de Ata de Registro de Preços',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '314',
+    'Nome': 'Minuta de Ato',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '511',
+    'Nome': 'Minuta de Aviso de Dispensa Eletrônica',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '471',
+    'Nome': 'Minuta de Carta Convite',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '524',
+    'Nome': 'Minuta de Consulta Interna',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '308',
+    'Nome': 'Minuta de Consulta Pública',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '270',
+    'Nome': 'Minuta de Contrato',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '468',
+    'Nome': 'Minuta de Contrato de Concessão',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '271',
+    'Nome': 'Minuta de Convênio',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '469',
+    'Nome': 'Minuta de Despacho Decisório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '272',
+    'Nome': 'Minuta de Edital',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '508',
+    'Nome': 'Minuta de Estudo Preliminar da Contratação',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '509',
+    'Nome': 'Minuta de Estudo Preliminar da Contratação de TI',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '494',
+    'Nome': 'Minuta de Instrução Normativa',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '324',
+    'Nome': 'Minuta de Ordem de Serviço/Fornecimento de Bens',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '235',
+    'Nome': 'Minuta de Portaria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '467',
+    'Nome': 'Minuta de Portaria de Pessoal',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '283',
+    'Nome': 'Minuta de Projeto Básico',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '535',
+    'Nome': 'Minuta de Protocolo de Intenções',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '238',
+    'Nome': 'Minuta de Resolução',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '462',
+    'Nome': 'Minuta de Resolução Conjunta',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '464',
+    'Nome': 'Minuta de Resolução Interna',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '317',
+    'Nome': 'Minuta de Súmula',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '273',
+    'Nome': 'Minuta de Termo Aditivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '520',
+    'Nome': 'Minuta de Termo Aditivo de TAC',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '438',
+    'Nome': 'Minuta de Termo de Aceite de Nota de Empenho',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '537',
+    'Nome': 'Minuta de Termo de Acordo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '377',
+    'Nome': 'Minuta de Termo de Adesão',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '323',
+    'Nome': 'Minuta de Termo de Ajustamento de Conduta',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '329',
+    'Nome': 'Minuta de Termo de Autorização',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '326',
+    'Nome': 'Minuta de Termo de Cessão de Uso',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '486',
+    'Nome': 'Minuta de Termo de Compartilhamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '368',
+    'Nome': 'Minuta de Termo de Doação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '319',
+    'Nome': 'Minuta de Termo de Execução Descentralizada',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '441',
+    'Nome': 'Minuta de Termo de Garantia',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '282',
+    'Nome': 'Minuta de Termo de Referência',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '489',
+    'Nome': 'Minuta de Termo de Referencia Internacional',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '274',
+    'Nome': 'Minuta de Termo de Rescisão Amigável',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '414',
+    'Nome': 'Minuta de Termo de Rescisão Bilateral',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '275',
+    'Nome': 'Minuta de Termo de Rescisão Unilateral',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '523',
+    'Nome': 'Minuta de Tomada de Subsídios',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '154',
+    'Nome': 'Moção',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '213',
+    'Nome': 'Movimentação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '58',
+    'Nome': 'Norma',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '91',
+    'Nome': 'Nota',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '526',
+    'Nome': 'Nota de Auditoria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '15',
+    'Nome': 'Nota Técnica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '59',
+    'Nome': 'Notificação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '186',
+    'Nome': 'Notificação de Lançamento',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '475',
+    'Nome': 'Notificação Prévia',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '11',
+    'Nome': 'Ofício',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '447',
+    'Nome': 'Ofício Sapiens',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '205',
+    'Nome': 'Ofício-Circular',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '206',
+    'Nome': 'Orçamento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '207',
+    'Nome': 'Ordem',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '222',
+    'Nome': 'Ordem de Serviço/Fornecimento de Bens',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '155',
+    'Nome': 'Organograma',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '156',
+    'Nome': 'Orientação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '337',
+    'Nome': 'Página',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '157',
+    'Nome': 'Panfleto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '191',
+    'Nome': 'Parecer',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '158',
+    'Nome': 'Passaporte',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '159',
+    'Nome': 'Pauta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '188',
+    'Nome': 'Pauta de Circuito Deliberativo do Conselho Diretor',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '432',
+    'Nome': 'Pauta de Reunião',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '389',
+    'Nome': 'Pauta de Reunião do Conselho Consultivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '388',
+    'Nome': 'Pauta de Reunião Técnica do Conselho Diretor',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '107',
+    'Nome': 'Pedido',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '160',
+    'Nome': 'Petição',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '259',
+    'Nome': 'Planejamento de Atividade de Auditoria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '104',
+    'Nome': 'Planilha',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '73',
+    'Nome': 'Plano',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '391',
+    'Nome': 'Plano de Ação de Fiscalização',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '223',
+    'Nome': 'Plano de Fiscalização de Contrato',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '249',
+    'Nome': 'Plano de Gerenciamento de Projeto (PGP)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '221',
+    'Nome': 'Plano de Inserção de Contratada',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '305',
+    'Nome': 'Plano de Trabalho',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '522',
+    'Nome': 'Plano de Trabalho para Estagiário',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '161',
+    'Nome': 'Planta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '10',
+    'Nome': 'Portaria',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '466',
+    'Nome': 'Portaria de Pessoal',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '473',
+    'Nome': 'Portaria Disciplinar',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '162',
+    'Nome': 'Precatório',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '281',
+    'Nome': 'Prestação de Contas de Suprimento de Fundos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '341',
+    'Nome': 'Processo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '60',
+    'Nome': 'Procuração',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '420',
+    'Nome': 'Procuração Eletrônica Especial',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '440',
+    'Nome': 'Procuração Eletrônica Simples',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '163',
+    'Nome': 'Programa',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '101',
+    'Nome': 'Projeto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '215',
+    'Nome': 'Projeto Básico',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '75',
+    'Nome': 'Prontuário',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '208',
+    'Nome': 'Pronunciamento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '85',
+    'Nome': 'Proposta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '254',
+    'Nome': 'Proposta de Composição de Delegação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '279',
+    'Nome': 'Proposta de Concessão de Suprimento de Fundos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '257',
+    'Nome': 'Proposta de Contribuições Brasileiras',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '416',
+    'Nome': 'Proposta de Cooperação ou de Aditivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '164',
+    'Nome': 'Prospecto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '165',
+    'Nome': 'Protocolo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '534',
+    'Nome': 'Protocolo de Intenções',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '166',
+    'Nome': 'Prova',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '103',
+    'Nome': 'Publicação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '167',
+    'Nome': 'Questionário',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '168',
+    'Nome': 'Receita',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '169',
+    'Nome': 'Recibo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '328',
+    'Nome': 'Recibo Eletrônico de Protocolo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '61',
+    'Nome': 'Reclamação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '295',
+    'Nome': 'Reconhecimento e Ratificação de Dispensa',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '286',
+    'Nome': 'Reconhecimento e Ratificação de Inexigibilidade',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '111',
+    'Nome': 'Recurso',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '27',
+    'Nome': 'Referendo',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '170',
+    'Nome': 'Regimento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '62',
+    'Nome': 'Registro',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '230',
+    'Nome': 'Registro de Reunião',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '171',
+    'Nome': 'Regulamento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '102',
+    'Nome': 'Relação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '63',
+    'Nome': 'Relatório',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '361',
+    'Nome': 'Relatório Anual de Atividades',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '380',
+    'Nome': 'Relatório de Acompanhamento da Execução Contratual',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '457',
+    'Nome': 'Relatório de Análise de Impacto Regulatório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '525',
+    'Nome': 'Relatório de Análise de Resultado Regulatório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '306',
+    'Nome': 'Relatório de Atividades',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '312',
+    'Nome': 'Relatório de Auditoria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '247',
+    'Nome': 'Relatório de Concessão de Suprimento de Fundos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '251',
+    'Nome': 'Relatório de Correição',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '253',
+    'Nome': 'Relatório de Delegação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '19',
+    'Nome': 'Relatório de Fiscalização',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '470',
+    'Nome': 'Relatório de Impacto à Proteção de Dados Pessoais',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '252',
+    'Nome': 'Relatório de Viagem a Serviço',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '250',
+    'Nome': 'Relatório Final',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '445',
+    'Nome': 'Relatório Fiscalização de Mão de Obra',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '488',
+    'Nome': 'Relatório Fotográfico',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '172',
+    'Nome': 'Release',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '422',
+    'Nome': 'Renúncia de Procuração Eletrônica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '173',
+    'Nome': 'Representação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '64',
+    'Nome': 'Requerimento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '403',
+    'Nome': 'Requerimento Alteração Escopo Laboratório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '402',
+    'Nome': 'Requerimento Alteração Escopo OCD ou Especialista',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '487',
+    'Nome': 'Requerimento de Auto Homologação de Produto',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '500',
+    'Nome': 'Requerimento de Autocadastramento de Estações',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '401',
+    'Nome': 'Requerimento de Autorização de Ensaios',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '400',
+    'Nome': 'Requerimento de Autorização para Teste Piloto',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '397',
+    'Nome': 'Requerimento de Avaliação de Normas Técnicas',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '434',
+    'Nome': 'Requerimento de Coleta de Dados',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '399',
+    'Nome': 'Requerimento de Designação de OCD',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '493',
+    'Nome': 'Requerimento de Direito de Exploração de Satélite',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '70',
+    'Nome': 'Requerimento de Gestão de Pessoas',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '398',
+    'Nome': 'Requerimento de Habilitação de Laboratório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '20',
+    'Nome': 'Requerimento de Informações',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '404',
+    'Nome': 'Requerimento de Informações sobre Homologação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '330',
+    'Nome': 'Requerimento de Outorga e Licenciamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '451',
+    'Nome': 'Requerimento de Passaporte Oficial e Visto',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '483',
+    'Nome': 'Requerimento de Programa de Gestão',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '333',
+    'Nome': 'Requerimento de Restituição-Compensação de Crédito',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '437',
+    'Nome': 'Requerimento de Retificação de Valores do FUST',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '501',
+    'Nome': 'Requerimento de Serviço Aux. de Radiodifusão',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '331',
+    'Nome': 'Requerimento de Serviços de Telecomunicações',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '366',
+    'Nome': 'Requerimento de Servidor para Fiscalização On-line',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '499',
+    'Nome': 'Requerimento do Serviço de Radioamador',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '498',
+    'Nome': 'Requerimento do Serviço Limitado Móvel Aeronáutico',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '497',
+    'Nome': 'Requerimento do Serviço Limitado Móvel Marítimo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '505',
+    'Nome': 'Requerimento para Cadastro E-Submission',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '506',
+    'Nome': 'Requerimento para Registro no Copuos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '504',
+    'Nome': 'Requerimento para Submissão de Filings',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '393',
+    'Nome': 'Requerimento sobre Alteração de Ato Constitutivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '396',
+    'Nome': 'Requerimento sobre Selo de Bateria e Carregador',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '394',
+    'Nome': 'Requerimento sobre Transferência de Controle',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '395',
+    'Nome': 'Requerimento sobre Transferência de Outorga',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '65',
+    'Nome': 'Requisição',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '21',
+    'Nome': 'Requisição de Informações',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '1',
+    'Nome': 'Resolução',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '463',
+    'Nome': 'Resolução Conjunta',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '465',
+    'Nome': 'Resolução Interna',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '515',
+    'Nome': 'Restabelecimento de Procuração Eletrônica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '424',
+    'Nome': 'Restabelecimento de Vinculação a Pessoa Jurídica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '76',
+    'Nome': 'Resultado',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '174',
+    'Nome': 'Resumo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '421',
+    'Nome': 'Revogação de Procuração Eletrônica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '89',
+    'Nome': 'RG',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '175',
+    'Nome': 'Roteiro',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '176',
+    'Nome': 'Sentença',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '177',
+    'Nome': 'Sinopse',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '178',
+    'Nome': 'Solicitação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '267',
+    'Nome': 'Solicitação de Abertura de Circuito Deliberativo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '363',
+    'Nome': 'Solicitação de Apoio a Eventos Institucionais',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '302',
+    'Nome': 'Solicitação de Auditoria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '492',
+    'Nome': 'Solicitação de Auditoria Circular',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '280',
+    'Nome': 'Solicitação de Despesas por Suprimento de Fundos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '459',
+    'Nome': 'Solicitação de Manutenção de Sistema de TI (SMTI)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '460',
+    'Nome': 'Solicitação de Solução de Dados (SS-Dados)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '313',
+    'Nome': 'Solicitação de Solução de TI (SSTI)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '258',
+    'Nome': 'Sumário',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '2',
+    'Nome': 'Súmula',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '514',
+    'Nome': 'Suspensão de Procuração Eletrônica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '423',
+    'Nome': 'Suspensão de Vinculação a Pessoa Jurídica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '179',
+    'Nome': 'Tabela',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '180',
+    'Nome': 'Telegrama',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '90',
+    'Nome': 'Termo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '260',
+    'Nome': 'Termo Aditivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '519',
+    'Nome': 'Termo Aditivo de TAC',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '248',
+    'Nome': 'Termo de Abertura de Projeto (TAP)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '320',
+    'Nome': 'Termo de Aceite de Nota de Empenho',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '536',
+    'Nome': 'Termo de Acordo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '376',
+    'Nome': 'Termo de Adesão',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '444',
+    'Nome': 'Termo de Adesão Anatel Consumidor / Comparador',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '484',
+    'Nome': 'Termo de Ajustamento de Conduta',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '322',
+    'Nome': 'Termo de Ajustamento de Conduta (TAC)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '261',
+    'Nome': 'Termo de Apostilamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '66',
+    'Nome': 'Termo de Apresentação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '321',
+    'Nome': 'Termo de Atesto de Movimentação Patrimonial',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '379',
+    'Nome': 'Termo de Atesto de Recebimento de Material',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '311',
+    'Nome': 'Termo de Autorização',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '242',
+    'Nome': 'Termo de Cancelamento de Documento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '325',
+    'Nome': 'Termo de Cessão de Uso',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '531',
+    'Nome': 'Termo de Ciência de Licença para Capacitação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '225',
+    'Nome': 'Termo de Ciência de Manutenção de Sigilo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '485',
+    'Nome': 'Termo de Compartilhamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '224',
+    'Nome': 'Termo de Comprom. Manutenção de Sigilo em Contrato',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '446',
+    'Nome': 'Termo de Compromisso',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '359',
+    'Nome': 'Termo de Compromisso de Adesão ao Teletrabalho',
+    'Aplicabilidade': 'F'
+}, {
+    'IdSerie': '507',
+    'Nome': 'Termo de Compromisso Formal - Telemarketing',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '528',
+    'Nome': 'Termo de Compromisso para Uso de Dados Pessoais',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '436',
+    'Nome': 'Termo de Conclusão de Apuração Simplificada',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '480',
+    'Nome': 'Termo de Depoimento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '241',
+    'Nome': 'Termo de Desanexacão de Processo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '418',
+    'Nome': 'Termo de Devolução de Bem Não Patrimoniado',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '474',
+    'Nome': 'Termo de Devolução de Garantias',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '367',
+    'Nome': 'Termo de Doação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '348',
+    'Nome': 'Termo de Eliminação de Documentos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '228',
+    'Nome': 'Termo de Encerramento da Execução Contratual',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '349',
+    'Nome': 'Termo de Encerramento de Projeto (TEP)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '240',
+    'Nome': 'Termo de Encerramento de Trâmite Físico-Documento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '114',
+    'Nome': 'Termo de Encerramento de Trâmite Físico-Processo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '327',
+    'Nome': 'Termo de Entrada e Saída de Bem ou Produto',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '318',
+    'Nome': 'Termo de Execução Descentralizada',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '24',
+    'Nome': 'Termo de Fiscalização',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '442',
+    'Nome': 'Termo de Garantia',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '23',
+    'Nome': 'Termo de Identificação',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '479',
+    'Nome': 'Termo de Indiciação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '435',
+    'Nome': 'Termo de Instauração de Apuração Simplificada',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '481',
+    'Nome': 'Termo de Interrogatório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '25',
+    'Nome': 'Termo de Lacração, Apreensão e Interrupção',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '350',
+    'Nome': 'Termo de Mudança de Projeto (TMP)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '343',
+    'Nome': 'Termo de Posse',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '513',
+    'Nome': 'Termo de Qualificação',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '417',
+    'Nome': 'Termo de Recebimento de Bem Não Patrimoniado',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '227',
+    'Nome': 'Termo de Recebimento Definitivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '226',
+    'Nome': 'Termo de Recebimento Provisório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '214',
+    'Nome': 'Termo de Referência',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '490',
+    'Nome': 'Termo de Referência Internacional',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '262',
+    'Nome': 'Termo de Rescisão Amigável',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '415',
+    'Nome': 'Termo de Rescisão Bilateral',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '263',
+    'Nome': 'Termo de Rescisão Unilateral',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '433',
+    'Nome': 'Termo de Responsabilidade',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '344',
+    'Nome': 'Termo de Responsabilidade de OCD',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '290',
+    'Nome': 'Termo de Responsabilidade para Acesso à TI-Anatel',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '357',
+    'Nome': 'Termo Final de Estágio',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '373',
+    'Nome': 'Termo para Disponibilização de Trabalho Acadêmico',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '181',
+    'Nome': 'Tese',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '182',
+    'Nome': 'Testamento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '183',
+    'Nome': 'Título',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '491',
+    'Nome': 'Tomada de Subsídios',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '53',
+    'Nome': 'Vídeo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '419',
+    'Nome': 'Vinculação de Responsável Legal a Pessoa Jurídica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '71',
+    'Nome': 'Volume de Processo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '94',
+    'Nome': 'Voto',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '307',
+    'Nome': 'Voto em Circuito Deliberativo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '301',
+    'Nome': 'Voucher',
+    'Aplicabilidade': 'E'
+}]
+2024-10-16 05:10:09,044 - __main__ - INFO - Chamando operação: listarSeries com parâmetros: {'SiglaSistema': 'InovaFiscaliza', 'Ambiente': 'homologação', 'id_unidade': '', 'id_tipo_procedimento': ''}
+2024-10-16 05:10:09,478 - __main__ - INFO - Resposta recebida: [{
+    'IdSerie': '46',
+    'Nome': 'Abaixo-Assinado',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '292',
+    'Nome': 'Abertura de Procedimento Licitatório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '8',
+    'Nome': 'Acórdão',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '106',
+    'Nome': 'Acordo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '439',
+    'Nome': 'Acordo de Conduta Pessoal e Profissional',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '517',
+    'Nome': 'Acordo de Cooperação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '231',
+    'Nome': 'Acordo de Cooperação Técnica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '95',
+    'Nome': 'Agenda',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '293',
+    'Nome': 'Alegações',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '48',
+    'Nome': 'Alvará',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '116',
+    'Nome': 'Anais',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '7',
+    'Nome': 'Análise',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '352',
+    'Nome': 'Análise de Aderência Regulatória',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '450',
+    'Nome': 'Análise de Conformidade do Processo de Pagamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '342',
+    'Nome': 'Análise de Reversão de Medida Acautelatória',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '220',
+    'Nome': 'Análise de Riscos da Contratação de TI',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '288',
+    'Nome': 'Anexo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '96',
+    'Nome': 'Anotação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '117',
+    'Nome': 'Anteprojeto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '115',
+    'Nome': 'Apartado Sigiloso',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '118',
+    'Nome': 'Apólice',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '119',
+    'Nome': 'Apostila',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '309',
+    'Nome': 'Apresentação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '31',
+    'Nome': 'AR',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '67',
+    'Nome': 'Ata',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '187',
+    'Nome': 'Ata de Circuito Deliberativo do Conselho Diretor',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '478',
+    'Nome': 'Ata de Deliberação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '285',
+    'Nome': 'Ata de Registro de Preços',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '229',
+    'Nome': 'Ata de Reunião',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '390',
+    'Nome': 'Ata de Reunião do Conselho Consultivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '291',
+    'Nome': 'Ata de Sessão Pública',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '74',
+    'Nome': 'Atestado',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '189',
+    'Nome': 'Atestado de Capacidade Técnica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '244',
+    'Nome': 'Atesto de Documento de Cobrança',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '3',
+    'Nome': 'Ato',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '52',
+    'Nome': 'Áudio',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '120',
+    'Nome': 'Auto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '22',
+    'Nome': 'Auto de Infração',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '297',
+    'Nome': 'Autorização',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '345',
+    'Nome': 'Autorização de Entrada na Anatel Extraexpediente',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '461',
+    'Nome': 'Autorização de Entrada/Saída de Materiais',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '245',
+    'Nome': 'Autorização de Pagamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '452',
+    'Nome': 'Autorização de Ressarcimento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '353',
+    'Nome': 'Avaliação de Desempenho de Estagiário',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '503',
+    'Nome': 'Avaliação de Legítimo Interesse - Dados Pessoais',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '355',
+    'Nome': 'Avaliação Final de Estágio',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '354',
+    'Nome': 'Avaliação Final do Estagiário',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '458',
+    'Nome': 'Avaliação Preliminar de Impacto Regulatório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '121',
+    'Nome': 'Aviso',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '192',
+    'Nome': 'Aviso de Audiência Pública',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '510',
+    'Nome': 'Aviso de Dispensa Eletrônica',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '193',
+    'Nome': 'Aviso de Licitação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '32',
+    'Nome': 'Balancete',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '33',
+    'Nome': 'Balanço',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '122',
+    'Nome': 'Bilhete',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '34',
+    'Nome': 'Boletim',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '294',
+    'Nome': 'Boletim de Concessão de Diárias',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '97',
+    'Nome': 'Boleto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '211',
+    'Nome': 'Calendário',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '296',
+    'Nome': 'Canhoto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '80',
+    'Nome': 'Carta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '472',
+    'Nome': 'Carta Convite',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '310',
+    'Nome': 'Carta de Preposição',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '209',
+    'Nome': 'Cartão',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '123',
+    'Nome': 'Cartaz',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '87',
+    'Nome': 'Carteira',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '527',
+    'Nome': 'Catálogo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '124',
+    'Nome': 'Cédula',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '81',
+    'Nome': 'Certidão',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '405',
+    'Nome': 'Certidão de Admissibilidade Recursal',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '502',
+    'Nome': 'Certidão de Atendimento a Pedido de Vista',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '428',
+    'Nome': 'Certidão de Cancelamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '425',
+    'Nome': 'Certidão de Cancelamento de Distribuição',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '426',
+    'Nome': 'Certidão de Distribuição',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '360',
+    'Nome': 'Certidão de Intimação Cumprida',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '427',
+    'Nome': 'Certidão de Julgamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '406',
+    'Nome': 'Certidão de Redistribuição',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '82',
+    'Nome': 'Certificado',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '239',
+    'Nome': 'Check List de Análise',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '125',
+    'Nome': 'Cheque',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '476',
+    'Nome': 'Citação',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '338',
+    'Nome': 'CNH',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '210',
+    'Nome': 'CNPJ',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '521',
+    'Nome': 'Compromisso Formal - Chamadas Inoportunas',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '538',
+    'Nome': 'Compromisso Formal - Combate ao Spoofing',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '35',
+    'Nome': 'Comprovante',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '14',
+    'Nome': 'Comunicado',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '184',
+    'Nome': 'Comunicado de Cobrança',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '358',
+    'Nome': 'Comunicado de Recesso de Estagiário',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '315',
+    'Nome': 'Comunicado Público',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '298',
+    'Nome': 'Confirmação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '197',
+    'Nome': 'Consulta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '18',
+    'Nome': 'Consulta Interna',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '9',
+    'Nome': 'Consulta Pública',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '36',
+    'Nome': 'Conta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '72',
+    'Nome': 'Conteúdo de Mídia',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '126',
+    'Nome': 'Contracheque',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '112',
+    'Nome': 'Contrarrazões',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '37',
+    'Nome': 'Contrato',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '351',
+    'Nome': 'Contrato de Concessão',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '105',
+    'Nome': 'Convenção',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '232',
+    'Nome': 'Convênio',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '127',
+    'Nome': 'Convite',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '38',
+    'Nome': 'Correspondência',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '30',
+    'Nome': 'Correspondência Eletrônica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '29',
+    'Nome': 'Cota',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '299',
+    'Nome': 'Cotação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '88',
+    'Nome': 'CPF',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '128',
+    'Nome': 'Crachá',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '98',
+    'Nome': 'Credencial',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '129',
+    'Nome': 'Cronograma',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '39',
+    'Nome': 'Croqui',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '130',
+    'Nome': 'Currículo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '40',
+    'Nome': 'Dacon',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '198',
+    'Nome': 'Debênture',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '41',
+    'Nome': 'Decisão',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '83',
+    'Nome': 'Declaração',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '533',
+    'Nome': 'Declaração de Conformidade - Comercialização',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '516',
+    'Nome': 'Declaração de Conformidade - Drone',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '532',
+    'Nome': 'Declaração de Conformidade - Importado Uso Próprio',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '529',
+    'Nome': 'Declaração de Disponibilidade Orçamentária',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '131',
+    'Nome': 'Decreto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '42',
+    'Nome': 'Defesa',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '43',
+    'Nome': 'Degravacão',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '132',
+    'Nome': 'Deliberação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '44',
+    'Nome': 'Demonstração',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '133',
+    'Nome': 'Demonstrativo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '45',
+    'Nome': 'Denúncia',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '134',
+    'Nome': 'Depoimento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '93',
+    'Nome': 'Despacho',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '4',
+    'Nome': 'Despacho Decisório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '5',
+    'Nome': 'Despacho Ordinatório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '374',
+    'Nome': 'Despacho Ordinatório de Encerramento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '6',
+    'Nome': 'Despacho Ordinatório de Instauração',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '335',
+    'Nome': 'Diagnóstico',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '135',
+    'Nome': 'Diário',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '77',
+    'Nome': 'Diploma',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '199',
+    'Nome': 'Diretriz',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '136',
+    'Nome': 'Dissertação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '47',
+    'Nome': 'Documento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '369',
+    'Nome': 'Documento de Formalização de Demanda (DFD)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '216',
+    'Nome': 'Documento de Oficialização de Demanda de TI (DOD)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '392',
+    'Nome': 'Documento de Planejamento de Contratação (DPC)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '137',
+    'Nome': 'Dossiê',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '276',
+    'Nome': 'E-mail',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '68',
+    'Nome': 'Edital',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '429',
+    'Nome': 'Edital de Cancelamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '346',
+    'Nome': 'Edital de Ciência de Eliminação de Documentos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '237',
+    'Nome': 'Edital de Convocação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '185',
+    'Nome': 'Edital de Intimação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '496',
+    'Nome': 'Edital de Seleção',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '138',
+    'Nome': 'Embargos',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '139',
+    'Nome': 'Emenda',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '140',
+    'Nome': 'Escala',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '108',
+    'Nome': 'Esclarecimento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '141',
+    'Nome': 'Escritura',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '49',
+    'Nome': 'Escrituração',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '50',
+    'Nome': 'Estatuto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '339',
+    'Nome': 'Estratégia',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '340',
+    'Nome': 'Estudo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '370',
+    'Nome': 'Estudo Preliminar da Contratação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '219',
+    'Nome': 'Estudo Técnico Preliminar da Contratação de TI',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '336',
+    'Nome': 'Exame',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '142',
+    'Nome': 'Exposição',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '51',
+    'Nome': 'Extrato',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '84',
+    'Nome': 'Fatura',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '143',
+    'Nome': 'Ficha',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '144',
+    'Nome': 'Fluxograma',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '200',
+    'Nome': 'Folder',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '99',
+    'Nome': 'Folha',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '356',
+    'Nome': 'Folha de Ponto Mensal',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '289',
+    'Nome': 'Folheto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '304',
+    'Nome': 'Formulário de Cadastro e Habilitação no SIAFI',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '455',
+    'Nome': 'Formulário de Cadastro e Responsabilidade no SCDP',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '431',
+    'Nome': 'Formulário de Comunicado de Plano de Serviço',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '378',
+    'Nome': 'Formulário de Demanda de Infraestrutura',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '512',
+    'Nome': 'Formulário de Inspeção',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '430',
+    'Nome': 'Formulário de Novo Plano de Serviço',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '86',
+    'Nome': 'Formulário de Ouvidoria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '456',
+    'Nome': 'Formulário de Solicitação de Viagem',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '201',
+    'Nome': 'Grade Curricular',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '146',
+    'Nome': 'Guia',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '256',
+    'Nome': 'Guia de Recebimento de Malote',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '255',
+    'Nome': 'Guia de Remessa de Malote',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '79',
+    'Nome': 'Histórico',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '453',
+    'Nome': 'Histórico Processual',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '109',
+    'Nome': 'Impugnação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '372',
+    'Nome': 'Inclusão em Lista Permanente para Acesso na Anatel',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '202',
+    'Nome': 'Indicação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '217',
+    'Nome': 'Indicação de Integrante Técnico',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '365',
+    'Nome': 'Indicação para Receber Intimações Eletrônicas',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '92',
+    'Nome': 'Informação',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '334',
+    'Nome': 'Informação em Mandado de Segurança',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '16',
+    'Nome': 'Informe',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '300',
+    'Nome': 'Inscrição',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '218',
+    'Nome': 'Instituição da Equipe de Planej. da Contratação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '203',
+    'Nome': 'Instrução',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '495',
+    'Nome': 'Instrução Normativa',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '110',
+    'Nome': 'Intenção',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '477',
+    'Nome': 'Intimação',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '147',
+    'Nome': 'Inventário',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '246',
+    'Nome': 'Lançamento de Pagamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '54',
+    'Nome': 'Laudo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '443',
+    'Nome': 'Laudo Ambiental',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '26',
+    'Nome': 'Laudo de Vistoria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '148',
+    'Nome': 'Lei',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '55',
+    'Nome': 'Licença',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '364',
+    'Nome': 'Licença para Funcionamento de Estação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '100',
+    'Nome': 'Lista',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '266',
+    'Nome': 'Lista de Matérias para Sorteio ao Conselho Diretor',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '375',
+    'Nome': 'Lista de Matérias Sorteadas ao Conselho Diretor',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '287',
+    'Nome': 'Listagem',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '347',
+    'Nome': 'Listagem de Eliminação de Documentos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '56',
+    'Nome': 'Livro',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '454',
+    'Nome': 'Logomarca',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '69',
+    'Nome': 'Mandado',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '149',
+    'Nome': 'Manifesto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '113',
+    'Nome': 'Manual',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '150',
+    'Nome': 'Mapa',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '371',
+    'Nome': 'Mapa de Riscos da Contratação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '212',
+    'Nome': 'Matéria',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '17',
+    'Nome': 'Matéria para Apreciação do Conselho Diretor',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '78',
+    'Nome': 'Material',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '151',
+    'Nome': 'Medida Provisória',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '12',
+    'Nome': 'Memorando',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '13',
+    'Nome': 'Memorando-Circular',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '57',
+    'Nome': 'Memória',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '152',
+    'Nome': 'Memorial',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '153',
+    'Nome': 'Mensagem',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '362',
+    'Nome': 'Metodologia',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '204',
+    'Nome': 'Minuta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '518',
+    'Nome': 'Minuta de Acordo de Cooperação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '269',
+    'Nome': 'Minuta de Acordo de Cooperação Técnica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '284',
+    'Nome': 'Minuta de Ata de Registro de Preços',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '314',
+    'Nome': 'Minuta de Ato',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '511',
+    'Nome': 'Minuta de Aviso de Dispensa Eletrônica',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '471',
+    'Nome': 'Minuta de Carta Convite',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '524',
+    'Nome': 'Minuta de Consulta Interna',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '308',
+    'Nome': 'Minuta de Consulta Pública',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '270',
+    'Nome': 'Minuta de Contrato',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '468',
+    'Nome': 'Minuta de Contrato de Concessão',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '271',
+    'Nome': 'Minuta de Convênio',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '469',
+    'Nome': 'Minuta de Despacho Decisório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '272',
+    'Nome': 'Minuta de Edital',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '508',
+    'Nome': 'Minuta de Estudo Preliminar da Contratação',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '509',
+    'Nome': 'Minuta de Estudo Preliminar da Contratação de TI',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '494',
+    'Nome': 'Minuta de Instrução Normativa',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '324',
+    'Nome': 'Minuta de Ordem de Serviço/Fornecimento de Bens',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '235',
+    'Nome': 'Minuta de Portaria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '467',
+    'Nome': 'Minuta de Portaria de Pessoal',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '283',
+    'Nome': 'Minuta de Projeto Básico',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '535',
+    'Nome': 'Minuta de Protocolo de Intenções',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '238',
+    'Nome': 'Minuta de Resolução',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '462',
+    'Nome': 'Minuta de Resolução Conjunta',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '464',
+    'Nome': 'Minuta de Resolução Interna',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '317',
+    'Nome': 'Minuta de Súmula',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '273',
+    'Nome': 'Minuta de Termo Aditivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '520',
+    'Nome': 'Minuta de Termo Aditivo de TAC',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '438',
+    'Nome': 'Minuta de Termo de Aceite de Nota de Empenho',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '537',
+    'Nome': 'Minuta de Termo de Acordo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '377',
+    'Nome': 'Minuta de Termo de Adesão',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '323',
+    'Nome': 'Minuta de Termo de Ajustamento de Conduta',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '329',
+    'Nome': 'Minuta de Termo de Autorização',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '326',
+    'Nome': 'Minuta de Termo de Cessão de Uso',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '486',
+    'Nome': 'Minuta de Termo de Compartilhamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '368',
+    'Nome': 'Minuta de Termo de Doação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '319',
+    'Nome': 'Minuta de Termo de Execução Descentralizada',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '441',
+    'Nome': 'Minuta de Termo de Garantia',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '282',
+    'Nome': 'Minuta de Termo de Referência',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '489',
+    'Nome': 'Minuta de Termo de Referencia Internacional',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '274',
+    'Nome': 'Minuta de Termo de Rescisão Amigável',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '414',
+    'Nome': 'Minuta de Termo de Rescisão Bilateral',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '275',
+    'Nome': 'Minuta de Termo de Rescisão Unilateral',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '523',
+    'Nome': 'Minuta de Tomada de Subsídios',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '154',
+    'Nome': 'Moção',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '213',
+    'Nome': 'Movimentação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '58',
+    'Nome': 'Norma',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '91',
+    'Nome': 'Nota',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '526',
+    'Nome': 'Nota de Auditoria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '15',
+    'Nome': 'Nota Técnica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '59',
+    'Nome': 'Notificação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '186',
+    'Nome': 'Notificação de Lançamento',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '475',
+    'Nome': 'Notificação Prévia',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '11',
+    'Nome': 'Ofício',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '447',
+    'Nome': 'Ofício Sapiens',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '205',
+    'Nome': 'Ofício-Circular',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '206',
+    'Nome': 'Orçamento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '207',
+    'Nome': 'Ordem',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '222',
+    'Nome': 'Ordem de Serviço/Fornecimento de Bens',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '155',
+    'Nome': 'Organograma',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '156',
+    'Nome': 'Orientação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '337',
+    'Nome': 'Página',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '157',
+    'Nome': 'Panfleto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '191',
+    'Nome': 'Parecer',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '158',
+    'Nome': 'Passaporte',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '159',
+    'Nome': 'Pauta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '188',
+    'Nome': 'Pauta de Circuito Deliberativo do Conselho Diretor',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '432',
+    'Nome': 'Pauta de Reunião',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '389',
+    'Nome': 'Pauta de Reunião do Conselho Consultivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '388',
+    'Nome': 'Pauta de Reunião Técnica do Conselho Diretor',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '107',
+    'Nome': 'Pedido',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '160',
+    'Nome': 'Petição',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '259',
+    'Nome': 'Planejamento de Atividade de Auditoria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '104',
+    'Nome': 'Planilha',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '73',
+    'Nome': 'Plano',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '391',
+    'Nome': 'Plano de Ação de Fiscalização',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '223',
+    'Nome': 'Plano de Fiscalização de Contrato',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '249',
+    'Nome': 'Plano de Gerenciamento de Projeto (PGP)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '221',
+    'Nome': 'Plano de Inserção de Contratada',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '305',
+    'Nome': 'Plano de Trabalho',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '522',
+    'Nome': 'Plano de Trabalho para Estagiário',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '161',
+    'Nome': 'Planta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '10',
+    'Nome': 'Portaria',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '466',
+    'Nome': 'Portaria de Pessoal',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '473',
+    'Nome': 'Portaria Disciplinar',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '162',
+    'Nome': 'Precatório',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '281',
+    'Nome': 'Prestação de Contas de Suprimento de Fundos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '341',
+    'Nome': 'Processo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '60',
+    'Nome': 'Procuração',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '420',
+    'Nome': 'Procuração Eletrônica Especial',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '440',
+    'Nome': 'Procuração Eletrônica Simples',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '163',
+    'Nome': 'Programa',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '101',
+    'Nome': 'Projeto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '215',
+    'Nome': 'Projeto Básico',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '75',
+    'Nome': 'Prontuário',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '208',
+    'Nome': 'Pronunciamento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '85',
+    'Nome': 'Proposta',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '254',
+    'Nome': 'Proposta de Composição de Delegação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '279',
+    'Nome': 'Proposta de Concessão de Suprimento de Fundos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '257',
+    'Nome': 'Proposta de Contribuições Brasileiras',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '416',
+    'Nome': 'Proposta de Cooperação ou de Aditivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '164',
+    'Nome': 'Prospecto',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '165',
+    'Nome': 'Protocolo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '534',
+    'Nome': 'Protocolo de Intenções',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '166',
+    'Nome': 'Prova',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '103',
+    'Nome': 'Publicação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '167',
+    'Nome': 'Questionário',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '168',
+    'Nome': 'Receita',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '169',
+    'Nome': 'Recibo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '328',
+    'Nome': 'Recibo Eletrônico de Protocolo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '61',
+    'Nome': 'Reclamação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '295',
+    'Nome': 'Reconhecimento e Ratificação de Dispensa',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '286',
+    'Nome': 'Reconhecimento e Ratificação de Inexigibilidade',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '111',
+    'Nome': 'Recurso',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '27',
+    'Nome': 'Referendo',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '170',
+    'Nome': 'Regimento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '62',
+    'Nome': 'Registro',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '230',
+    'Nome': 'Registro de Reunião',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '171',
+    'Nome': 'Regulamento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '102',
+    'Nome': 'Relação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '63',
+    'Nome': 'Relatório',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '361',
+    'Nome': 'Relatório Anual de Atividades',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '380',
+    'Nome': 'Relatório de Acompanhamento da Execução Contratual',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '457',
+    'Nome': 'Relatório de Análise de Impacto Regulatório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '525',
+    'Nome': 'Relatório de Análise de Resultado Regulatório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '306',
+    'Nome': 'Relatório de Atividades',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '312',
+    'Nome': 'Relatório de Auditoria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '247',
+    'Nome': 'Relatório de Concessão de Suprimento de Fundos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '251',
+    'Nome': 'Relatório de Correição',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '253',
+    'Nome': 'Relatório de Delegação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '19',
+    'Nome': 'Relatório de Fiscalização',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '470',
+    'Nome': 'Relatório de Impacto à Proteção de Dados Pessoais',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '252',
+    'Nome': 'Relatório de Viagem a Serviço',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '250',
+    'Nome': 'Relatório Final',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '445',
+    'Nome': 'Relatório Fiscalização de Mão de Obra',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '488',
+    'Nome': 'Relatório Fotográfico',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '172',
+    'Nome': 'Release',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '422',
+    'Nome': 'Renúncia de Procuração Eletrônica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '173',
+    'Nome': 'Representação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '64',
+    'Nome': 'Requerimento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '403',
+    'Nome': 'Requerimento Alteração Escopo Laboratório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '402',
+    'Nome': 'Requerimento Alteração Escopo OCD ou Especialista',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '487',
+    'Nome': 'Requerimento de Auto Homologação de Produto',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '500',
+    'Nome': 'Requerimento de Autocadastramento de Estações',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '401',
+    'Nome': 'Requerimento de Autorização de Ensaios',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '400',
+    'Nome': 'Requerimento de Autorização para Teste Piloto',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '397',
+    'Nome': 'Requerimento de Avaliação de Normas Técnicas',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '434',
+    'Nome': 'Requerimento de Coleta de Dados',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '399',
+    'Nome': 'Requerimento de Designação de OCD',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '493',
+    'Nome': 'Requerimento de Direito de Exploração de Satélite',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '70',
+    'Nome': 'Requerimento de Gestão de Pessoas',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '398',
+    'Nome': 'Requerimento de Habilitação de Laboratório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '20',
+    'Nome': 'Requerimento de Informações',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '404',
+    'Nome': 'Requerimento de Informações sobre Homologação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '330',
+    'Nome': 'Requerimento de Outorga e Licenciamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '451',
+    'Nome': 'Requerimento de Passaporte Oficial e Visto',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '483',
+    'Nome': 'Requerimento de Programa de Gestão',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '333',
+    'Nome': 'Requerimento de Restituição-Compensação de Crédito',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '437',
+    'Nome': 'Requerimento de Retificação de Valores do FUST',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '501',
+    'Nome': 'Requerimento de Serviço Aux. de Radiodifusão',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '331',
+    'Nome': 'Requerimento de Serviços de Telecomunicações',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '366',
+    'Nome': 'Requerimento de Servidor para Fiscalização On-line',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '499',
+    'Nome': 'Requerimento do Serviço de Radioamador',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '498',
+    'Nome': 'Requerimento do Serviço Limitado Móvel Aeronáutico',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '497',
+    'Nome': 'Requerimento do Serviço Limitado Móvel Marítimo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '505',
+    'Nome': 'Requerimento para Cadastro E-Submission',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '506',
+    'Nome': 'Requerimento para Registro no Copuos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '504',
+    'Nome': 'Requerimento para Submissão de Filings',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '393',
+    'Nome': 'Requerimento sobre Alteração de Ato Constitutivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '396',
+    'Nome': 'Requerimento sobre Selo de Bateria e Carregador',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '394',
+    'Nome': 'Requerimento sobre Transferência de Controle',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '395',
+    'Nome': 'Requerimento sobre Transferência de Outorga',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '65',
+    'Nome': 'Requisição',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '21',
+    'Nome': 'Requisição de Informações',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '1',
+    'Nome': 'Resolução',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '463',
+    'Nome': 'Resolução Conjunta',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '465',
+    'Nome': 'Resolução Interna',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '515',
+    'Nome': 'Restabelecimento de Procuração Eletrônica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '424',
+    'Nome': 'Restabelecimento de Vinculação a Pessoa Jurídica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '76',
+    'Nome': 'Resultado',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '174',
+    'Nome': 'Resumo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '421',
+    'Nome': 'Revogação de Procuração Eletrônica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '89',
+    'Nome': 'RG',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '175',
+    'Nome': 'Roteiro',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '176',
+    'Nome': 'Sentença',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '177',
+    'Nome': 'Sinopse',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '178',
+    'Nome': 'Solicitação',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '267',
+    'Nome': 'Solicitação de Abertura de Circuito Deliberativo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '363',
+    'Nome': 'Solicitação de Apoio a Eventos Institucionais',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '302',
+    'Nome': 'Solicitação de Auditoria',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '492',
+    'Nome': 'Solicitação de Auditoria Circular',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '280',
+    'Nome': 'Solicitação de Despesas por Suprimento de Fundos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '459',
+    'Nome': 'Solicitação de Manutenção de Sistema de TI (SMTI)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '460',
+    'Nome': 'Solicitação de Solução de Dados (SS-Dados)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '313',
+    'Nome': 'Solicitação de Solução de TI (SSTI)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '258',
+    'Nome': 'Sumário',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '2',
+    'Nome': 'Súmula',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '514',
+    'Nome': 'Suspensão de Procuração Eletrônica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '423',
+    'Nome': 'Suspensão de Vinculação a Pessoa Jurídica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '179',
+    'Nome': 'Tabela',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '180',
+    'Nome': 'Telegrama',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '90',
+    'Nome': 'Termo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '260',
+    'Nome': 'Termo Aditivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '519',
+    'Nome': 'Termo Aditivo de TAC',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '248',
+    'Nome': 'Termo de Abertura de Projeto (TAP)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '320',
+    'Nome': 'Termo de Aceite de Nota de Empenho',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '536',
+    'Nome': 'Termo de Acordo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '376',
+    'Nome': 'Termo de Adesão',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '444',
+    'Nome': 'Termo de Adesão Anatel Consumidor / Comparador',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '484',
+    'Nome': 'Termo de Ajustamento de Conduta',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '322',
+    'Nome': 'Termo de Ajustamento de Conduta (TAC)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '261',
+    'Nome': 'Termo de Apostilamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '66',
+    'Nome': 'Termo de Apresentação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '321',
+    'Nome': 'Termo de Atesto de Movimentação Patrimonial',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '379',
+    'Nome': 'Termo de Atesto de Recebimento de Material',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '311',
+    'Nome': 'Termo de Autorização',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '242',
+    'Nome': 'Termo de Cancelamento de Documento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '325',
+    'Nome': 'Termo de Cessão de Uso',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '531',
+    'Nome': 'Termo de Ciência de Licença para Capacitação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '225',
+    'Nome': 'Termo de Ciência de Manutenção de Sigilo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '485',
+    'Nome': 'Termo de Compartilhamento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '224',
+    'Nome': 'Termo de Comprom. Manutenção de Sigilo em Contrato',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '446',
+    'Nome': 'Termo de Compromisso',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '359',
+    'Nome': 'Termo de Compromisso de Adesão ao Teletrabalho',
+    'Aplicabilidade': 'F'
+}, {
+    'IdSerie': '507',
+    'Nome': 'Termo de Compromisso Formal - Telemarketing',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '528',
+    'Nome': 'Termo de Compromisso para Uso de Dados Pessoais',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '436',
+    'Nome': 'Termo de Conclusão de Apuração Simplificada',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '480',
+    'Nome': 'Termo de Depoimento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '241',
+    'Nome': 'Termo de Desanexacão de Processo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '418',
+    'Nome': 'Termo de Devolução de Bem Não Patrimoniado',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '474',
+    'Nome': 'Termo de Devolução de Garantias',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '367',
+    'Nome': 'Termo de Doação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '348',
+    'Nome': 'Termo de Eliminação de Documentos',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '228',
+    'Nome': 'Termo de Encerramento da Execução Contratual',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '349',
+    'Nome': 'Termo de Encerramento de Projeto (TEP)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '240',
+    'Nome': 'Termo de Encerramento de Trâmite Físico-Documento',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '114',
+    'Nome': 'Termo de Encerramento de Trâmite Físico-Processo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '327',
+    'Nome': 'Termo de Entrada e Saída de Bem ou Produto',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '318',
+    'Nome': 'Termo de Execução Descentralizada',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '24',
+    'Nome': 'Termo de Fiscalização',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '442',
+    'Nome': 'Termo de Garantia',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '23',
+    'Nome': 'Termo de Identificação',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '479',
+    'Nome': 'Termo de Indiciação',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '435',
+    'Nome': 'Termo de Instauração de Apuração Simplificada',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '481',
+    'Nome': 'Termo de Interrogatório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '25',
+    'Nome': 'Termo de Lacração, Apreensão e Interrupção',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '350',
+    'Nome': 'Termo de Mudança de Projeto (TMP)',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '343',
+    'Nome': 'Termo de Posse',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '513',
+    'Nome': 'Termo de Qualificação',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '417',
+    'Nome': 'Termo de Recebimento de Bem Não Patrimoniado',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '227',
+    'Nome': 'Termo de Recebimento Definitivo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '226',
+    'Nome': 'Termo de Recebimento Provisório',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '214',
+    'Nome': 'Termo de Referência',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '490',
+    'Nome': 'Termo de Referência Internacional',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '262',
+    'Nome': 'Termo de Rescisão Amigável',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '415',
+    'Nome': 'Termo de Rescisão Bilateral',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '263',
+    'Nome': 'Termo de Rescisão Unilateral',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '433',
+    'Nome': 'Termo de Responsabilidade',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '344',
+    'Nome': 'Termo de Responsabilidade de OCD',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '290',
+    'Nome': 'Termo de Responsabilidade para Acesso à TI-Anatel',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '357',
+    'Nome': 'Termo Final de Estágio',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '373',
+    'Nome': 'Termo para Disponibilização de Trabalho Acadêmico',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '181',
+    'Nome': 'Tese',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '182',
+    'Nome': 'Testamento',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '183',
+    'Nome': 'Título',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '491',
+    'Nome': 'Tomada de Subsídios',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '53',
+    'Nome': 'Vídeo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '419',
+    'Nome': 'Vinculação de Responsável Legal a Pessoa Jurídica',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '71',
+    'Nome': 'Volume de Processo',
+    'Aplicabilidade': 'E'
+}, {
+    'IdSerie': '94',
+    'Nome': 'Voto',
+    'Aplicabilidade': 'T'
+}, {
+    'IdSerie': '307',
+    'Nome': 'Voto em Circuito Deliberativo',
+    'Aplicabilidade': 'I'
+}, {
+    'IdSerie': '301',
+    'Nome': 'Voucher',
+    'Aplicabilidade': 'E'
+}]
