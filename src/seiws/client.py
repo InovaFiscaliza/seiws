@@ -113,10 +113,22 @@ class SeiClient:
             id_serie=id_serie,
         )
 
-    def listar_usuarios(self, id_unidade: str) -> List[Dict[str, str]]:
+    def listar_usuarios(
+        self, id_unidade: str, id_usuario: str = ""
+    ) -> List[Dict[str, str]]:
+        """Retorna o conjunto de usuários que possuem o perfil "Básico" do SEI na unidade.
+
+        Args:
+            id_unidade (str): ID da unidade.
+            id_usuario (str, optional): Filtra o usuário. Valores possíveis: Qualquer id válido de usuário. A string vazia ("") indica que nenhum filtro é aplicado.
+
+        Returns:
+            List[Dict[str, str]]: Lista de usuários que possuem o perfil "Básico" do SEI na unidade..
+        """
         return self._chamar_servico(
             "listarUsuarios",
             id_unidade=id_unidade,
+            id_usuario=id_usuario,
         )
 
 
@@ -125,18 +137,29 @@ if __name__ == "__main__":
     import os
     from dotenv import find_dotenv, load_dotenv
 
+    from constants import UNIDADES_BLOQUEIO
+
     load_dotenv(find_dotenv(), override=True)
+
+    method = "listar_usuarios"
 
     client = SeiClient(chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO"))
 
-    pprint(client.listar_unidades())
+    # pprint(getattr(client, method)("110000965"))
 
-    client.chave_api = os.getenv("SEI_HM_API_KEY_INSTRUCAO")
+    # pprint(getattr(client, method)("110000966"))
 
-    pprint(client.listar_unidades())
+    # client = SeiClient(chave_api=os.getenv("SEI_HM_API_KEY_INSTRUCAO"))
 
-    client = SeiClient(
-        sigla_sistema="Fiscaliza", chave_api=os.getenv("SEI_HM_API_KEY_FISCALIZA")
-    )
+    unidades = []
 
-    pprint(client.listar_unidades())
+    for unidade in UNIDADES_BLOQUEIO:
+        unidades.extend(getattr(client, method)(unidade["IdUnidade"]))
+
+    print([{a: getattr(d, a) for a in d} for d in unidades])
+
+    # client = SeiClient(
+    #     sigla_sistema="Fiscaliza", chave_api=os.getenv("SEI_HM_API_KEY_FISCALIZA")
+    # )
+
+    # pprint(getattr(client, method)())

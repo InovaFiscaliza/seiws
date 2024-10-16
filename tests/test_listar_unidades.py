@@ -1,6 +1,6 @@
 import os
 from seiws.client import SeiClient
-from constants import UNIDADES_BLOQUEIO, UNIDADES_INSTRUCAO, UNIDADES_FISCALIZA
+from tests.constants import UNIDADES_BLOQUEIO, UNIDADES_INSTRUCAO, UNIDADES_FISCALIZA
 
 
 class TestListarUnidades:
