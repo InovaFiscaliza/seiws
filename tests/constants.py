@@ -2854,3 +2854,189 @@ UNIDADES_FISCALIZA = [
         "SinOuvidoria": "N",
     },
 ]
+
+USUARIOS = [
+    {
+        "IdUsuario": "100003241",
+        "Sigla": "alexander.estagio",
+        "Nome": "Alexander Costa Brandao",
+    },
+    {
+        "IdUsuario": "100003546",
+        "Sigla": "ricciardi.estagio",
+        "Nome": "Ana Luiza Mendonça Ricciardi",
+    },
+    {
+        "IdUsuario": "100003098",
+        "Sigla": "andersong.colab",
+        "Nome": "Anderson da Silva Guedes",
+    },
+    {"IdUsuario": "100000141", "Sigla": "ane.meireles", "Nome": "Ane Meireles Martins"},
+    {"IdUsuario": "100003387", "Sigla": "adlla.colab", "Nome": "Adlla Cruz de Moraes"},
+    {
+        "IdUsuario": "100000205",
+        "Sigla": "brennom",
+        "Nome": "Brenno Pires Andrade Maranhão",
+    },
+    {
+        "IdUsuario": "100000214",
+        "Sigla": "camilla.araujo",
+        "Nome": "Camilla Fonseca Araújo",
+    },
+    {
+        "IdUsuario": "100000217",
+        "Sigla": "carla.barreto",
+        "Nome": "Carla Barreto Faria Pereira",
+    },
+    {"IdUsuario": "100000079", "Sigla": "carlos.cesar", "Nome": "Carlos Cesar Lanzoni"},
+    {
+        "IdUsuario": "100000331",
+        "Sigla": "cristinamg",
+        "Nome": "Cristina de Miranda Gomes",
+    },
+    {
+        "IdUsuario": "100003540",
+        "Sigla": "contreira.estagio",
+        "Nome": "Daniel Alexandro Contreira Junior",
+    },
+    {
+        "IdUsuario": "100000375",
+        "Sigla": "davila",
+        "Nome": "David Sidney dos Santos Avila",
+    },
+    {
+        "IdUsuario": "100003367",
+        "Sigla": "davie.estagio",
+        "Nome": "Davi Emanuel Silva Monteiro",
+    },
+    {"IdUsuario": "100000394", "Sigla": "diosnely", "Nome": "Diosnely Almeida de Lima"},
+    {"IdUsuario": "100001689", "Sigla": "eliete", "Nome": "Eliete Rodrigues Paulino"},
+    {"IdUsuario": "100000462", "Sigla": "elson", "Nome": "Elson José da Silva"},
+    {
+        "IdUsuario": "100000472",
+        "Sigla": "enilsio",
+        "Nome": "Enilsio Pereira Luiz Filho",
+    },
+    {"IdUsuario": "100000474", "Sigla": "eric", "Nome": "Eric Magalhães Delgado"},
+    {
+        "IdUsuario": "100000497",
+        "Sigla": "fabiolago",
+        "Nome": "Fábio Alexandre Oliveira Lago",
+    },
+    {
+        "IdUsuario": "100003267",
+        "Sigla": "felipef.estagio",
+        "Nome": "Felipe Fabre Figueiredo",
+    },
+    {
+        "IdUsuario": "100003564",
+        "Sigla": "gabrielg.colab",
+        "Nome": "Gabriel Glauber Neves de Campos",
+    },
+    {
+        "IdUsuario": "100000585",
+        "Sigla": "gianluca",
+        "Nome": "Gianluca Rangearo Fiorentini",
+    },
+    {
+        "IdUsuario": "100003408",
+        "Sigla": "guilhermeb.estagio",
+        "Nome": "Guilherme Braga Pinto",
+    },
+    {
+        "IdUsuario": "100003248",
+        "Sigla": "gustavos.colab",
+        "Nome": "Gustavo Lustosa Camelo da Silva",
+    },
+    {"IdUsuario": "100000641", "Sigla": "hermano", "Nome": "Hermano Barros Tercius"},
+    {
+        "IdUsuario": "100002806",
+        "Sigla": "jhonny.colab",
+        "Nome": "Johnny Matos de Souza",
+    },
+    {"IdUsuario": "100003137", "Sigla": "jon.farinha", "Nome": "Jon Grisman Farinha"},
+    {"IdUsuario": "100000737", "Sigla": "jordan", "Nome": "Jordan Silva de Paiva"},
+    {"IdUsuario": "100000745", "Sigla": "jafonso", "Nome": "José Afonso Cosmo Junior"},
+    {
+        "IdUsuario": "100003285",
+        "Sigla": "julianag.estagio",
+        "Nome": "Juliana Garconi dos Santos",
+    },
+    {
+        "IdUsuario": "100000817",
+        "Sigla": "katiapalma",
+        "Nome": "Katia Lilian Palma Barbosa",
+    },
+    {
+        "IdUsuario": "100002792",
+        "Sigla": "lidian.colab",
+        "Nome": "Lidian de Alcântara Dias",
+    },
+    {
+        "IdUsuario": "100002815",
+        "Sigla": "loiane.colab",
+        "Nome": "Loiane da Costa Silva",
+    },
+    {"IdUsuario": "100003222", "Sigla": "carvalho.estagio", "Nome": "Lucas Carvalho"},
+    {
+        "IdUsuario": "100003401",
+        "Sigla": "luciene.colab",
+        "Nome": "Luciene Ferreira de Sousa",
+    },
+    {
+        "IdUsuario": "100003215",
+        "Sigla": "luizf.estagio",
+        "Nome": "Luiz Felipe Folha Tavares",
+    },
+    {
+        "IdUsuario": "100001719",
+        "Sigla": "marcelo.alves",
+        "Nome": "Marcelo Alves da Silva",
+    },
+    {
+        "IdUsuario": "100003534",
+        "Sigla": "mariaaugusta",
+        "Nome": "Maria Augusta Bretas Lima",
+    },
+    {"IdUsuario": "100001076", "Sigla": "marinajurua", "Nome": "Marina Machado Juruá"},
+    {"IdUsuario": "100001089", "Sigla": "mauriciop", "Nome": "Mauricio Peroni"},
+    {
+        "IdUsuario": "100003247",
+        "Sigla": "michaelr.colab",
+        "Nome": "Michael Henrique de Souza da Rocha",
+    },
+    {"IdUsuario": "100001132", "Sigla": "odiley", "Nome": "Odiley Araújo Borges"},
+    {"IdUsuario": "100001201", "Sigla": "rfaria", "Nome": "Rafael Faria Pinheiro"},
+    {"IdUsuario": "100003260", "Sigla": "rodrigogebrim", "Nome": "Rodrigo Cruz Gebrim"},
+    {
+        "IdUsuario": "100001292",
+        "Sigla": "rodrigomatos",
+        "Nome": "Rodrigo Matos da Costa",
+    },
+    {
+        "IdUsuario": "100003429",
+        "Sigla": "rosanas.colab",
+        "Nome": "Rosana Alves de Souza",
+    },
+    {
+        "IdUsuario": "100003409",
+        "Sigla": "sabino.colab",
+        "Nome": "Willian Christian da Rocha Sabino",
+    },
+    {
+        "IdUsuario": "100001366",
+        "Sigla": "sergiow",
+        "Nome": "Sergio Henrique Dias Weiler",
+    },
+    {
+        "IdUsuario": "100001419",
+        "Sigla": "tbotelho",
+        "Nome": "Thiago Cardoso Henriques Botelho",
+    },
+    {"IdUsuario": "100001420", "Sigla": "thiago", "Nome": "Thiago da Gama"},
+    {
+        "IdUsuario": "100001426",
+        "Sigla": "thyagobraun",
+        "Nome": "Thyago de Oliveira Braun Guimarães",
+    },
+]

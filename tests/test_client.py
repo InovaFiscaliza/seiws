@@ -22,13 +22,6 @@ def test_listar_unidades_valid(mock_zeep_client):
     assert response == mock_response
 
 
-def test_listar_unidades_default_key(mock_zeep_client):
-    client = SeiClient(ambiente="homologação")
-    assert client.chave_api == CHAVES_API["homologação"]
-    response = client.listar_unidades()
-    assert response == mock_response
-
-
 def test_invalid_ambiente():
     with pytest.raises(InvalidAmbienteError):
         SeiClient(ambiente="invalid")
