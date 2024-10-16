@@ -3,7 +3,11 @@ from dotenv import find_dotenv, load_dotenv
 
 load_dotenv(find_dotenv(), override=True)
 
-TIPOS_DE_PROCESSO = {
+AMBIENTES_DE_DESENVOLVIMENTO = ["desenvolvimento", "homologação", "produção"]
+
+# Esse parâmetro é específico para o cadastro de serviços no SEI para o InovaFiscaliza
+# Talvez faça sentido ficar parametrizado somente num módulo de teste.
+IDENTIFICADOR_POR_PROCESSO = {
     "processos_bloqueio_sites": [
         "Demanda Externa: Ministério Público Federal",
         "Demanda Externa: Órgãos Governamentais Federais",
@@ -20,27 +24,26 @@ TIPOS_DE_PROCESSO = {
     ],
 }
 
-PARAMETROS = {
-    "SiglaSistema": "Fiscaliza",  # TODO: Mudar isso quando for testar para o InovaFiscaliza
+CHAVES_API = {
+    "homologação": os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
+    "produção": os.getenv("SEI_PD_API_KEY_BLOQUEIO"),
 }
 
-CHAVES_API = {
-    "homologação": {
-        "processos_bloqueio_sites": {
-            "chave_api": os.getenv("SEI_HM_API_KEY"),
-        },
-        "Instrucao_processos_fiscalizacao": {
-            "chave_api": os.getenv(
-                "SEI_HM_API_KEY"
-            ),  # TODO: Mudar isso quando for testar para o InovaFiscaliza
-        },
-    },
-    "produção": {
-        "processos_bloqueio_sites": {
-            "chave_api": os.getenv("SEI_PD_API_KEY_BLOQUEIO"),
-        },
-        "Instrucao_processos_fiscalizacao": {
-            "chave_api": os.getenv("SEI_PD_API_KEY_INSTRUCAO"),
-        },
-    },
-}
+# CHAVES_API = {
+#     "homologação": {
+#         "processos_bloqueio_sites": {
+#             "chave_api": os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
+#         },
+#         "Instrucao_processos_fiscalizacao": {
+#             "chave_api": os.getenv("SEI_HM_API_KEY_INSTRUCAO"),
+#         },
+#     },
+#     "produção": {
+#         "processos_bloqueio_sites": {
+#             "chave_api": os.getenv("SEI_PD_API_KEY_BLOQUEIO"),
+#         },
+#         "Instrucao_processos_fiscalizacao": {
+#             "chave_api": os.getenv("SEI_PD_API_KEY_INSTRUCAO"),
+#         },
+#     },
+# }
