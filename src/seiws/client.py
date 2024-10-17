@@ -1,15 +1,16 @@
 import logging
+from functools import cached_property
 from pathlib import Path
-from typing import List, Dict
+from typing import Dict, List
 
 from dotenv import find_dotenv, load_dotenv
 from fastcore.basics import snake2camel
 from zeep import Client
 
-from seiws.exceptions import InvalidAmbienteError, InvalidChaveApiError
 from seiws.config import (
     AMBIENTES_DE_DESENVOLVIMENTO,
 )
+from seiws.exceptions import InvalidAmbienteError, InvalidChaveApiError
 
 load_dotenv(find_dotenv(), override=True)
 
@@ -162,6 +163,44 @@ class SeiClient:
             sin_retornar_procedimentos_anexados=sin_retornar_procedimentos_anexados,
         )
 
+    def enviar_processo(
+        self,
+        unidade_origem: str,
+        protocolo_procedimento: str,
+        unidades_destino: list,
+        sin_manter_aberto_unidade: str = "N",
+        sin_remover_anotacao: str = "N",
+        sin_enviar_email_notificacao: str = "N",
+        data_retorno_programado: str = "",
+        dias_retorno_programado: str = "",
+        sin_dias_uteis_retorno_programado: str = "N",
+        sin_reabrir: str = "S",
+    ) -> bool:
+        """Envia um processo para uma unidade ou mais unidades."""
+        assert unidade_origem in self.unidades, f"Unidade inválida: {unidade_origem}"
+        assert all(
+            u in self.unidades for u in unidades_destino
+        ), f"Uma ou mais unidades inválidas presentes: {unidades_destino}"
+        for key, value in locals().items():
+            if key.startswith("sin_"):
+                assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
+        id_unidade = self.unidades[unidade_origem]["IdUnidade"]
+        unidades_destino = [self.unidades[u]["IdUnidade"] for u in unidades_destino]
+        chamada = self._chamar_servico(
+            "enviarProcesso",
+            id_unidade=id_unidade,
+            protocolo_procedimento=protocolo_procedimento,
+            unidades_destino=unidades_destino,
+            sin_manter_aberto_unidade=sin_manter_aberto_unidade,
+            sin_remover_anotacao=sin_remover_anotacao,
+            sin_enviar_email_notificacao=sin_enviar_email_notificacao,
+            data_retorno_programado=data_retorno_programado,
+            dias_retorno_programado=dias_retorno_programado,
+            sin_dias_uteis_retorno_programado=sin_dias_uteis_retorno_programado,
+            sin_reabrir=sin_reabrir,
+        )
+        return chamada == "1"
+
     def listar_series(
         self,
         id_unidade: str = "",  # Opcional. Filtra a unidade
@@ -227,10 +266,15 @@ class SeiClient:
             id_usuario=id_usuario,
         )
 
+    @cached_property
+    def unidades(self):
+        return {d["Sigla"]: d for d in self.listar_unidades()}
+
 
 if __name__ == "__main__":
-    from pprint import pprint
     import os
+    from pprint import pprint
+
     from dotenv import find_dotenv, load_dotenv
 
     load_dotenv(find_dotenv(), override=True)
