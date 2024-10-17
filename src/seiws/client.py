@@ -178,9 +178,10 @@ class SeiClient:
     ) -> bool:
         """Envia um processo para uma unidade ou mais unidades."""
         assert unidade_origem in self.unidades, f"Unidade inválida: {unidade_origem}"
-        assert all(
-            u in self.unidades for u in unidades_destino
-        ), f"Uma ou mais unidades inválidas presentes: {unidades_destino}"
+        # Estas unidades não são limitadas pelo acesso da chave, então não é possível checar dinamicamente
+        # assert all(
+        #     u in self.unidades for u in unidades_destino
+        # ), f"Uma ou mais unidades inválidas presentes: {unidades_destino}"
         for key, value in locals().items():
             if key.startswith("sin_"):
                 assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
@@ -281,30 +282,29 @@ if __name__ == "__main__":
 
     sigla_sistema = "InovaFiscaliza"
 
-    method = "consultar_procedimento"
+    method = "enviar_processo"
+
+    client = SeiClient(
+        sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
+    )
+
+    pprint(
+        getattr(client, method)(
+            unidade_origem="ARI",
+            protocolo_procedimento="53500.000124/2024-04",
+            unidades_destino=["SFI", "FISF", "FIGF"],
+        )
+    )
 
     # client = SeiClient(
-    #     sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
+    #     sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_INSTRUCAO")
     # )
 
     # pprint(
     #     getattr(client, method)(
     #         id_unidade="110001068",
     #         protocolo_procedimento="53554.000005/2024-18",
-    #         id_usuario="100003445",
-    #         sin_reabrir="S",
+    #         # id_usuario="100001310",
+    #         # sin_reabrir="S",
     #     )
     # )
-
-    client = SeiClient(
-        sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_INSTRUCAO")
-    )
-
-    pprint(
-        getattr(client, method)(
-            id_unidade="110001068",
-            protocolo_procedimento="53554.000005/2024-18",
-            # id_usuario="100001310",
-            # sin_reabrir="S",
-        )
-    )
