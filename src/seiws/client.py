@@ -1,3 +1,4 @@
+import re
 import logging
 from functools import cached_property
 from pathlib import Path
@@ -129,7 +130,7 @@ class SeiClient:
         self,
         sigla_unidade: str,  # Sigla da unidade no SEI
         protocolo_documento: str,  # Número do documento visível para o usuário, ex: 0003934
-        sin_retornar_andamento_geracao: str,  # S/N - sinalizador para retorno do andamento de geração
+        sin_retornar_andamento_geracao: str = "N",  # S/N - sinalizador para retorno do andamento de geração
         sin_retornar_assinaturas: str = "N",  # S/N - sinalizador para retorno das assinaturas do documento
         sin_retornar_publicacao: str = "N",  # S/N - sinalizador para retorno dos dados de publicação
         sin_retornar_campos: str = "N",  # S/N - sinalizador para retorno dos campos do formulário
@@ -197,6 +198,53 @@ class SeiClient:
             sin_retornar_unidades_procedimento_aberto=sin_retornar_unidades_procedimento_aberto,
             sin_retornar_procedimentos_relacionados=sin_retornar_procedimentos_relacionados,
             sin_retornar_procedimentos_anexados=sin_retornar_procedimentos_anexados,
+        )
+
+    def _validar_email(self, email: str):
+        if not re.match(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", email):
+            raise ValueError(f"Email inválido: {email}")
+
+    def enviar_email(
+        self,
+        sigla_unidade: str,
+        protocolo_procedimento: str,
+        de: str,
+        para: str,
+        CCO: str,
+        assunto: str,
+        mensagem: str,
+        documentos: str,
+    ):
+        """Envia um email para um usuário.
+
+        Args:
+            id_unidade (str): ID da unidade.
+            protocolo_procedimento (str): Protocolo do processo.
+            de (str): Endereço de email do remetente.
+            para (str): Endereço de email do destinatário.
+            CCO (str): Endereço de email do CCO.
+            assunto (str): Assunto do email.
+            mensagem (str): Mensagem do email.
+            documentos (list): Número SEI dos documentos do processo que devem ser anexados no email.
+        """
+        for email in [de, para, CCO]:
+            self._validar_email(email)
+
+        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
+        id_documentos = [
+            self.consultar_documento(sigla_unidade, d)["IdDocumento"]
+            for d in documentos
+        ]
+        return self._chamar_servico(
+            "enviarEmail",
+            id_unidade=id_unidade,
+            protocolo_procedimento=protocolo_procedimento,
+            de=de,
+            para=para,
+            CCO=CCO,
+            assunto=assunto,
+            mensagem=mensagem,
+            id_documentos=id_documentos,
         )
 
     def enviar_processo(
@@ -330,4 +378,14 @@ if __name__ == "__main__":
         sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
     )
 
-    pprint(client.consultar_documento("SFI", "0206167"))
+    pprint(
+        client.enviar_email(
+            "SFI",
+            "53500.000124/2024-04",
+            "rsilva@anatel.gov.br",
+            "mer.de.dirac@gmail.com",
+            assunto="Teste",
+            mensagem="Teste de email",
+            documentos=["0206167", "0206172"],
+        )
+    )
