@@ -125,17 +125,50 @@ class SeiClient:
 
         return chamada == "1"
 
+    def consultar_documento(
+        self,
+        sigla_unidade: str,  # Sigla da unidade no SEI
+        protocolo_documento: str,  # Número do documento visível para o usuário, ex: 0003934
+        sin_retornar_andamento_geracao: str,  # S/N - sinalizador para retorno do andamento de geração
+        sin_retornar_assinaturas: str = "N",  # S/N - sinalizador para retorno das assinaturas do documento
+        sin_retornar_publicacao: str = "N",  # S/N - sinalizador para retorno dos dados de publicação
+        sin_retornar_campos: str = "N",  # S/N - sinalizador para retorno dos campos do formulário
+        sin_retornar_blocos: str = "N",  #  S/N - sinalizador para retorno dos blocos na unidade que contém o documento
+    ):
+        """
+
+                Observações: Documento de processos sigilosos não são retornados. Cada um dos sinalizadores implica em processamento
+        adicional realizado pelo sistema, sendo assim, recomenda-se que seja solicitado o retorno somente para infor-
+        mações estritamente necessárias.
+        """
+        assert sigla_unidade in self.unidades, f"Unidade inválida: {sigla_unidade}"
+        for key, value in locals().items():
+            if key.startswith("sin_retornar_"):
+                assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
+
+        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
+        return self._chamar_servico(
+            "consultarDocumento",
+            id_unidade=id_unidade,
+            protocolo_documento=protocolo_documento,
+            sin_retornar_andamento_geracao=sin_retornar_andamento_geracao,
+            sin_retornar_assinaturas=sin_retornar_assinaturas,
+            sin_retornar_publicacao=sin_retornar_publicacao,
+            sin_retornar_campos=sin_retornar_campos,
+            sin_retornar_blocos=sin_retornar_blocos,
+        )
+
     def consultar_procedimento(
         self,
-        id_unidade: str,  # Identificador da unidade no SEI
+        sigla_unidade: str,  # Sigla da unidade no SEI
         protocolo_procedimento: str,  # Número do processo visível para o usuário, ex: 12.1.000000077-4
         sin_retornar_assuntos: str = "N",  # S/N - sinalizador para retorno dos assuntos do processo
         sin_retornar_interessados: str = "N",  # S/N - sinalizador para retorno dos interessados do processo
         sin_retornar_observacoes: str = "N",  # S/N - sinalizador para retorno das observações das unidades
         sin_retornar_andamento_geracao: str = "N",  # S/N - sinalizador para retorno do andamento de geração
         sin_retornar_andamento_conclusao: str = "N",  # S/N - sinalizador para retorno do andamento de conclusão
-        sin_retornar_ultimo_andamento: str = "S",  #  S/N - sinalizador para retorno do último andamento
-        sin_retornar_unidades_procedimento_aberto: str = "S",  # S/N - sinalizador para retorno das unidades onde o processo está aberto
+        sin_retornar_ultimo_andamento: str = "N",  #  S/N - sinalizador para retorno do último andamento
+        sin_retornar_unidades_procedimento_aberto: str = "N",  # S/N - sinalizador para retorno das unidades onde o processo está aberto
         sin_retornar_procedimentos_relacionados: str = "N",  # S/N - sinalizador para retorno dos processos relacionados
         sin_retornar_procedimentos_anexados: str = "N",  # S/N - sinalizador para retorno dos processos anexados
     ):
@@ -145,9 +178,12 @@ class SeiClient:
         zado pelo sistema, sendo assim, recomenda-se que seja solicitado o retorno somente para informações estri-
         tamente necessárias.
         """
+        assert sigla_unidade in self.unidades, f"Unidade inválida: {sigla_unidade}"
         for key, value in locals().items():
             if key.startswith("sin_retornar_"):
                 assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
+
+        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
         return self._chamar_servico(
             "consultarProcedimento",
             id_unidade=id_unidade,
@@ -271,6 +307,14 @@ class SeiClient:
     def unidades(self):
         return {d["Sigla"]: d for d in self.listar_unidades()}
 
+    @cached_property
+    def usuarios(self):
+        return {d["Sigla"]: d for d in self.listar_usuarios()}
+
+    @cached_property
+    def documentos(self):
+        return {d["Nome"]: d for d in self.listar_series()}
+
 
 if __name__ == "__main__":
     import os
@@ -282,29 +326,8 @@ if __name__ == "__main__":
 
     sigla_sistema = "InovaFiscaliza"
 
-    method = "enviar_processo"
-
     client = SeiClient(
         sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
     )
 
-    pprint(
-        getattr(client, method)(
-            unidade_origem="ARI",
-            protocolo_procedimento="53500.000124/2024-04",
-            unidades_destino=["SFI", "FISF", "FIGF"],
-        )
-    )
-
-    # client = SeiClient(
-    #     sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_INSTRUCAO")
-    # )
-
-    # pprint(
-    #     getattr(client, method)(
-    #         id_unidade="110001068",
-    #         protocolo_procedimento="53554.000005/2024-18",
-    #         # id_usuario="100001310",
-    #         # sin_reabrir="S",
-    #     )
-    # )
+    pprint(client.consultar_documento("SFI", "0206167"))
