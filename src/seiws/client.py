@@ -274,6 +274,14 @@ class SeiClient:
     def unidades(self):
         return {d["Sigla"]: d for d in self.listar_unidades()}
 
+    @cached_property
+    def usuarios(self):
+        return {d["Sigla"]: d for d in self.listar_usuarios()}
+
+    @cached_property
+    def documentos(self):
+        return {d["Nome"]: d for d in self.listar_series()}
+
 
 if __name__ == "__main__":
     import os
@@ -291,4 +299,4 @@ if __name__ == "__main__":
         sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
     )
 
-    pprint(client.consultar_procedimento(sigla_unidade="SFI", '53500.000124/2024-04')
+    pprint(client.consultar_procedimento("SFI", "53500.000124/2024-04"))
