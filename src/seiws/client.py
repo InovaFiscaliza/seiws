@@ -144,7 +144,9 @@ class SeiClient:
         zado pelo sistema, sendo assim, recomenda-se que seja solicitado o retorno somente para informações estri-
         tamente necessárias.
         """
-        # TODO: checar a restrição dos atributos S/N
+        for key, value in locals().items():
+            if key.startswith("sin_retornar_"):
+                assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
         return self._chamar_servico(
             "consultarProcedimento",
             id_unidade=id_unidade,
