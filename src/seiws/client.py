@@ -127,7 +127,7 @@ class SeiClient:
 
     def consultar_procedimento(
         self,
-        id_unidade: str,  # Identificador da unidade no SEI
+        sigla_unidade: str,  # Sigla da unidade no SEI
         protocolo_procedimento: str,  # Número do processo visível para o usuário, ex: 12.1.000000077-4
         sin_retornar_assuntos: str = "N",  # S/N - sinalizador para retorno dos assuntos do processo
         sin_retornar_interessados: str = "N",  # S/N - sinalizador para retorno dos interessados do processo
@@ -148,6 +148,8 @@ class SeiClient:
         for key, value in locals().items():
             if key.startswith("sin_retornar_"):
                 assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
+
+        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
         return self._chamar_servico(
             "consultarProcedimento",
             id_unidade=id_unidade,
