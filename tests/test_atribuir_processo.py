@@ -2,14 +2,12 @@ import os
 
 import pytest
 from seiws.client import SeiClient
+from tests.constants import UNIDADES_BLOQUEIO, UNIDADES_INSTRUCAO
 
 PROCESSOS_HM = [
-    "53500.200727/2014-24",
-    "53500.201008/2014-21",
-    "53500.201144/2015-00",
-    "53500.000567/2016-87",
+    "53500.201128/2014-28",  # Demanda Externa: Órgãos Governamentais Federais
 ]
-USUARIOS_HM = [
+USUARIOS_SFI = [
     "100000141",
     "100003387",
     "100000205",
@@ -24,17 +22,36 @@ USUARIOS_HM = [
     "100001426",
 ]
 
+USUARIOS_FISF = ["100003241", "100000214", "100000217"]
+
 
 class TestAtribuirProcesso:
-    @pytest.mark.parametrize("protocolo_procedimento", PROCESSOS_HM)
-    @pytest.mark.parametrize("id_usuario", USUARIOS_HM)
-    def test_atribuir_processo_hm_bloqueio(self, protocolo_procedimento, id_usuario):
-        client = SeiClient(
+    @pytest.fixture
+    def sei_client():
+        return SeiClient(
             sigla_sistema="InovaFiscaliza",
             chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
         )
-        assert client.atribuir_processo(
+
+    @pytest.mark.parametrize("protocolo_procedimento", PROCESSOS_HM)
+    @pytest.mark.parametrize("id_usuario", USUARIOS_SFI)
+    def test_atribuir_processo_hm_sfi(
+        self, sei_client, protocolo_procedimento, id_usuario
+    ):
+        assert sei_client.atribuir_processo(
             id_unidade="110000965",  # SFI
+            protocolo_procedimento=protocolo_procedimento,
+            id_usuario=id_usuario,
+            sin_reabrir="S",
+        )
+
+    @pytest.mark.parametrize("protocolo_procedimento", PROCESSOS_HM)
+    @pytest.mark.parametrize("id_usuario", USUARIOS_FISF)
+    def test_atribuir_processo_hm_fisf(
+        self, sei_client, protocolo_procedimento, id_usuario
+    ):
+        assert sei_client.atribuir_processo(
+            id_unidade="110000973",  # FISF
             protocolo_procedimento=protocolo_procedimento,
             id_usuario=id_usuario,
             sin_reabrir="S",
