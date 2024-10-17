@@ -125,6 +125,39 @@ class SeiClient:
 
         return chamada == "1"
 
+    def consultar_documento(
+        self,
+        sigla_unidade: str,  # Sigla da unidade no SEI
+        protocolo_documento: str,  # Número do documento visível para o usuário, ex: 0003934
+        sin_retornar_andamento_geracao: str,  # S/N - sinalizador para retorno do andamento de geração
+        sin_retornar_assinaturas: str = "N",  # S/N - sinalizador para retorno das assinaturas do documento
+        sin_retornar_publicacao: str = "N",  # S/N - sinalizador para retorno dos dados de publicação
+        sin_retornar_campos: str = "N",  # S/N - sinalizador para retorno dos campos do formulário
+        sin_retornar_blocos: str = "N",  #  S/N - sinalizador para retorno dos blocos na unidade que contém o documento
+    ):
+        """
+
+                Observações: Documento de processos sigilosos não são retornados. Cada um dos sinalizadores implica em processamento
+        adicional realizado pelo sistema, sendo assim, recomenda-se que seja solicitado o retorno somente para infor-
+        mações estritamente necessárias.
+        """
+        assert sigla_unidade in self.unidades, f"Unidade inválida: {sigla_unidade}"
+        for key, value in locals().items():
+            if key.startswith("sin_retornar_"):
+                assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
+
+        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
+        return self._chamar_servico(
+            "consultarDocumento",
+            id_unidade=id_unidade,
+            protocolo_documento=protocolo_documento,
+            sin_retornar_andamento_geracao=sin_retornar_andamento_geracao,
+            sin_retornar_assinaturas=sin_retornar_assinaturas,
+            sin_retornar_publicacao=sin_retornar_publicacao,
+            sin_retornar_campos=sin_retornar_campos,
+            sin_retornar_blocos=sin_retornar_blocos,
+        )
+
     def consultar_procedimento(
         self,
         sigla_unidade: str,  # Sigla da unidade no SEI
@@ -293,10 +326,8 @@ if __name__ == "__main__":
 
     sigla_sistema = "InovaFiscaliza"
 
-    method = "consultar_processo"
-
     client = SeiClient(
         sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
     )
 
-    pprint(client.consultar_procedimento("SFI", "53500.000124/2024-04"))
+    pprint(client.consultar_documento("SFI", "0206167"))
