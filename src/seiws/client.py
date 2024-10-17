@@ -5,7 +5,6 @@ from pathlib import Path
 from typing import Dict, List
 
 from dotenv import find_dotenv, load_dotenv
-from fastcore.basics import snake2camel
 from zeep import Client
 
 from seiws.config import (
@@ -63,7 +62,7 @@ class SeiClient:
                 f"Chamando operação: {nome_operacao} com parâmetros: {parametros}"
             )
             operacao = getattr(self.client.service, nome_operacao)
-            kwargs = {snake2camel(k): v for k, v in kwargs.items()}
+            # kwargs = {snake2camel(k): v for k, v in kwargs.items()}
             resposta = operacao(
                 SiglaSistema=self.sigla_sistema,
                 IdentificacaoServico=self.chave_api,
@@ -118,10 +117,10 @@ class SeiClient:
         ), f"Valor inválido para sin_reabrir: {sin_reabrir}. Valores possíveis: S - Sim, N - Não"
         chamada = self._chamar_servico(
             "atribuirProcesso",
-            id_unidade=id_unidade,
-            protocolo_procedimento=protocolo_procedimento,
-            id_usuario=id_usuario,
-            sin_reabrir=sin_reabrir,
+            IdUnidade=id_unidade,
+            ProtocoloProcedimento=protocolo_procedimento,
+            IdUsuario=id_usuario,
+            SinReabrir=sin_reabrir,
         )
 
         return chamada == "1"
@@ -150,13 +149,13 @@ class SeiClient:
         id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
         return self._chamar_servico(
             "consultarDocumento",
-            id_unidade=id_unidade,
-            protocolo_documento=protocolo_documento,
-            sin_retornar_andamento_geracao=sin_retornar_andamento_geracao,
-            sin_retornar_assinaturas=sin_retornar_assinaturas,
-            sin_retornar_publicacao=sin_retornar_publicacao,
-            sin_retornar_campos=sin_retornar_campos,
-            sin_retornar_blocos=sin_retornar_blocos,
+            IdUnidade=id_unidade,
+            ProtocoloDocumento=protocolo_documento,
+            SinRetornarAndamentoGeracao=sin_retornar_andamento_geracao,
+            SinRetornarAssinaturas=sin_retornar_assinaturas,
+            SinRetornarPublicacao=sin_retornar_publicacao,
+            SinRetornarCampos=sin_retornar_campos,
+            SinRetornarBlocos=sin_retornar_blocos,
         )
 
     def consultar_procedimento(
@@ -187,17 +186,17 @@ class SeiClient:
         id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
         return self._chamar_servico(
             "consultarProcedimento",
-            id_unidade=id_unidade,
-            protocolo_procedimento=protocolo_procedimento,
-            sin_retornar_assuntos=sin_retornar_assuntos,
-            sin_retornar_interessados=sin_retornar_interessados,
-            sin_retornar_observacoes=sin_retornar_observacoes,
-            sin_retornar_andamento_geracao=sin_retornar_andamento_geracao,
-            sin_retornar_andamento_conclusao=sin_retornar_andamento_conclusao,
-            sin_retornar_ultimo_andamento=sin_retornar_ultimo_andamento,
-            sin_retornar_unidades_procedimento_aberto=sin_retornar_unidades_procedimento_aberto,
-            sin_retornar_procedimentos_relacionados=sin_retornar_procedimentos_relacionados,
-            sin_retornar_procedimentos_anexados=sin_retornar_procedimentos_anexados,
+            IdUnidade=id_unidade,
+            ProtocoloProcedimento=protocolo_procedimento,
+            SinRetornarAssuntos=sin_retornar_assuntos,
+            SinRetornarInteressados=sin_retornar_interessados,
+            SinRetornarObservacoes=sin_retornar_observacoes,
+            SinRetornarAndamentoGeracao=sin_retornar_andamento_geracao,
+            SinRetornarAndamentoConclusao=sin_retornar_andamento_conclusao,
+            SinRetornarUltimoAndamento=sin_retornar_ultimo_andamento,
+            SinRetornarUnidadesProcedimentoAberto=sin_retornar_unidades_procedimento_aberto,
+            SinRetornarProcedimentosRelacionados=sin_retornar_procedimentos_relacionados,
+            SinRetornarProcedimentosAnexados=sin_retornar_procedimentos_anexados,
         )
 
     def _validar_email(self, email: str):
@@ -210,7 +209,7 @@ class SeiClient:
         protocolo_procedimento: str,
         de: str,
         para: str,
-        CCO: str,
+        cco: str,
         assunto: str,
         mensagem: str,
         documentos: str,
@@ -222,12 +221,12 @@ class SeiClient:
             protocolo_procedimento (str): Protocolo do processo.
             de (str): Endereço de email do remetente.
             para (str): Endereço de email do destinatário.
-            CCO (str): Endereço de email do CCO.
+            cco (str): Endereço de email para cópia.
             assunto (str): Assunto do email.
             mensagem (str): Mensagem do email.
             documentos (list): Número SEI dos documentos do processo que devem ser anexados no email.
         """
-        for email in [de, para, CCO]:
+        for email in [de, para, cco]:
             self._validar_email(email)
 
         id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
@@ -237,14 +236,14 @@ class SeiClient:
         ]
         return self._chamar_servico(
             "enviarEmail",
-            id_unidade=id_unidade,
-            protocolo_procedimento=protocolo_procedimento,
-            de=de,
-            para=para,
-            CCO=CCO,
-            assunto=assunto,
-            mensagem=mensagem,
-            id_documentos=id_documentos,
+            IdUnidade=id_unidade,
+            ProtocoloProcedimento=protocolo_procedimento,
+            De=de,
+            Para=para,
+            CCO=cco,
+            Assunto=assunto,
+            Mensagem=mensagem,
+            IdDocumentos=id_documentos,
         )
 
     def enviar_processo(
@@ -273,16 +272,16 @@ class SeiClient:
         unidades_destino = [self.unidades[u]["IdUnidade"] for u in unidades_destino]
         chamada = self._chamar_servico(
             "enviarProcesso",
-            id_unidade=id_unidade,
-            protocolo_procedimento=protocolo_procedimento,
-            unidades_destino=unidades_destino,
-            sin_manter_aberto_unidade=sin_manter_aberto_unidade,
-            sin_remover_anotacao=sin_remover_anotacao,
-            sin_enviar_email_notificacao=sin_enviar_email_notificacao,
-            data_retorno_programado=data_retorno_programado,
-            dias_retorno_programado=dias_retorno_programado,
-            sin_dias_uteis_retorno_programado=sin_dias_uteis_retorno_programado,
-            sin_reabrir=sin_reabrir,
+            IdUnidade=id_unidade,
+            ProtocoloProcedimento=protocolo_procedimento,
+            UnidadesDestino=unidades_destino,
+            SinManterAbertoUnidade=sin_manter_aberto_unidade,
+            SinRemoverAnotacao=sin_remover_anotacao,
+            SinEnviarEmailNotificacao=sin_enviar_email_notificacao,
+            DataRetornoProgramado=data_retorno_programado,
+            DiasRetornoProgramado=dias_retorno_programado,
+            SinDiasUteisRetornoProgramado=sin_dias_uteis_retorno_programado,
+            SinReabrir=sin_reabrir,
         )
         return chamada == "1"
 
@@ -309,8 +308,8 @@ class SeiClient:
         """
         return self._chamar_servico(
             "listarSeries",
-            id_unidade=id_unidade,
-            id_tipo_procedimento=id_tipo_procedimento,
+            IdUnidade=id_unidade,
+            IdTipoProcedimento=id_tipo_procedimento,
         )
 
     def listar_unidades(
@@ -329,8 +328,8 @@ class SeiClient:
         """
         return self._chamar_servico(
             "listarUnidades",
-            id_tipo_procedimento=id_tipo_procedimento,
-            id_serie=id_serie,
+            IdTipoProcedimento=id_tipo_procedimento,
+            IdSerie=id_serie,
         )
 
     def listar_usuarios(
@@ -347,8 +346,8 @@ class SeiClient:
         """
         return self._chamar_servico(
             "listarUsuarios",
-            id_unidade=id_unidade,
-            id_usuario=id_usuario,
+            IdUnidade=id_unidade,
+            IdUsuario=id_usuario,
         )
 
     @cached_property
@@ -366,7 +365,6 @@ class SeiClient:
 
 if __name__ == "__main__":
     import os
-    from pprint import pprint
 
     from dotenv import find_dotenv, load_dotenv
 
@@ -378,14 +376,13 @@ if __name__ == "__main__":
         sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
     )
 
-    pprint(
-        client.enviar_email(
-            "SFI",
-            "53500.000124/2024-04",
-            "rsilva@anatel.gov.br",
-            "mer.de.dirac@gmail.com",
-            assunto="Teste",
-            mensagem="Teste de email",
-            documentos=["0206167", "0206172"],
-        )
+    client.enviar_email(
+        "FISF",
+        "53500.000124/2024-04",
+        "rsilva@anatel.gov.br",
+        "eric@anatel.gov.br",
+        "mer.de.dirac@gmail.com",
+        assunto="Teste de Email via API",
+        mensagem="Este é um teste de email enviado via API do SEI",
+        documentos=["0206167"],
     )
