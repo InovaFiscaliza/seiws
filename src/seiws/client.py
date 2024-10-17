@@ -134,8 +134,8 @@ class SeiClient:
         sin_retornar_observacoes: str = "N",  # S/N - sinalizador para retorno das observações das unidades
         sin_retornar_andamento_geracao: str = "N",  # S/N - sinalizador para retorno do andamento de geração
         sin_retornar_andamento_conclusao: str = "N",  # S/N - sinalizador para retorno do andamento de conclusão
-        sin_retornar_ultimo_andamento: str = "S",  #  S/N - sinalizador para retorno do último andamento
-        sin_retornar_unidades_procedimento_aberto: str = "S",  # S/N - sinalizador para retorno das unidades onde o processo está aberto
+        sin_retornar_ultimo_andamento: str = "N",  #  S/N - sinalizador para retorno do último andamento
+        sin_retornar_unidades_procedimento_aberto: str = "N",  # S/N - sinalizador para retorno das unidades onde o processo está aberto
         sin_retornar_procedimentos_relacionados: str = "N",  # S/N - sinalizador para retorno dos processos relacionados
         sin_retornar_procedimentos_anexados: str = "N",  # S/N - sinalizador para retorno dos processos anexados
     ):
@@ -145,6 +145,7 @@ class SeiClient:
         zado pelo sistema, sendo assim, recomenda-se que seja solicitado o retorno somente para informações estri-
         tamente necessárias.
         """
+        assert sigla_unidade in self.unidades, f"Unidade inválida: {sigla_unidade}"
         for key, value in locals().items():
             if key.startswith("sin_retornar_"):
                 assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
@@ -284,29 +285,10 @@ if __name__ == "__main__":
 
     sigla_sistema = "InovaFiscaliza"
 
-    method = "enviar_processo"
+    method = "consultar_processo"
 
     client = SeiClient(
         sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
     )
 
-    pprint(
-        getattr(client, method)(
-            unidade_origem="ARI",
-            protocolo_procedimento="53500.000124/2024-04",
-            unidades_destino=["SFI", "FISF", "FIGF"],
-        )
-    )
-
-    # client = SeiClient(
-    #     sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_INSTRUCAO")
-    # )
-
-    # pprint(
-    #     getattr(client, method)(
-    #         id_unidade="110001068",
-    #         protocolo_procedimento="53554.000005/2024-18",
-    #         # id_usuario="100001310",
-    #         # sin_reabrir="S",
-    #     )
-    # )
+    pprint(client.consultar_procedimento(sigla_unidade="SFI", '53500.000124/2024-04')
