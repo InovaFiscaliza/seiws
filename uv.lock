@@ -68,18 +68,6 @@ wheels = [
 ]
 
 [[package]]
-name = "fastcore"
-version = "1.7.16"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "packaging" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/95/19/206c50d92220ec8a8bbf0dd8a7eba03ea00573172d4a9e52d2db3c26d6de/fastcore-1.7.16.tar.gz", hash = "sha256:b49a4f56953dc63f9f4588d9899de4467212aec49ba60f7f65b96e758aef5cc7", size = 77774 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/58/e3/6bb0fc6a9e90ac2ba270066e1db14b64e00e4b5ca8b8fff2bf4daa3d67fa/fastcore-1.7.16-py3-none-any.whl", hash = "sha256:cb57a9768ad19e2f62cc859f04144a4331fd0de1ea47edc5ae97150920ec7b1f", size = 81231 },
-]
-
-[[package]]
 name = "idna"
 version = "3.10"
 source = { registry = "https://pypi.org/simple" }
@@ -252,7 +240,6 @@ name = "seiws"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "fastcore" },
     { name = "python-dotenv" },
     { name = "zeep" },
 ]
@@ -264,7 +251,6 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "fastcore", specifier = ">=1.7.16" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "zeep", specifier = ">=4.2.1" },
 ]
