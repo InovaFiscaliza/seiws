@@ -125,6 +125,19 @@ class SeiClient:
 
         return chamada == "1"
 
+    def concluir_processo(
+        self, sigla_unidade: str, protocolo_procedimento: str
+    ) -> bool:
+        if sigla_unidade not in self.unidades:
+            raise ValueError(f"Unidade inválida: {sigla_unidade}")
+        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
+        chamada = self._chamar_servico(
+            "reabrirProcesso",
+            IdUnidade=id_unidade,
+            ProtocoloProcedimento=protocolo_procedimento,
+        )
+        return chamada == "1"
+
     def consultar_documento(
         self,
         sigla_unidade: str,  # Sigla da unidade no SEI
