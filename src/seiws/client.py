@@ -94,6 +94,28 @@ class SeiClient:
             self.logger.error(f"Erro ao criar o cliente SOAP: {e}")
             raise
 
+    def adicionar_arquivo(
+        self, sigla_unidade: str, nome: str, tamanho: int, _hash: str, conteudo: str
+    ):
+        """Adiciona um arquivo ao repositório de arquivos do SEI.
+        Args:
+            sigla_unidade (str): Sigla da unidade no SEI.
+            nome (str): Nome do arquivo.
+            tamanho (int): Tamanho total do arquivo em bytes.
+            hash (str): MD5 do conteúdo total do arquivo.
+            conteudo (str): Conteúdo total ou parcial codificado em Base64.
+        """
+        assert sigla_unidade in self.unidades, f"Unidade inválida: {sigla_unidade}"
+        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
+        self._chamar_servico(
+            "adicionarArquivo",
+            IdUnidade=id_unidade,
+            Nome=nome,
+            Tamanho=tamanho,
+            Hash=_hash,
+            Conteudo=conteudo,
+        )
+
     def atribuir_processo(
         self,
         id_unidade: str,
@@ -400,21 +422,27 @@ if __name__ == "__main__":
         sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
     )
 
-    # client.enviar_email(
-    #     "FISF",
-    #     "53500.000124/2024-04",
-    #     "rsilva@anatel.gov.br",
-    #     "eric@anatel.gov.br",
-    #     "mer.de.dirac@gmail.com",
-    #     assunto="Teste de Email via API",
-    #     mensagem="Este é um teste de email enviado via API do SEI",
-    #     documentos=["0206167"],
-    # )
+    # Exemplo de uso:
+    import base64
+    import hashlib
 
-    # client.concluir_processo("FISF", "53500.000124/2024-04")
+    # Criando um conteúdo de exemplo
+    conteudo_exemplo = "Este é um exemplo de conteúdo para teste."
 
-    # client.reabrir_processo("FISF", "53500.000124/2024-04")
+    # Codificando o conteúdo em Base64
+    conteudo_base64 = base64.b64encode(conteudo_exemplo.encode()).decode()
 
-    client.consultar_procedimento(
-        "FISF", "53500.000124/2024-04", sin_retornar_ultimo_andamento="S"
+    # Calculando o tamanho do conteúdo original em bytes
+    tamanho_exemplo = len(conteudo_exemplo.encode())
+
+    # Calculando o hash MD5 do conteúdo
+    hash_exemplo = hashlib.md5(conteudo_exemplo.encode()).hexdigest()
+
+    # Exemplo de chamada da função
+    client.adicionar_arquivo(
+        sigla_unidade="FISF",
+        nome="arquivo_teste.txt",
+        tamanho=tamanho_exemplo,
+        _hash=hash_exemplo,
+        conteudo=conteudo_base64,
     )
