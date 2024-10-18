@@ -350,6 +350,17 @@ class SeiClient:
             IdUsuario=id_usuario,
         )
 
+    def reabrir_processo(self, sigla_unidade: str, protocolo_procedimento: str) -> bool:
+        if sigla_unidade not in self.unidades:
+            raise ValueError(f"Unidade inválida: {sigla_unidade}")
+        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
+        chamada = self._chamar_servico(
+            "reabrirProcesso",
+            IdUnidade=id_unidade,
+            ProtocoloProcedimento=protocolo_procedimento,
+        )
+        return chamada == "1"
+
     @cached_property
     def unidades(self):
         return {d["Sigla"]: d for d in self.listar_unidades()}
