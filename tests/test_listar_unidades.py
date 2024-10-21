@@ -6,7 +6,7 @@ from tests.constants import UNIDADES_BLOQUEIO, UNIDADES_INSTRUCAO, UNIDADES_FISC
 class TestListarUnidades:
     def test_listar_unidades_hm_bloqueio(self):
         client = SeiClient(
-            sigla_sistema="InovaFiscaliza",
+            sigla_sistema=os.getenv("SIGLA_SISTEMA"),
             chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
         )
         unidades = client.listar_unidades()
@@ -17,7 +17,7 @@ class TestListarUnidades:
 
     def test_listar_unidades_hm_instrucao(self):
         client = SeiClient(
-            sigla_sistema="InovaFiscaliza",
+            sigla_sistema=os.getenv("SIGLA_SISTEMA"),
             chave_api=os.getenv("SEI_HM_API_KEY_INSTRUCAO"),
         )
         unidades = client.listar_unidades()
