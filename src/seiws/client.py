@@ -416,7 +416,7 @@ if __name__ == "__main__":
 
     load_dotenv(find_dotenv(), override=True)
 
-    sigla_sistema = "InovaFiscaliza"
+    sigla_sistema = os.getenv("SIGLA_SISTEMA")
 
     client = SeiClient(
         sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
