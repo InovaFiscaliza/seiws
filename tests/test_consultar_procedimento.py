@@ -17,7 +17,7 @@ class TestConsultarProcedimento:
     @pytest.fixture
     def sei_client(self):
         return SeiClient(
-            sigla_sistema="InovaFiscaliza",
+            sigla_sistema=os.getenv("SIGLA_SISTEMA"),
             chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
         )
 
