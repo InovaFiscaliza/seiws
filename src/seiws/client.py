@@ -1,3 +1,5 @@
+# ... rest of the file ...
+
 def reabrir_processo(self, sigla_unidade: str, protocolo_procedimento: str) -> bool:
     """Reabre um processo.
 
@@ -8,3 +10,4 @@ def reabrir_processo(self, sigla_unidade: str, protocolo_procedimento: str) -> b
     Returns:
         bool: True se o processo foi reaberto com sucesso, False caso contrário.
     """
+# ... rest of the file ...
