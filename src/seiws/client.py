@@ -94,6 +94,46 @@ class SeiClient:
             self.logger.error(f"Erro ao criar o cliente SOAP: {e}")
             raise
 
+    def _validar_unidade(self, sigla_unidade: str) -> str:
+        """
+        Valida e retorna o ID da unidade correspondente à sigla fornecida.
+
+        Args:
+            sigla_unidade (str): A sigla da unidade a ser validada.
+
+        Returns:
+            str: O ID da unidade correspondente à sigla fornecida.
+
+        Raises:
+            ValueError: Se a sigla da unidade não for encontrada no dicionário de unidades.
+
+        Esta função verifica se a sigla da unidade fornecida existe no dicionário de unidades.
+        Se existir, retorna o ID correspondente. Caso contrário, lança uma exceção ValueError.
+        """
+        if sigla_unidade not in self.unidades:
+            raise ValueError(f"Unidade inválida: {sigla_unidade}")
+        return self.unidades[sigla_unidade]["IdUnidade"]
+
+    def _validar_documento(self, tipo_de_documento: str) -> str:
+        """
+        Valida e retorna o ID do documento correspondente à sigla fornecida.
+
+        Args:
+            serie (str): A sigla do documento a ser validada.
+
+        Returns:
+            str: O ID do documento correspondente à sigla fornecida.
+
+        Raises:
+            ValueError: Se a sigla do documento não for encontrada no dicionário de series.
+
+        Esta função verifica se a sigla do documento fornecida existe no dicionário de series.
+        Se existir, retorna o ID correspondente. Caso contrário, lança uma exceção ValueError.
+        """
+        if tipo_de_documento not in self.documentos:
+            raise ValueError(f"Tipo de documento inválido: {tipo_de_documento}")
+        return self.documentos[tipo_de_documento]["IdSerie"]
+
     def atribuir_processo(
         self,
         id_unidade: str,
@@ -128,12 +168,9 @@ class SeiClient:
     def concluir_processo(
         self, sigla_unidade: str, protocolo_procedimento: str
     ) -> bool:
-        if sigla_unidade not in self.unidades:
-            raise ValueError(f"Unidade inválida: {sigla_unidade}")
-        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
         chamada = self._chamar_servico(
             "concluirProcesso",
-            IdUnidade=id_unidade,
+            IdUnidade=self._validar_unidade(sigla_unidade),
             ProtocoloProcedimento=protocolo_procedimento,
         )
         return chamada == "1"
@@ -154,15 +191,13 @@ class SeiClient:
         adicional realizado pelo sistema, sendo assim, recomenda-se que seja solicitado o retorno somente para infor-
         mações estritamente necessárias.
         """
-        assert sigla_unidade in self.unidades, f"Unidade inválida: {sigla_unidade}"
         for key, value in locals().items():
             if key.startswith("sin_retornar_"):
                 assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
 
-        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
         return self._chamar_servico(
             "consultarDocumento",
-            IdUnidade=id_unidade,
+            IdUnidade=self._validar_unidade(sigla_unidade),
             ProtocoloDocumento=protocolo_documento,
             SinRetornarAndamentoGeracao=sin_retornar_andamento_geracao,
             SinRetornarAssinaturas=sin_retornar_assinaturas,
@@ -191,15 +226,13 @@ class SeiClient:
         zado pelo sistema, sendo assim, recomenda-se que seja solicitado o retorno somente para informações estri-
         tamente necessárias.
         """
-        assert sigla_unidade in self.unidades, f"Unidade inválida: {sigla_unidade}"
         for key, value in locals().items():
             if key.startswith("sin_retornar_"):
                 assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
 
-        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
         return self._chamar_servico(
             "consultarProcedimento",
-            IdUnidade=id_unidade,
+            IdUnidade=self._validar_unidade(sigla_unidade),
             ProtocoloProcedimento=protocolo_procedimento,
             SinRetornarAssuntos=sin_retornar_assuntos,
             SinRetornarInteressados=sin_retornar_interessados,
@@ -298,6 +331,17 @@ class SeiClient:
         )
         return chamada == "1"
 
+    def incluir_documento(
+        self,
+        sigla_unidade: str,
+        documento: dict,
+    ) -> dict:
+        return self._chamar_servico(
+            "incluirDocumento",
+            IdUnidade=self.unidades[sigla_unidade]["IdUnidade"],
+            Documento=documento,
+        )
+
     def listar_series(
         self,
         id_unidade: str = "",  # Opcional. Filtra a unidade
@@ -364,6 +408,20 @@ class SeiClient:
         )
 
     def reabrir_processo(self, sigla_unidade: str, protocolo_procedimento: str) -> bool:
+        """
+        Reabre um processo no sistema SEI.
+
+        Args:
+            sigla_unidade (str): A sigla da unidade onde o processo está localizado.
+            protocolo_procedimento (str): O número de protocolo do processo a ser reaberto.
+
+        Returns:
+            bool: True se o processo foi reaberto com sucesso, False caso contrário.
+
+        Raises:
+            ValueError: Se a sigla da unidade fornecida for inválida.
+        """
+
         if sigla_unidade not in self.unidades:
             raise ValueError(f"Unidade inválida: {sigla_unidade}")
         id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
@@ -389,6 +447,9 @@ class SeiClient:
 
 if __name__ == "__main__":
     import os
+    from datetime import datetime
+    from pathlib import Path
+    import base64
 
     from dotenv import find_dotenv, load_dotenv
 
@@ -415,6 +476,17 @@ if __name__ == "__main__":
 
     # client.reabrir_processo("FISF", "53500.000124/2024-04")
 
-    client.consultar_procedimento(
-        "FISF", "53500.000124/2024-04", sin_retornar_ultimo_andamento="S"
-    )
+    html_bytes = Path("C:/Users/rsilva/Code/Oficio.html").read_bytes()
+    html_base64 = base64.b64encode(html_bytes).decode("utf-8")
+
+    documento = {
+        "Tipo": "R",
+        "ProtocoloProcedimento": "53500.000124/2024-04",
+        "IdSerie": "11",  # Ofício
+        # "Descricao": "Documento de Teste - InovaFiscaliza",
+        "Conteudo": html_base64,
+        "Data": datetime.now().strftime("%d/%m/%Y"),
+        "NomeArquivo": "Ofício_Resposta.html",
+    }
+
+    client.incluir_documento("FISF", documento=documento)
