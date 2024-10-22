@@ -442,6 +442,17 @@ class SeiClient:
         )
         return chamada == "1"
 
+    def excluir_bloco(self, id_bloco: str) -> bool:
+        """Exclui um bloco no sistema SEI."""
+        return (
+            self._chamar_servico(
+                "excluirBloco",
+                IdUnidade=self.id_unidade,
+                IdBloco=id_bloco,
+            )
+            == "1"
+        )
+
     def excluir_documento(
         self,
         protocolo_documento: str,
@@ -846,6 +857,8 @@ if __name__ == "__main__":
     }
 
     andamento = "Processo recebido na unidade"
+
+    cliente_sei.incluir_documento()
 
     # cliente_sei.listar_andamentos("FISF", "53500.000124/2024-04", "S", andamento)
 
