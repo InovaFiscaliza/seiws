@@ -159,6 +159,10 @@ class SeiClient:
                 f"Valor inválido para {atributo}. Valores possíveis: S - Sim, N - Não"
             )
 
+    def _validar_email(self, email: str):
+        if not re.match(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", email):
+            raise ValueError(f"Email inválido: {email}")
+
     def atribuir_processo(
         self,
         protocolo_procedimento: str,
@@ -232,50 +236,6 @@ class SeiClient:
         )
 
         return chamada == "1"
-
-    def excluir_documento(
-        self,
-        protocolo_documento: str,
-    ) -> bool:
-        """Exclui um documento do sistema SEI.
-
-        Args:
-            sigla_unidade (str): A sigla da unidade onde o processo está localizado.
-            protocolo_documento (str): O número do documento a ser excluído.
-
-        Returns:
-            bool: True se o documento foi excluído com sucesso, False caso contrário.
-        """
-        return (
-            self._chamar_servico(
-                "excluirDocumento",
-                IdUnidade=self.id_unidade,
-                ProtocoloDocumento=protocolo_documento,
-            )
-            == "1"
-        )
-
-    def excluir_processo(
-        self,
-        protocolo_processo: str,
-    ) -> bool:
-        """Exclui um processo do sistema SEI.
-
-        Args:
-            sigla_unidade (str): A sigla da unidade onde o processo está localizado.
-            protocolo_processo (str): O número do processo a ser excluído.
-
-        Returns:
-            bool: True se o processo foi excluído com sucesso, False caso contrário.
-        """
-        return (
-            self._chamar_servico(
-                "excluirProcesso",
-                IdUnidade=self.id_unidade,
-                ProtocoloProcesso=protocolo_processo,
-            )
-            == "1"
-        )
 
     def concluir_processo(self, protocolo_procedimento: str) -> bool:
         """Conclui um processo no sistema SEI.
@@ -368,10 +328,6 @@ class SeiClient:
             SinRetornarProcedimentosAnexados=sin_retornar_procedimentos_anexados,
         )
 
-    def _validar_email(self, email: str):
-        if not re.match(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", email):
-            raise ValueError(f"Email inválido: {email}")
-
     def enviar_email(
         self,
         protocolo_procedimento: str,
@@ -450,6 +406,50 @@ class SeiClient:
             SinReabrir=sin_reabrir,
         )
         return chamada == "1"
+
+    def excluir_documento(
+        self,
+        protocolo_documento: str,
+    ) -> bool:
+        """Exclui um documento do sistema SEI.
+
+        Args:
+            sigla_unidade (str): A sigla da unidade onde o processo está localizado.
+            protocolo_documento (str): O número do documento a ser excluído.
+
+        Returns:
+            bool: True se o documento foi excluído com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "excluirDocumento",
+                IdUnidade=self.id_unidade,
+                ProtocoloDocumento=protocolo_documento,
+            )
+            == "1"
+        )
+
+    def excluir_processo(
+        self,
+        protocolo_processo: str,
+    ) -> bool:
+        """Exclui um processo do sistema SEI.
+
+        Args:
+            sigla_unidade (str): A sigla da unidade onde o processo está localizado.
+            protocolo_processo (str): O número do processo a ser excluído.
+
+        Returns:
+            bool: True se o processo foi excluído com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "excluirProcesso",
+                IdUnidade=self.id_unidade,
+                ProtocoloProcesso=protocolo_processo,
+            )
+            == "1"
+        )
 
     def incluir_documento(
         self,
@@ -555,6 +555,30 @@ class SeiClient:
             ProtocoloProcedimento=protocolo_procedimento,
         )
         return chamada == "1"
+
+    def relacionar_processo(
+        self, protocolo_processo1: str, protocolo_processo2: str
+    ) -> bool:
+        """Relaciona dois processos no sistema SEI.
+        Args:
+            protocolo_processo1 (str): O número do processo a ser relacionado.
+            protocolo_processo2 (str): O número do processo a ser relacionado.
+
+        Returns:
+            bool: True se os processos foram relacionados com sucesso, False caso contrário.
+
+        Observações:
+            O relacionamento entre processos é bilateral sendo assim relacionar nos dois tipos de processos envolvidos.
+        """
+        return (
+            self._chamar_servico(
+                "relacionarProcesso",
+                IdUnidade=self.id_unidade,
+                ProtocoloProcedimento1=protocolo_processo1,
+                ProtocoloProcedimento2=protocolo_processo2,
+            )
+            == "1"
+        )
 
     @cached_property
     def unidades(self):
