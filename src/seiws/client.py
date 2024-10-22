@@ -237,6 +237,14 @@ class SeiClient:
 
         return chamada == "1"
 
+    def concluir_bloco(self, id_bloco: str) -> bool:
+        """Conclui um bloco no sistema SEI."""
+        return self._chamar_servico(
+            "concluirBloco",
+            IdUnidade=self.id_unidade,
+            IdBloco=id_bloco,
+        )
+
     def concluir_processo(self, protocolo_procedimento: str) -> bool:
         """Conclui um processo no sistema SEI.
 
