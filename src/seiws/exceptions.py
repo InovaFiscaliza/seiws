@@ -15,3 +15,7 @@ class InvalidAmbienteError(Exception):
 
 class InvalidChaveApiError(Exception):
     pass
+
+
+class InvalidWSDLError(Exception):
+    pass
