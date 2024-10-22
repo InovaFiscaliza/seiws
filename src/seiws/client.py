@@ -687,6 +687,17 @@ class SeiClient:
             IdUsuario=id_usuario,
         )
 
+    def reabrir_bloco(self, id_bloco: str) -> bool:
+        """Reabre um bloco no sistema SEI."""
+        return (
+            self._chamar_servico(
+                "reabrirBloco",
+                IdUnidade=self.id_unidade,
+                IdBloco=id_bloco,
+            )
+            == "1"
+        )
+
     def reabrir_processo(self, protocolo_procedimento: str) -> bool:
         """
         Reabre um processo no sistema SEI.
