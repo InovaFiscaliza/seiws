@@ -184,6 +184,18 @@ class SeiClient:
     def concluir_processo(
         self, sigla_unidade: str, protocolo_procedimento: str
     ) -> bool:
+        """Conclui um processo no sistema SEI.
+
+        Args:
+            sigla_unidade (str): A sigla da unidade onde o processo está localizado.
+            protocolo_procedimento (str): O número de protocolo do processo a ser concluído.
+
+        Returns:
+            bool: True se o processo foi concluído com sucesso, False caso contrário.
+
+        Raises:
+            ValueError: Se a sigla da unidade fornecida for inválida.
+        """
         chamada = self._chamar_servico(
             "concluirProcesso",
             IdUnidade=self._validar_unidade(sigla_unidade),
@@ -202,8 +214,9 @@ class SeiClient:
         sin_retornar_blocos: str = "N",  #  S/N - sinalizador para retorno dos blocos na unidade que contém o documento
     ):
         """
+        Retorna estrutura de dados com informações sobre o documento.
 
-                Observações: Documento de processos sigilosos não são retornados. Cada um dos sinalizadores implica em processamento
+        Observações: Documento de processos sigilosos não são retornados. Cada um dos sinalizadores implica em processamento
         adicional realizado pelo sistema, sendo assim, recomenda-se que seja solicitado o retorno somente para infor-
         mações estritamente necessárias.
         """
@@ -291,14 +304,13 @@ class SeiClient:
         for email in [de, para, cco]:
             self._validar_email(email)
 
-        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
         id_documentos = [
             self.consultar_documento(sigla_unidade, d)["IdDocumento"]
             for d in documentos
         ]
         return self._chamar_servico(
             "enviarEmail",
-            IdUnidade=id_unidade,
+            IdUnidade=self._validar_unidade(sigla_unidade),
             ProtocoloProcedimento=protocolo_procedimento,
             De=de,
             Para=para,
@@ -330,11 +342,10 @@ class SeiClient:
         for key, value in locals().items():
             if key.startswith("sin_"):
                 assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
-        id_unidade = self.unidades[unidade_origem]["IdUnidade"]
         unidades_destino = [self.unidades[u]["IdUnidade"] for u in unidades_destino]
         chamada = self._chamar_servico(
             "enviarProcesso",
-            IdUnidade=id_unidade,
+            IdUnidade=self._validar_unidade(unidade_origem),
             ProtocoloProcedimento=protocolo_procedimento,
             UnidadesDestino=unidades_destino,
             SinManterAbertoUnidade=sin_manter_aberto_unidade,
@@ -360,7 +371,7 @@ class SeiClient:
 
     def listar_series(
         self,
-        id_unidade: str = "",  # Opcional. Filtra a unidade
+        sigla_unidade: str = "",  # Opcional. Filtra a unidade
         id_tipo_procedimento: str = "",  # Opcional. Filtra o tipo do processo
     ) -> List[
         Dict[str, str]
@@ -379,6 +390,10 @@ class SeiClient:
                     F = formulários
 
         """
+        if sigla_unidade:
+            id_unidade = self._validar_unidade(sigla_unidade)
+        else:
+            id_unidade = ""
         return self._chamar_servico(
             "listarSeries",
             IdUnidade=id_unidade,
@@ -388,17 +403,21 @@ class SeiClient:
     def listar_unidades(
         self,
         id_tipo_procedimento: str = "",  # Opcional. Filtra o tipo do processo
-        id_serie: str = "",  # Opcional. Filtra a tipo de documento
+        tipo_de_documento: str = "",  # Opcional. Filtra a tipo de documento
     ) -> List[Dict[str, str]]:
         """Lista as unidades com acesso configurado para a chave de acesso informada.
 
         Args:
             id_tipo_procedimento (str, optional): Filtra o tipo do processo. Valores possíveis: Qualquer id válido de processo. A string vazia ("") indica que nenhum filtro é aplicado.
-            id_serie (str, optional): Filtra a tipo de documento. Valores possíveis: Qualquer id válido de documento. A string vazia ("") indica que nenhum filtro é aplicado.
+            tipo_de_documento (str, optional): Filtra o tipo de documento. Valores possíveis: Qualquer tipo válido de documento. A string vazia ("") indica que nenhum filtro é aplicado.
 
         Returns:
             List[Dict[str, str]]: Lista de unidades com acesso configurado para a chave de acesso informada.
         """
+        if tipo_de_documento:
+            id_serie = self._validar_documento(tipo_de_documento)
+        else:
+            id_serie = ""
         return self._chamar_servico(
             "listarUnidades",
             IdTipoProcedimento=id_tipo_procedimento,
@@ -406,12 +425,12 @@ class SeiClient:
         )
 
     def listar_usuarios(
-        self, id_unidade: str, id_usuario: str = ""
+        self, sigla_unidade: str, id_usuario: str = ""
     ) -> List[Dict[str, str]]:
         """Retorna o conjunto de usuários que possuem o perfil "Básico" do SEI na unidade.
 
         Args:
-            id_unidade (str): ID da unidade.
+            sigla_unidade (str): Sigla da unidade.
             id_usuario (str, optional): Filtra o usuário. Valores possíveis: Qualquer id válido de usuário. A string vazia ("") indica que nenhum filtro é aplicado.
 
         Returns:
@@ -419,7 +438,7 @@ class SeiClient:
         """
         return self._chamar_servico(
             "listarUsuarios",
-            IdUnidade=id_unidade,
+            IdUnidade=self._validar_unidade(sigla_unidade),
             IdUsuario=id_usuario,
         )
 
@@ -438,12 +457,9 @@ class SeiClient:
             ValueError: Se a sigla da unidade fornecida for inválida.
         """
 
-        if sigla_unidade not in self.unidades:
-            raise ValueError(f"Unidade inválida: {sigla_unidade}")
-        id_unidade = self.unidades[sigla_unidade]["IdUnidade"]
         chamada = self._chamar_servico(
             "reabrirProcesso",
-            IdUnidade=id_unidade,
+            IdUnidade=self._validar_unidade(sigla_unidade),
             ProtocoloProcedimento=protocolo_procedimento,
         )
         return chamada == "1"
