@@ -510,6 +510,31 @@ class SeiClient:
             == "1"
         )
 
+    def incluir_processo_bloco(
+        self, id_bloco: str, protocolo_processo: str, anotacao: str = ""
+    ) -> bool:
+        """
+        Inclui um novo processo no bloco.
+
+        Args:
+            id_bloco (str): Identificador do bloco no qual o processo será incluído.
+            protocolo_processo (str): Protocolo do processo a ser incluído.
+            anotacao (str): Opcional. Texto de anotação associado com o processo no bloco.
+
+        Returns:
+            bool: True se o processo foi incluído com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "incluirProcessoBloco",
+                IdUnidade=self.id_unidade,
+                IdBloco=id_bloco,
+                ProtocoloProcedimento=protocolo_processo,
+                Anotacao=anotacao,
+            )
+            == "1"
+        )
+
     def listar_andamentos(
         self,
         sigla_unidade: str,
@@ -720,4 +745,6 @@ if __name__ == "__main__":
 
     # cliente_sei.consultar_bloco("3754", "S")
 
-    cliente_sei.incluir_documento_bloco("3755", "0208319", "Autografe por obséquio")
+    # cliente_sei.incluir_documento_bloco("3755", "0208319", "Autografe por obséquio")
+
+    cliente_sei.incluir_processo_bloco("3755", "53500.201128/2014-28", "Assine tudo!")
