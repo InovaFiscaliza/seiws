@@ -485,6 +485,31 @@ class SeiClient:
             Documento=documento,
         )
 
+    def incluir_documento_bloco(
+        self, id_bloco: str, protocolo_documento: str, anotacao: str = ""
+    ) -> bool:
+        """
+        Inclui um novo documento no bloco.
+
+        Args:
+            id_bloco (str): Identificador do bloco no qual o documento será incluído.
+            protocolo_documento (str): Protocolo do documento a ser incluído.
+            anotacao (str): Opcional. Texto de anotação associado com o documento no bloco.
+
+        Returns:
+            bool: True se o documento foi incluído com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "incluirDocumentoBloco",
+                IdUnidade=self.id_unidade,
+                IdBloco=id_bloco,
+                ProtocoloDocumento=protocolo_documento,
+                Anotacao=anotacao,
+            )
+            == "1"
+        )
+
     def listar_andamentos(
         self,
         sigla_unidade: str,
@@ -693,4 +718,6 @@ if __name__ == "__main__":
 
     # cliente_sei.listar_andamentos("FISF", "53500.000124/2024-04", "S", andamento)
 
-    cliente_sei.consultar_bloco("3754", "S")
+    # cliente_sei.consultar_bloco("3754", "S")
+
+    cliente_sei.incluir_documento_bloco("3755", "0208319", "Autografe por obséquio")
