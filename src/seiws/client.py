@@ -602,6 +602,38 @@ class SeiClient:
             IdTipoProcedimento=id_tipo_procedimento,
         )
 
+    def listar_tipos_processo(
+        self,
+        sigla_unidade: str = None,
+        tipo_de_documento: str = None,
+        sin_individual: str = "N",
+    ) -> dict:
+        """
+        Lista os tipos de processos disponíveis na unidade.
+
+        Args:
+            sigla_unidade (str): Sigla da unidade no SEI.
+            tipo_de_documento (str): Tipo de documento a ser consultado.
+            sin_individual (str): S/N - sinalizador para retorno individual.
+
+        Returns:
+            dict: Dicionário com os tipos de processos disponíveis na unidade.
+        """
+        if sigla_unidade is not None:
+            id_unidade = self._validar_unidade(sigla_unidade)
+        else:
+            id_unidade = ""
+        if tipo_de_documento is not None:
+            id_serie = self._validar_series(tipo_de_documento)
+        else:
+            id_serie = ""
+        return self._chamar_servico(
+            "listarTiposProcedimento",
+            IdUnidade=id_unidade,
+            IdSerie=id_serie,
+            SinIndividual=sin_individual,
+        )
+
     def listar_unidades(
         self,
         id_tipo_procedimento: str = "",  # Opcional. Filtra o tipo do processo
@@ -750,6 +782,10 @@ class SeiClient:
     def documentos(self):
         return {d["Nome"]: d for d in self.listar_series()}
 
+    @cached_property
+    def processos(self):
+        return {d["Nome"]: d for d in self.listar_tipos_processo()}
+
 
 if __name__ == "__main__":
     import os
@@ -795,4 +831,8 @@ if __name__ == "__main__":
 
     # cliente_sei.incluir_documento_bloco("3755", "0208319", "Autografe por obséquio")
 
-    cliente_sei.incluir_processo_bloco("3755", "53500.201128/2014-28", "Assine tudo!")
+    # cliente_sei.retirar_documento_bloco("3755", "0208319")
+
+    # cliente_sei.incluir_processo_bloco("3755", "53500.201128/2014-28", "Assine tudo!")
+
+    cliente_sei.listar_tipos_processo()
