@@ -215,6 +215,7 @@ class SeiClient:
         protocolo_processo: str,
     ) -> bool:
         """Bloqueia um processo no sistema SEI.
+        Somente com o processo aberto. Não é possível bloquear processos sigilosos.
 
         Args:
             sigla_unidade (str): A sigla da unidade onde o processo está localizado.
@@ -230,6 +231,29 @@ class SeiClient:
         )
 
         return chamada == "1"
+
+    def excluir_documento(
+        self,
+        sigla_unidade: str,
+        protocolo_documento: str,
+    ) -> bool:
+        """Exclui um documento do sistema SEI.
+
+        Args:
+            sigla_unidade (str): A sigla da unidade onde o processo está localizado.
+            protocolo_documento (str): O número do documento a ser excluído.
+
+        Returns:
+            bool: True se o documento foi excluído com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "excluirDocumento",
+                IdUnidade=self._validar_unidade(sigla_unidade),
+                ProtocoloDocumento=protocolo_documento,
+            )
+            == "1"
+        )
 
     def concluir_processo(
         self, sigla_unidade: str, protocolo_procedimento: str
