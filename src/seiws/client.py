@@ -50,7 +50,7 @@ def download_wsdl(ambiente: str):
         raise InvalidAmbienteError(f"Ambiente inválido: {ambiente}")
 
 
-def instanciar_cliente(wsdl_file: str) -> Client:
+def instanciar_cliente_soap(wsdl_file: str) -> Client:
     """Instantiates a SOAP client using the provided WSDL file.
 
     Args:
@@ -71,7 +71,7 @@ def instanciar_cliente(wsdl_file: str) -> Client:
 class SeiClient:
     def __init__(
         self,
-        cliente: Client,  # Cliente SOAP instanciado com o WSDL do SEI
+        cliente_soap: Client,  # Cliente SOAP instanciado com o WSDL do SEI
         sigla_sistema: str,  # SiglaSistema - Valor informado no cadastro do sistema realizado no SEI
         chave_api: str,  # IdentificacaoServico - Chave de acesso ao Web Service do SEI.
     ):
@@ -84,7 +84,7 @@ class SeiClient:
             chave_api (str): IdentificacaoServico - Chave de acesso ao Web Service do SEI..
         """
 
-        self.cliente = cliente
+        self.cliente = cliente_soap
         self.sigla_sistema = sigla_sistema
         self.chave_api = chave_api
 
