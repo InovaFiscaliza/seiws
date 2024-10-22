@@ -9,7 +9,6 @@ from zeep import Client
 
 from seiws.exceptions import (
     InvalidAmbienteError,
-    InvalidChaveApiError,
     InvalidWSDLError,
 )
 
@@ -150,9 +149,15 @@ class SeiClient:
             raise ValueError(f"Tipo de documento inválido: {tipo_de_documento}")
         return self.documentos[tipo_de_documento]["IdSerie"]
 
+    def _validar_booleano(self, atributo: str, valor: str):
+        if valor not in ["S", "N"]:
+            raise ValueError(
+                f"Valor inválido para {atributo}. Valores possíveis: S - Sim, N - Não"
+            )
+
     def atribuir_processo(
         self,
-        id_unidade: str,
+        sigla_unidade: str,
         protocolo_procedimento: str,
         id_usuario: str,
         sin_reabrir: str = "S",
@@ -168,15 +173,38 @@ class SeiClient:
         Returns:
             bool: True se o processo foi atribuído com sucesso, False caso contrário.
         """
-        assert (
-            sin_reabrir in ["S", "N"]
-        ), f"Valor inválido para sin_reabrir: {sin_reabrir}. Valores possíveis: S - Sim, N - Não"
+        self._validar_booleano("sin_reabrir", sin_reabrir)
         chamada = self._chamar_servico(
             "atribuirProcesso",
-            IdUnidade=id_unidade,
+            IdUnidade=self._validar_unidade(sigla_unidade),
             ProtocoloProcedimento=protocolo_procedimento,
             IdUsuario=id_usuario,
             SinReabrir=sin_reabrir,
+        )
+
+        return chamada == "1"
+
+    def anexar_processo(
+        self,
+        sigla_unidade: str,
+        protocolo_processo_principal: str,
+        protocolo_processo_anexado: dict,
+    ) -> bool:
+        """Anexa um processo ao outro.
+
+        Args:
+            sigla_unidade (str): A sigla da unidade onde o processo está localizado.
+            protocolo_processo_principal (str): O número de protocolo do processo principal.
+            protocolo_processo_anexado (dict): O número de protocolo do processo anexado.
+
+        Returns:
+            bool: True se o processo foi anexado com sucesso, False caso contrário.
+        """
+        chamada = self._chamar_servico(
+            "anexarProcesso",
+            IdUnidade=self._validar_unidade(sigla_unidade),
+            ProtocoloProcessoPrincipal=protocolo_processo_principal,
+            ProtocoloProcessoAnexado=protocolo_processo_anexado,
         )
 
         return chamada == "1"
@@ -235,10 +263,10 @@ class SeiClient:
             SinRetornarBlocos=sin_retornar_blocos,
         )
 
-    def consultar_procedimento(
+    def consultar_processo(
         self,
         sigla_unidade: str,  # Sigla da unidade no SEI
-        protocolo_procedimento: str,  # Número do processo visível para o usuário, ex: 12.1.000000077-4
+        protocolo_processo: str,  # Número do processo visível para o usuário, ex: 12.1.000000077-4
         sin_retornar_assuntos: str = "N",  # S/N - sinalizador para retorno dos assuntos do processo
         sin_retornar_interessados: str = "N",  # S/N - sinalizador para retorno dos interessados do processo
         sin_retornar_observacoes: str = "N",  # S/N - sinalizador para retorno das observações das unidades
@@ -262,7 +290,7 @@ class SeiClient:
         return self._chamar_servico(
             "consultarProcedimento",
             IdUnidade=self._validar_unidade(sigla_unidade),
-            ProtocoloProcedimento=protocolo_procedimento,
+            ProtocoloProcedimento=protocolo_processo,
             SinRetornarAssuntos=sin_retornar_assuntos,
             SinRetornarInteressados=sin_retornar_interessados,
             SinRetornarObservacoes=sin_retornar_observacoes,
