@@ -73,6 +73,7 @@ class SeiClient:
         cliente_soap: Client,  # Cliente SOAP instanciado com o WSDL do SEI
         sigla_sistema: str,  # SiglaSistema - Valor informado no cadastro do sistema realizado no SEI
         chave_api: str,  # IdentificacaoServico - Chave de acesso ao Web Service do SEI.
+        sigla_unidade: str,  # Sigla da unidade no SEI
     ):
         """
         Cria uma instância do cliente SEI.
@@ -80,18 +81,21 @@ class SeiClient:
         Args:
             cliente (Client): Cliente SOAP instanciado com o WSDL do SEI.
             sigla_sistema (str): SiglaSistema - Valor informado no cadastro do sistema realizado no SEI.
-            chave_api (str): IdentificacaoServico - Chave de acesso ao Web Service do SEI..
+            chave_api (str): IdentificacaoServico - Chave de acesso ao Web Service do SEI.
+            sigla_unidade (str): Sigla da unidade no SEI.
         """
 
         self.cliente = cliente_soap
         self.sigla_sistema = sigla_sistema
         self.chave_api = chave_api
+        self.sigla_unidade = sigla_unidade
+        self.id_unidade = self._validar_unidade(sigla_unidade)
 
     def _chamar_servico(self, nome_operacao: str, **kwargs):
         try:
             parametros = {
                 "SiglaSistema": self.sigla_sistema,
-                "Ambiente": self.ambiente,
+                "SiglaUnidade": self.sigla_unidade,
                 **kwargs,
             }
             self.logger.info(
@@ -157,7 +161,6 @@ class SeiClient:
 
     def atribuir_processo(
         self,
-        sigla_unidade: str,
         protocolo_procedimento: str,
         id_usuario: str,
         sin_reabrir: str = "S",
@@ -176,7 +179,7 @@ class SeiClient:
         self._validar_booleano("sin_reabrir", sin_reabrir)
         chamada = self._chamar_servico(
             "atribuirProcesso",
-            IdUnidade=self._validar_unidade(sigla_unidade),
+            IdUnidade=self.id_unidade,
             ProtocoloProcedimento=protocolo_procedimento,
             IdUsuario=id_usuario,
             SinReabrir=sin_reabrir,
@@ -186,7 +189,6 @@ class SeiClient:
 
     def anexar_processo(
         self,
-        sigla_unidade: str,
         protocolo_processo_principal: str,
         protocolo_processo_anexado: dict,
     ) -> bool:
@@ -202,7 +204,7 @@ class SeiClient:
         """
         chamada = self._chamar_servico(
             "anexarProcesso",
-            IdUnidade=self._validar_unidade(sigla_unidade),
+            IdUnidade=self.id_unidade,
             ProtocoloProcessoPrincipal=protocolo_processo_principal,
             ProtocoloProcessoAnexado=protocolo_processo_anexado,
         )
@@ -211,7 +213,6 @@ class SeiClient:
 
     def bloquear_processo(
         self,
-        sigla_unidade: str,
         protocolo_processo: str,
     ) -> bool:
         """Bloqueia um processo no sistema SEI.
@@ -226,7 +227,7 @@ class SeiClient:
         """
         chamada = self._chamar_servico(
             "bloquearProcesso",
-            IdUnidade=self._validar_unidade(sigla_unidade),
+            IdUnidade=self.id_unidade,
             ProtocoloProcesso=protocolo_processo,
         )
 
@@ -234,7 +235,6 @@ class SeiClient:
 
     def excluir_documento(
         self,
-        sigla_unidade: str,
         protocolo_documento: str,
     ) -> bool:
         """Exclui um documento do sistema SEI.
@@ -249,7 +249,7 @@ class SeiClient:
         return (
             self._chamar_servico(
                 "excluirDocumento",
-                IdUnidade=self._validar_unidade(sigla_unidade),
+                IdUnidade=self.id_unidade,
                 ProtocoloDocumento=protocolo_documento,
             )
             == "1"
@@ -257,7 +257,6 @@ class SeiClient:
 
     def excluir_processo(
         self,
-        sigla_unidade: str,
         protocolo_processo: str,
     ) -> bool:
         """Exclui um processo do sistema SEI.
@@ -272,15 +271,13 @@ class SeiClient:
         return (
             self._chamar_servico(
                 "excluirProcesso",
-                IdUnidade=self._validar_unidade(sigla_unidade),
+                IdUnidade=self.id_unidade,
                 ProtocoloProcesso=protocolo_processo,
             )
             == "1"
         )
 
-    def concluir_processo(
-        self, sigla_unidade: str, protocolo_procedimento: str
-    ) -> bool:
+    def concluir_processo(self, protocolo_procedimento: str) -> bool:
         """Conclui um processo no sistema SEI.
 
         Args:
@@ -295,14 +292,14 @@ class SeiClient:
         """
         chamada = self._chamar_servico(
             "concluirProcesso",
-            IdUnidade=self._validar_unidade(sigla_unidade),
+            IdUnidade=self.id_unidade,
             ProtocoloProcedimento=protocolo_procedimento,
         )
         return chamada == "1"
 
     def consultar_documento(
         self,
-        sigla_unidade: str,  # Sigla da unidade no SEI
+        # Sigla da unidade no SEI
         protocolo_documento: str,  # Número do documento visível para o usuário, ex: 0003934
         sin_retornar_andamento_geracao: str = "N",  # S/N - sinalizador para retorno do andamento de geração
         sin_retornar_assinaturas: str = "N",  # S/N - sinalizador para retorno das assinaturas do documento
@@ -323,7 +320,7 @@ class SeiClient:
 
         return self._chamar_servico(
             "consultarDocumento",
-            IdUnidade=self._validar_unidade(sigla_unidade),
+            IdUnidade=self.id_unidade,
             ProtocoloDocumento=protocolo_documento,
             SinRetornarAndamentoGeracao=sin_retornar_andamento_geracao,
             SinRetornarAssinaturas=sin_retornar_assinaturas,
@@ -334,7 +331,7 @@ class SeiClient:
 
     def consultar_processo(
         self,
-        sigla_unidade: str,  # Sigla da unidade no SEI
+        # Sigla da unidade no SEI
         protocolo_processo: str,  # Número do processo visível para o usuário, ex: 12.1.000000077-4
         sin_retornar_assuntos: str = "N",  # S/N - sinalizador para retorno dos assuntos do processo
         sin_retornar_interessados: str = "N",  # S/N - sinalizador para retorno dos interessados do processo
@@ -358,7 +355,7 @@ class SeiClient:
 
         return self._chamar_servico(
             "consultarProcedimento",
-            IdUnidade=self._validar_unidade(sigla_unidade),
+            IdUnidade=self.id_unidade,
             ProtocoloProcedimento=protocolo_processo,
             SinRetornarAssuntos=sin_retornar_assuntos,
             SinRetornarInteressados=sin_retornar_interessados,
@@ -377,7 +374,6 @@ class SeiClient:
 
     def enviar_email(
         self,
-        sigla_unidade: str,
         protocolo_procedimento: str,
         de: str,
         para: str,
@@ -407,7 +403,7 @@ class SeiClient:
         ]
         return self._chamar_servico(
             "enviarEmail",
-            IdUnidade=self._validar_unidade(sigla_unidade),
+            IdUnidade=self.id_unidade,
             ProtocoloProcedimento=protocolo_procedimento,
             De=de,
             Para=para,
@@ -457,12 +453,11 @@ class SeiClient:
 
     def incluir_documento(
         self,
-        sigla_unidade: str,
         documento: dict,
     ) -> dict:
         return self._chamar_servico(
             "incluirDocumento",
-            IdUnidade=self.unidades[sigla_unidade]["IdUnidade"],
+            IdUnidade=self.id_unidade,
             Documento=documento,
         )
 
@@ -535,7 +530,7 @@ class SeiClient:
         """
         return self._chamar_servico(
             "listarUsuarios",
-            IdUnidade=self._validar_unidade(sigla_unidade),
+            IdUnidade=self.id_unidade,
             IdUsuario=id_usuario,
         )
 
@@ -556,7 +551,7 @@ class SeiClient:
 
         chamada = self._chamar_servico(
             "reabrirProcesso",
-            IdUnidade=self._validar_unidade(sigla_unidade),
+            IdUnidade=self.id_unidade,
             ProtocoloProcedimento=protocolo_procedimento,
         )
         return chamada == "1"
