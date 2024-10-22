@@ -7,16 +7,13 @@ from typing import Dict, List
 from dotenv import find_dotenv, load_dotenv
 from zeep import Client
 
-from seiws.config import (
-    AMBIENTES_DE_DESENVOLVIMENTO,
+from seiws.exceptions import (
+    InvalidAmbienteError,
+    InvalidChaveApiError,
+    InvalidWSDLError,
 )
-from seiws.exceptions import InvalidAmbienteError, InvalidChaveApiError
 
 load_dotenv(find_dotenv(), override=True)
-
-WSDL_URL = "https://{}.anatel.gov.br/sei/controlador_ws.php?servico=sei"
-WSDL_HM = Path(__file__).parent / "seihm.wsdl"
-WSDL_PD = Path(__file__).parent / "sei.wsdl"
 
 logging.basicConfig(
     level=logging.INFO,  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
@@ -29,24 +26,67 @@ logging.basicConfig(
 )
 
 
+def download_wsdl(ambiente: str):
+    """Download the appropriate WSDL file based on the provided environment.
+
+    Args:
+        ambiente (str): The environment, either "homologação" or "produção".
+
+    Returns:
+        str: The path to the WSDL file, either a local file or a URL.
+
+    Raises:
+        InvalidAmbienteError: If the provided environment is not "homologação" or "produção".
+    """
+    if ambiente == "homologação":
+        WSDL_URL = "https://{}.anatel.gov.br/sei/controlador_ws.php?servico=sei"
+        WSDL_HM = Path(__file__).parent / "seihm.wsdl"
+        return str(WSDL_HM) if WSDL_HM.is_file() else WSDL_URL.format("seihm")
+    elif ambiente == "produção":
+        WSDL_URL = "https://{}.anatel.gov.br/sei/controlador_ws.php?servico=sei"
+        WSDL_PD = Path(__file__).parent / "sei.wsdl"
+        return str(WSDL_PD) if WSDL_PD.is_file() else WSDL_URL.format("sei")
+    else:
+        raise InvalidAmbienteError(f"Ambiente inválido: {ambiente}")
+
+
+def instanciar_cliente(wsdl_file: str) -> Client:
+    """Instantiates a SOAP client using the provided WSDL file.
+
+    Args:
+        wsdl_file (str): The path or URL to the WSDL file.
+
+    Returns:
+        Client: The SOAP client instance.
+
+    Raises:
+        InvalidWSDLError: If there is an error creating the SOAP client.
+    """
+    try:
+        return Client(wsdl_file)
+    except Exception as e:
+        raise InvalidWSDLError(f"Erro ao criar o cliente SOAP: {e}")
+
+
 class SeiClient:
     def __init__(
         self,
-        ambiente: str = "homologação",  # Ambiente de desenvolvimento: desenvolvimento, homologação ou produção
-        sigla_sistema: str = "InovaFiscaliza",  # SiglaSistema - Valor informador no cadastro do sistema realizado no SEI
-        chave_api: str = None,  # IdentificacaoServico - Chave de acesso ao Web Service do SEI.
+        cliente: Client,  # Cliente SOAP instanciado com o WSDL do SEI
+        sigla_sistema: str,  # SiglaSistema - Valor informado no cadastro do sistema realizado no SEI
+        chave_api: str,  # IdentificacaoServico - Chave de acesso ao Web Service do SEI.
     ):
-        self.ambiente = ambiente
+        """
+        Cria uma instância do cliente SEI.
+
+        Args:
+            cliente (Client): Cliente SOAP instanciado com o WSDL do SEI.
+            sigla_sistema (str): SiglaSistema - Valor informado no cadastro do sistema realizado no SEI.
+            chave_api (str): IdentificacaoServico - Chave de acesso ao Web Service do SEI..
+        """
+
+        self.cliente = cliente
         self.sigla_sistema = sigla_sistema
         self.chave_api = chave_api
-        self._validar_ambiente()
-        self.instanciar_cliente()
-
-    def _validar_ambiente(self):
-        if self.ambiente not in AMBIENTES_DE_DESENVOLVIMENTO:
-            raise InvalidAmbienteError(f"Ambiente inválido: {self.ambiente}")
-        if self.chave_api is None:
-            raise InvalidChaveApiError(f"Chave API inválida: {self.chave_api}")
 
     def _chamar_servico(self, nome_operacao: str, **kwargs):
         try:
@@ -59,7 +99,6 @@ class SeiClient:
                 f"Chamando operação: {nome_operacao} com parâmetros: {parametros}"
             )
             operacao = getattr(self.client.service, nome_operacao)
-            # kwargs = {snake2camel(k): v for k, v in kwargs.items()}
             resposta = operacao(
                 SiglaSistema=self.sigla_sistema,
                 IdentificacaoServico=self.chave_api,
@@ -69,26 +108,6 @@ class SeiClient:
             return resposta
         except Exception as e:
             self.logger.error(f"Erro ao chamar a operação {nome_operacao}: {e}")
-            raise
-
-    def instanciar_cliente(
-        self,
-    ):
-        self.logger = logging.getLogger(__name__)  # Initialize logger
-        if self.ambiente == "homologação":
-            self.wsdl_file = (
-                str(WSDL_HM) if WSDL_HM.is_file() else WSDL_URL.format("seihm")
-            )
-        elif self.ambiente == "produção":
-            self.wsdl_file = (
-                str(WSDL_PD) if WSDL_PD.is_file() else WSDL_URL.format("sei")
-            )
-        else:
-            raise InvalidAmbienteError(f"Ambiente inválido: {self.ambiente}")
-        try:
-            self.client = Client(self.wsdl_file)
-        except Exception as e:
-            self.logger.error(f"Erro ao criar o cliente SOAP: {e}")
             raise
 
     def _validar_unidade(self, sigla_unidade: str) -> str:
