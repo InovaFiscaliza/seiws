@@ -209,6 +209,28 @@ class SeiClient:
 
         return chamada == "1"
 
+    def bloquear_processo(
+        self,
+        sigla_unidade: str,
+        protocolo_processo: str,
+    ) -> bool:
+        """Bloqueia um processo no sistema SEI.
+
+        Args:
+            sigla_unidade (str): A sigla da unidade onde o processo está localizado.
+            protocolo_processo (str): O número de protocolo do processo a ser bloqueado.
+
+        Returns:
+            bool: True se o processo foi bloqueado com sucesso, False caso contrário.
+        """
+        chamada = self._chamar_servico(
+            "bloquearProcesso",
+            IdUnidade=self._validar_unidade(sigla_unidade),
+            ProtocoloProcesso=protocolo_processo,
+        )
+
+        return chamada == "1"
+
     def concluir_processo(
         self, sigla_unidade: str, protocolo_procedimento: str
     ) -> bool:
