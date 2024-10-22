@@ -690,6 +690,54 @@ class SeiClient:
             == "1"
         )
 
+    def retirar_documento_bloco(
+        self,
+        id_bloco: str,
+        protocolo_documento: str,
+    ) -> bool:
+        """Retira documento do bloco.
+        Args:
+            id_bloco (str): Identificador do bloco no qual o documento será retirado.
+            protocolo_documento (str): Protocolo do documento a ser retirado.
+
+        Returns:
+            bool: True se o documento foi retirado com sucesso, False caso contrário.
+
+        """
+        return (
+            self._chamar_servico(
+                "retirarDocumentoBloco",
+                IdUnidade=self.id_unidade,
+                IdBloco=id_bloco,
+                ProtocoloDocumento=protocolo_documento,
+            )
+            == "1"
+        )
+
+    def retirar_processo_bloco(
+        self,
+        id_bloco: str,
+        protocolo_processo: str,
+    ) -> bool:
+        """Retira processo do bloco.
+        Args:
+            id_bloco (str): Identificador do bloco no qual o processo será retirado.
+            protocolo_processo (str): Protocolo do processo a ser retirado.
+
+        Returns:
+            bool: True se o processo foi retirado com sucesso, False caso contrário.
+
+        """
+        return (
+            self._chamar_servico(
+                "retirarProcessoBloco",
+                IdUnidade=self.id_unidade,
+                IdBloco=id_bloco,
+                ProtocoloProcedimento=protocolo_processo,
+            )
+            == "1"
+        )
+
     @cached_property
     def unidades(self):
         return {d["Sigla"]: d for d in self.listar_unidades()}
