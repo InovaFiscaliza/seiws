@@ -84,7 +84,7 @@ class SeiClient:
             chave_api (str): IdentificacaoServico - Chave de acesso ao Web Service do SEI.
             sigla_unidade (str): Sigla da unidade no SEI.
         """
-
+        self.logger = logging.getLogger(__name__)
         self.cliente = cliente_soap
         self.sigla_sistema = sigla_sistema
         self.chave_api = chave_api
@@ -101,7 +101,7 @@ class SeiClient:
             self.logger.info(
                 f"Chamando operação: {nome_operacao} com parâmetros: {parametros}"
             )
-            operacao = getattr(self.client.service, nome_operacao)
+            operacao = getattr(self.cliente.service, nome_operacao)
             resposta = operacao(
                 SiglaSistema=self.sigla_sistema,
                 IdentificacaoServico=self.chave_api,
@@ -205,8 +205,8 @@ class SeiClient:
         chamada = self._chamar_servico(
             "anexarProcesso",
             IdUnidade=self.id_unidade,
-            ProtocoloProcessoPrincipal=protocolo_processo_principal,
-            ProtocoloProcessoAnexado=protocolo_processo_anexado,
+            ProtocoloProcedimentoPrincipal=protocolo_processo_principal,
+            ProtocoloProcedimentoAnexado=protocolo_processo_anexado,
         )
 
         return chamada == "1"
@@ -398,7 +398,7 @@ class SeiClient:
             self._validar_email(email)
 
         id_documentos = [
-            self.consultar_documento(sigla_unidade, d)["IdDocumento"]
+            self.consultar_documento(self.sigla_unidade, d)["IdDocumento"]
             for d in documentos
         ]
         return self._chamar_servico(
@@ -534,7 +534,7 @@ class SeiClient:
             IdUsuario=id_usuario,
         )
 
-    def reabrir_processo(self, sigla_unidade: str, protocolo_procedimento: str) -> bool:
+    def reabrir_processo(self, protocolo_procedimento: str) -> bool:
         """
         Reabre um processo no sistema SEI.
 
@@ -581,24 +581,16 @@ if __name__ == "__main__":
 
     sigla_sistema = "InovaFiscaliza"
 
-    client = SeiClient(
-        sigla_sistema=sigla_sistema, chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO")
+    wsdl_file = download_wsdl("homologação")
+
+    cliente_soap = instanciar_cliente_soap(wsdl_file)
+
+    cliente_sei = SeiClient(
+        cliente_soap=cliente_soap,
+        sigla_sistema=sigla_sistema,
+        chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
+        sigla_unidade="FISF",
     )
-
-    # client.enviar_email(
-    #     "FISF",
-    #     "53500.000124/2024-04",
-    #     "rsilva@anatel.gov.br",
-    #     "eric@anatel.gov.br",
-    #     "mer.de.dirac@gmail.com",
-    #     assunto="Teste de Email via API",
-    #     mensagem="Este é um teste de email enviado via API do SEI",
-    #     documentos=["0206167"],
-    # )
-
-    # client.concluir_processo("FISF", "53500.000124/2024-04")
-
-    # client.reabrir_processo("FISF", "53500.000124/2024-04")
 
     html_bytes = Path("C:/Users/rsilva/Code/Oficio.html").read_bytes()
     html_base64 = base64.b64encode(html_bytes).decode("utf-8")
@@ -613,4 +605,4 @@ if __name__ == "__main__":
         "NomeArquivo": "Ofício_Resposta.html",
     }
 
-    client.incluir_documento("FISF", documento=documento)
+    cliente_sei.anexar_processo("53500.201128/2014-28", "53500.200181/2014-11")
