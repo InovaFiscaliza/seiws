@@ -257,6 +257,30 @@ class SeiClient:
         )
         return chamada == "1"
 
+    def consultar_bloco(
+        self, id_bloco: str, sin_retornar_protocolos: str = "N"
+    ) -> dict:
+        """
+        Consulta os dados de um bloco.
+
+        Args:
+            id_bloco (str): Identificador do bloco a ser consultado.
+            sin_retornar_protocolos (str): S/N - sinalizador para retorno dos protocolos do bloco.
+
+        Returns:
+            dict: Dados do bloco.
+
+        Observações:
+            O bloco deve ser da unidade ou estar disponibilizado para ela. O sinalizador de retorno dos protocolos implica em processamento adicional realizado pelo sistema, sendo assim, recomenda-se que seja solicitado o retorno
+            apenas se as informações forem estritamente necessárias.
+        """
+        self._chamar_servico(
+            "consultarBloco",
+            IdUnidade=self.id_unidade,
+            IdBloco=id_bloco,
+            SinRetornarProtocolos=sin_retornar_protocolos,
+        )
+
     def consultar_documento(
         self,
         # Sigla da unidade no SEI
@@ -666,4 +690,7 @@ if __name__ == "__main__":
     }
 
     andamento = "Processo recebido na unidade"
-    cliente_sei.listar_andamentos("FISF", "53500.000124/2024-04", "S", andamento)
+
+    # cliente_sei.listar_andamentos("FISF", "53500.000124/2024-04", "S", andamento)
+
+    cliente_sei.consultar_bloco("3754", "S")
