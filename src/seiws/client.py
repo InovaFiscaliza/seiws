@@ -255,6 +255,29 @@ class SeiClient:
             == "1"
         )
 
+    def excluir_processo(
+        self,
+        sigla_unidade: str,
+        protocolo_processo: str,
+    ) -> bool:
+        """Exclui um processo do sistema SEI.
+
+        Args:
+            sigla_unidade (str): A sigla da unidade onde o processo está localizado.
+            protocolo_processo (str): O número do processo a ser excluído.
+
+        Returns:
+            bool: True se o processo foi excluído com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "excluirProcesso",
+                IdUnidade=self._validar_unidade(sigla_unidade),
+                ProtocoloProcesso=protocolo_processo,
+            )
+            == "1"
+        )
+
     def concluir_processo(
         self, sigla_unidade: str, protocolo_procedimento: str
     ) -> bool:
