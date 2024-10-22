@@ -60,7 +60,7 @@ class TestAtribuirProcesso:
     @pytest.mark.parametrize("id_usuario", USUARIOS_SFI)
     def test_atribuir_processo_hm_sfi(self, protocolo_procedimento, id_usuario):
         assert sei_client.atribuir_processo(
-            id_unidade="110000965",  # SFI
+            sigla_unidade="SFI",
             protocolo_procedimento=protocolo_procedimento,
             id_usuario=id_usuario,
             sin_reabrir="S",
@@ -74,7 +74,7 @@ class TestAtribuirProcesso:
         protocolo_procedimento,
     ):
         assert sei_client.atribuir_processo(
-            id_unidade="110000973",  # FISF
+            sigla_unidade="FISF",  # FISF
             protocolo_procedimento=protocolo_procedimento,
             id_usuario=id_usuario,
             sin_reabrir="S",
@@ -88,7 +88,7 @@ class TestAtribuirProcesso:
         protocolo_procedimento,
     ):
         assert sei_client.atribuir_processo(
-            id_unidade="110000966",  # FIGF
+            sigla_unidade="FIGF",  # FIGF
             protocolo_procedimento=protocolo_procedimento,
             id_usuario=id_usuario,
             sin_reabrir="S",
