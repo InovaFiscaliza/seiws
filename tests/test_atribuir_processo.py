@@ -28,11 +28,11 @@ sei_client = SeiClient(
 )
 
 USUARIOS_FISF = [
-    u["IdUsuario"] for u in sei_client.listar_usuarios(id_unidade="110000973")
+    u["IdUsuario"] for u in sei_client.listar_usuarios(sigla_unidade="FISF")
 ]
 
 USUARIOS_FIGF = [
-    u["IdUsuario"] for u in sei_client.listar_usuarios(id_unidade="110000966")
+    u["IdUsuario"] for u in sei_client.listar_usuarios(sigla_unidade="FIGF")
 ]
 
 
