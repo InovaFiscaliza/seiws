@@ -461,6 +461,42 @@ class SeiClient:
             Documento=documento,
         )
 
+    def listar_andamentos(
+        self,
+        sigla_unidade: str,
+        protocolo_procedimento: str,
+        sin_retornar_atributos: str = "N",
+        andamentos: str = "",
+        tarefas: str = "",
+        tarefas_modulos: str = "",
+    ) -> List[Dict[str, str]]:
+        """Lista os andamentos de um processo.
+
+        Args:
+            sigla_unidade (str): A sigla da unidade onde o processo está localizado.
+            protocolo_procedimento (str): O número de protocolo do processo a ser relacionado.
+            sin_retornar_atributos (str, optional): Sinal de retorno de atributos. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+            andamentos (str, optional): Filtra os andamentos. Valores possíveis: Qualquer id válido de andamento. A string vazia ("") indica que nenhum filtro é aplicado.
+            tarefas (str, optional): Filtra as tarefas. Valores possíveis: Qualquer id válido de tarefa. A string vazia ("") indica que nenhum filtro é aplicado.
+            tarefas_modulos (str, optional): Filtra os módulos de tarefas. Valores possíveis: Qualquer id válido de módulo de tarefa. A string vazia ("") indica que nenhum filtro é aplicado.
+
+        Returns:
+            List[Dict[str, str]]: Lista de andamentos de um processo.
+        """
+        for key, value in locals().items():
+            if key.startswith("sin_retornar_"):
+                assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
+
+        return self._chamar_servico(
+            "listarAndamentos",
+            IdUnidade=self._validar_unidade(sigla_unidade),
+            ProtocoloProcedimento=protocolo_procedimento,
+            SinRetornarAtributos=sin_retornar_atributos,
+            Andamentos=andamentos,
+            Tarefas=tarefas,
+            TarefasModulos=tarefas_modulos,
+        )
+
     def listar_series(
         self,
         sigla_unidade: str = "",  # Opcional. Filtra a unidade
@@ -629,4 +665,5 @@ if __name__ == "__main__":
         "NomeArquivo": "Ofício_Resposta.html",
     }
 
-    cliente_sei.anexar_processo("53500.201128/2014-28", "53500.200181/2014-11")
+    andamento = "Processo recebido na unidade"
+    cliente_sei.listar_andamentos("FISF", "53500.000124/2024-04", "S", andamento)
