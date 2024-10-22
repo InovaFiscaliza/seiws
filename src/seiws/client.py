@@ -36,9 +36,6 @@ class SeiClient:
         sigla_sistema: str = "InovaFiscaliza",  # SiglaSistema - Valor informador no cadastro do sistema realizado no SEI
         chave_api: str = None,  # IdentificacaoServico - Chave de acesso ao Web Service do SEI.
     ):
-        """
-        Caso não seja informada uma chave api, esta será obtida a partir da chave API padrão do ambiente definida em config.py
-        """
         self.ambiente = ambiente
         self.sigla_sistema = sigla_sistema
         self.chave_api = chave_api
