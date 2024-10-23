@@ -133,6 +133,26 @@ class SeiClient:
             raise ValueError(f"Unidade inválida: {sigla_unidade}")
         return self.unidades[sigla_unidade]["IdUnidade"]
 
+    def _validar_usuario(self, sigla_usuario: str) -> str:
+        """
+        Valida e retorna o ID do usuário correspondente à sigla fornecida.
+
+        Args:
+            sigla_usuario (str): A sigla do usuário a ser validada.
+
+        Returns:
+            str: O ID do usuário correspondente à sigla fornecida.
+
+        Raises:
+            ValueError: Se a sigla do usuário não for encontrada no dicionário de usuários.
+
+        Esta função verifica se a sigla do usuário fornecida existe no dicionário de usuários.
+        Se existir, retorna o ID correspondente. Caso contrário, lança uma exceção ValueError.
+        """
+        if sigla_usuario not in self.usuarios:
+            raise ValueError(f"Usuário inválido: {sigla_usuario}")
+        return self.usuarios[sigla_usuario]["IdUsuario"]
+
     def _validar_documento(self, tipo_de_documento: str) -> str:
         """
         Valida e retorna o ID do documento correspondente à sigla fornecida.
@@ -279,6 +299,21 @@ class SeiClient:
             == "1"
         )
 
+    def concluir_controle_prazo(
+        self,
+        protocolos_procedimentos: List[str],
+    ):
+        """Conclui um controle de prazo para um ou mais processos no sistema SEI.
+
+        Args:
+            protocolos_procedimentos (List[str]): Lista de protocolos de processos a serem concluídos o controle de prazo.
+        """
+        return self._chamar_servico(
+            "concluirControlePrazo",
+            IdUnidade=self.id_unidade,
+            ProtocolosProcedimentos=protocolos_procedimentos,
+        )
+
     def concluir_processo(self, protocolo_procedimento: str) -> bool:
         """Conclui um processo no sistema SEI.
 
@@ -321,43 +356,6 @@ class SeiClient:
             IdUnidade=self.id_unidade,
             IdBloco=id_bloco,
             SinRetornarProtocolos=sin_retornar_protocolos,
-        )
-
-    def concluir_controle_prazo(
-        self,
-        protocolos_procedimentos: List[str],
-    ):
-        """Conclui um controle de prazo para um ou mais processos no sistema SEI.
-
-        Args:
-            protocolos_procedimentos (List[str]): Lista de protocolos de processos a serem concluídos o controle de prazo.
-        """
-        return self._chamar_servico(
-            "concluirControlePrazo",
-            IdUnidade=self.id_unidade,
-            ProtocolosProcedimentos=protocolos_procedimentos,
-        )
-
-    def concluir_processo(
-        self,
-        protocolo_procedimento: str,
-    ) -> bool:
-        """Conclui um processo no sistema SEI.
-
-        Args:
-            protocolo_procedimento (str): O número de protocolo do processo a ser concluído.
-
-        Returns:
-            bool: True se o processo foi concluído com sucesso, False caso contrário.
-
-        """
-        return (
-            self._chamar_servico(
-                "concluirProcesso",
-                IdUnidade=self.id_unidade,
-                ProtocoloProcedimento=protocolo_procedimento,
-            )
-            == "1"
         )
 
     def consultar_documento(
@@ -429,6 +427,24 @@ class SeiClient:
             SinRetornarUnidadesProcedimentoAberto=sin_retornar_unidades_procedimento_aberto,
             SinRetornarProcedimentosRelacionados=sin_retornar_procedimentos_relacionados,
             SinRetornarProcedimentosAnexados=sin_retornar_procedimentos_anexados,
+        )
+
+    def definir_marcador(self, definicoes: dict) -> bool:
+        """Define um marcador no sistema SEI.
+
+        Args:
+            definicoes (Dict[str, str]): Dicionário com as definições do marcador.
+
+        Returns:
+            bool: True se o marcador foi definido com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "definirMarcador",
+                IdUnidade=self.id_unidade,
+                Definicoes=definicoes,
+            )
+            == "1"
         )
 
     def desanexar_processo(
@@ -829,8 +845,8 @@ class SeiClient:
         """
         return self._chamar_servico(
             "listarUsuarios",
-            IdUnidade=self.id_unidade,
-            IdUsuario=id_usuario,
+            IdUnidade=self._validar_unidade(sigla_unidade),
+            IdUsuario=self.id_usuario,
         )
 
     def reabrir_bloco(self, id_bloco: str) -> bool:
@@ -998,6 +1014,12 @@ if __name__ == "__main__":
 
     andamento = "Processo recebido na unidade"
 
+    definicao_marcador = {
+        "ProtocoloProcedimento": "53500.000124/2024-04",
+        "IdMarcador": "1",
+        "Texto": "Marcador de teste",
+    }
+
     # cliente_sei.anexar_processo("53500.000124/2024-04", "53500.201128/2014-28")
 
     # cliente_sei.bloquear_processo("53500.201128/2014-28")
@@ -1012,7 +1034,9 @@ if __name__ == "__main__":
 
     # cliente_sei.cancelar_documento("0208314", "Cancelamento por falta de informações")
 
-    cliente_sei.concluir_controle_prazo(["53500.000124/2024-04"])
+    # cliente_sei.concluir_controle_prazo(["53500.000124/2024-04"])
+
+    # cliente_sei.definir_marcador(definicao_marcador)
 
     # cliente_sei.incluir_documento(documento)
 
