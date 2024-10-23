@@ -248,6 +248,26 @@ class SeiClient:
             == "1"
         )
 
+    def cancelar_documento(self, protocolo_documento: str, motivo: str) -> bool:
+        """Cancela um documento no sistema SEI.
+
+        Args:
+            protocolo_documento (str): O número do documento a ser cancelado.
+            motivo (str): Motivo do cancelamento.
+
+        Returns:
+            bool: True se o documento foi cancelado com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "cancelarDocumento",
+                IdUnidade=self.id_unidade,
+                ProtocoloDocumento=protocolo_documento,
+                Motivo=motivo,
+            )
+            == "1"
+        )
+
     def concluir_bloco(self, id_bloco: str) -> bool:
         """Conclui um bloco no sistema SEI."""
         return (
@@ -952,6 +972,8 @@ if __name__ == "__main__":
     # cliente_sei.disponibilizar_bloco("3723")
 
     # cliente_sei.cancelar_disponibilizacao_bloco("3723")
+
+    cliente_sei.cancelar_documento("0208314", "Cancelamento por falta de informações")
 
     # cliente_sei.incluir_documento(documento)
 
