@@ -646,6 +646,43 @@ class SeiClient:
             == "1"
         )
 
+    def gerar_bloco(
+        self,
+        tipo: str,
+        descricao: str,
+        unidades_disponibilizacao: dict,
+        documentos: list,
+        sin_disponibilizar: str = "N",
+    ) -> str:
+        """Gera um bloco no sistema SEI.
+
+        Args:
+            tipo (str): Tipo do bloco a ser gerado.
+            descricao (str): Descrição do bloco a ser gerado.
+            unidades_disponibilizacao (Dict[str, str]): Dicionário com as unidades a serem disponibilizadas no bloco.
+            documentos (List[str]): Lista de documentos a serem incluídos no bloco.
+            sin_disponibilizar (str, optional): Sinal de disponibilização. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+
+        Returns:
+            str: Número do bloco gerado.
+
+        Tipos de Bloco:
+            A - Assinatura
+            R - Reunião
+            I - Interno
+        """
+        self._validar_booleano("sin_disponibilizar", sin_disponibilizar)
+        assert tipo in ["A", "R", "I"], f"Tipo de bloco inválido: {tipo}"
+        self._chamar_servico(
+            "gerarBloco",
+            IdUnidade=self.id_unidade,
+            Tipo=tipo,
+            Descricao=descricao,
+            UnidadesDisponibilizacao=unidades_disponibilizacao,
+            Documentos=documentos,
+            SinDisponibilizar=sin_disponibilizar,
+        )
+
     def incluir_documento(
         self,
         documento: dict,
@@ -706,11 +743,45 @@ class SeiClient:
             == "1"
         )
 
+    def lancar_andamento(
+        self,
+        protocolo_procedimento: str,
+        id_tarefa: int = 65,
+        id_tarefa_modulo: int = None,
+        atributos: dict = None,
+    ) -> dict:
+        """
+        Lança um andamento no sistema SEI.
+
+        Args:
+            protocolo_procedimento (str): Protocolo do processo a ser lançado.
+            id_tarefa (int): Identificador da tarefa associada.
+            id_tarefa_modulo (int): Identificador do módulo de tarefas associado.
+            atributos (dict): Dicionário com os atributos do andamento.
+
+        Returns:
+            dict: Dicionário com os atributos do andamento.
+        """
+        if atributos is None:
+            atributos = {}
+        kwargs = dict(
+            IdUnidade=self.id_unidade,
+            ProtocoloProcedimento=protocolo_procedimento,
+            IdTarefa=id_tarefa,
+            IdTarefaModulo="",
+            Atributos=atributos,
+        )
+        if id_tarefa_modulo is not None:
+            kwargs.update(IdTarefaModulo=id_tarefa_modulo)
+        return self._chamar_servico(
+            "lancarAndamento",
+            **kwargs,
+        )
+
     def listar_andamentos(
         self,
-        sigla_unidade: str,
         protocolo_procedimento: str,
-        sin_retornar_atributos: str = "N",
+        sin_retornar_atributos: str = "S",
         andamentos: str = "",
         tarefas: str = "",
         tarefas_modulos: str = "",
@@ -718,7 +789,6 @@ class SeiClient:
         """Lista os andamentos de um processo.
 
         Args:
-            sigla_unidade (str): A sigla da unidade onde o processo está localizado.
             protocolo_procedimento (str): O número de protocolo do processo a ser relacionado.
             sin_retornar_atributos (str, optional): Sinal de retorno de atributos. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
             andamentos (str, optional): Filtra os andamentos. Valores possíveis: Qualquer id válido de andamento. A string vazia ("") indica que nenhum filtro é aplicado.
@@ -728,18 +798,35 @@ class SeiClient:
         Returns:
             List[Dict[str, str]]: Lista de andamentos de um processo.
         """
-        for key, value in locals().items():
-            if key.startswith("sin_retornar_"):
-                assert value in ["S", "N"], f"Valor inválido para {key}: {value}"
+        self._validar_booleano("sin_retornar_atributos", sin_retornar_atributos)
 
         return self._chamar_servico(
             "listarAndamentos",
-            IdUnidade=self._validar_unidade(sigla_unidade),
+            IdUnidade=self.id_unidade,
             ProtocoloProcedimento=protocolo_procedimento,
             SinRetornarAtributos=sin_retornar_atributos,
             Andamentos=andamentos,
             Tarefas=tarefas,
             TarefasModulos=tarefas_modulos,
+        )
+
+    def listar_andamentos_marcadores(
+        self, protocolo_procedimento: str, marcadores: str = ""
+    ) -> dict:
+        """Lista os andamentos de um processo com marcadores.
+
+        Args:
+            protocolo_procedimento (str): O número de protocolo do processo a ser relacionado.
+            marcadores (str, optional): Filtra os andamentos com marcadores. Valores possíveis: Qualquer id válido de marcador. A string vazia ("") indica que nenhum filtro é aplicado.
+
+        Returns:
+            List[Dict[str, str]]: Lista de andamentos de um processo com marcador.
+        """
+        return self._chamar_servico(
+            "listarAndamentosMarcadores",
+            IdUnidade=self.id_unidade,
+            ProtocoloProcedimento=protocolo_procedimento,
+            Marcadores=marcadores,
         )
 
     def listar_series(
@@ -1018,6 +1105,19 @@ if __name__ == "__main__":
         "Texto": "Marcador de teste",
     }
 
+    unidades = {
+        "IdUnidade": "110000965",
+        "Sigla": "SFI",
+        "Descricao": "Superintendência de Fiscalização",
+        "SinProtocolo": "N",
+        "SinArquivamento": "N",
+        "SinOuvidoria": "N",
+    }
+
+    unidades = {"110000965", "110001021"}
+
+    atributos_andamento = {"DESCRICAO": "Teste InovaFiscaliza"}
+
     # cliente_sei.anexar_processo("53500.000124/2024-04", "53500.201128/2014-28")
 
     # cliente_sei.bloquear_processo("53500.201128/2014-28")
@@ -1036,9 +1136,17 @@ if __name__ == "__main__":
 
     # cliente_sei.definir_marcador(definicao_marcador)
 
+    # cliente_sei.gerar_bloco(
+    #     "A", "Bloco de assinatura", unidades, ["0208314", "0208319"], "S"
+    # )
+
     # cliente_sei.incluir_documento(documento)
 
-    # cliente_sei.listar_andamentos("FISF", "53500.000124/2024-04", "S", andamento)
+    # cliente_sei.lancar_andamento("53500.000124/2024-04", atributos=atributos_andamento)
+
+    # cliente_sei.listar_andamentos("53500.000124/2024-04", "S", {""}, {""}, {""})
+
+    cliente_sei.listar_andamentos_marcadores("53500.000124/2024-04", "")
 
     # cliente_sei.consultar_bloco("3754", "S")
 
