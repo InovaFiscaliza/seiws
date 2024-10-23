@@ -363,6 +363,51 @@ class SeiClient:
             SinRetornarProcedimentosAnexados=sin_retornar_procedimentos_anexados,
         )
 
+    def desanexar_processo(
+        self,
+        protocolo_processo_principal: str,
+        protocolo_processo_anexado: dict,
+        motivo: str,
+    ) -> bool:
+        """Desanexa um processo no sistema SEI.
+
+        Args:
+            protocolo_processo_principal (str): O número de protocolo do processo principal.
+            protocolo_processo_anexado (dict): O número de protocolo do processo anexado.
+            motivo (str): Motivo da desanexação.
+
+        Returns:
+            bool: True se o processo foi desanexado com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "desanexarProcesso",
+                IdUnidade=self.id_unidade,
+                ProtocoloProcedimentoPrincipal=protocolo_processo_principal,
+                ProtocoloProcedimentoAnexado=protocolo_processo_anexado,
+                Motivo=motivo,
+            )
+            == "1"
+        )
+
+    def desbloquear_processo(self, protocolo_procedimento: str) -> bool:
+        """Desbloqueia um processo no sistema SEI.
+
+        Args:
+            protocolo_procedimento (str): O número de protocolo do processo a ser desbloqueado.
+
+        Returns:
+            bool: True se o processo foi desbloqueado com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "desbloquearProcesso",
+                IdUnidade=self.id_unidade,
+                ProtocoloProcedimento=protocolo_procedimento,
+            )
+            == "1"
+        )
+
     def devolver_bloco(self, id_bloco: str) -> bool:
         """Devolve um bloco no sistema SEI."""
         return (
