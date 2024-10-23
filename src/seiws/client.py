@@ -363,6 +363,28 @@ class SeiClient:
             SinRetornarProcedimentosAnexados=sin_retornar_procedimentos_anexados,
         )
 
+    def devolver_bloco(self, id_bloco: str) -> bool:
+        """Devolve um bloco no sistema SEI."""
+        return (
+            self._chamar_servico(
+                "devolverBloco",
+                IdUnidade=self.id_unidade,
+                IdBloco=id_bloco,
+            )
+            == "1"
+        )
+
+    def disponibilizar_bloco(self, id_bloco: str) -> bool:
+        """Disponibiliza um bloco no sistema SEI."""
+        return (
+            self._chamar_servico(
+                "disponibilizarBloco",
+                IdUnidade=self.id_unidade,
+                IdBloco=id_bloco,
+            )
+            == "1"
+        )
+
     def enviar_email(
         self,
         protocolo_procedimento: str,
