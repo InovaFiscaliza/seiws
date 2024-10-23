@@ -829,6 +829,21 @@ class SeiClient:
             Marcadores=marcadores,
         )
 
+    def listar_cargos(self, id_cargo: str = "") -> dict:
+        """Lista os cargos disponíveis na unidade.
+
+        Args:
+            id_cargo (str, optional): Filtra o cargo. Valores possíveis: Qualquer id válido de cargo. A string vazia ("") indica que nenhum filtro é aplicado.
+
+        Returns:
+            Um conjunto de ocorrências da estrutura Cargo.
+        """
+        return self._chamar_servico(
+            "listarCargos",
+            IdUnidade=self.id_unidade,
+            IdCargo=id_cargo,
+        )
+
     def listar_series(
         self,
         sigla_unidade: str = "",  # Opcional. Filtra a unidade
@@ -1146,7 +1161,9 @@ if __name__ == "__main__":
 
     # cliente_sei.listar_andamentos("53500.000124/2024-04", "S", {""}, {""}, {""})
 
-    cliente_sei.listar_andamentos_marcadores("53500.000124/2024-04", "")
+    # cliente_sei.listar_andamentos_marcadores("53500.000124/2024-04", "")
+
+    cliente_sei.listar_cargos()
 
     # cliente_sei.consultar_bloco("3754", "S")
 
