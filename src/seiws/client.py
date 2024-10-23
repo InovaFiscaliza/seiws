@@ -237,6 +237,17 @@ class SeiClient:
 
         return chamada == "1"
 
+    def cancelar_disponibilizacao_bloco(self, id_bloco: str) -> bool:
+        """Cancela a disponibilização de um bloco no sistema SEI."""
+        return (
+            self._chamar_servico(
+                "cancelarDisponibilizacaoBloco",
+                IdUnidade=self.id_unidade,
+                IdBloco=id_bloco,
+            )
+            == "1"
+        )
+
     def concluir_bloco(self, id_bloco: str) -> bool:
         """Conclui um bloco no sistema SEI."""
         return (
@@ -897,7 +908,7 @@ if __name__ == "__main__":
 
     load_dotenv(find_dotenv(), override=True)
 
-    sigla_sistema = "Fiscaliza"
+    sigla_sistema = "InovaFiscaliza"
 
     if sigla_sistema == "InovaFiscaliza":
         chave_api = os.getenv("SEI_HM_API_KEY_BLOQUEIO")
@@ -932,7 +943,15 @@ if __name__ == "__main__":
 
     # cliente_sei.anexar_processo("53500.000124/2024-04", "53500.201128/2014-28")
 
-    cliente_sei.bloquear_processo("53500.201128/2014-28")
+    # cliente_sei.bloquear_processo("53500.201128/2014-28")
+
+    # cliente_sei.concluir_bloco("3723")
+
+    # cliente_sei.reabrir_bloco("3723")
+
+    # cliente_sei.disponibilizar_bloco("3723")
+
+    # cliente_sei.cancelar_disponibilizacao_bloco("3723")
 
     # cliente_sei.incluir_documento(documento)
 
