@@ -449,8 +449,8 @@ class SeiClient:
 
     def desanexar_processo(
         self,
-        protocolo_processo_principal: str,
-        protocolo_processo_anexado: dict,
+        protocolo_procedimento_principal: str,
+        protocolo_procedimento_anexado: dict,
         motivo: str,
     ) -> bool:
         """Desanexa um processo no sistema SEI.
@@ -467,8 +467,8 @@ class SeiClient:
             self._chamar_servico(
                 "desanexarProcesso",
                 IdUnidade=self.id_unidade,
-                ProtocoloProcedimentoPrincipal=protocolo_processo_principal,
-                ProtocoloProcedimentoAnexado=protocolo_processo_anexado,
+                ProtocoloProcedimentoPrincipal=protocolo_procedimento_principal,
+                ProtocoloProcedimentoAnexado=protocolo_procedimento_anexado,
                 Motivo=motivo,
             )
             == "1"
@@ -557,7 +557,6 @@ class SeiClient:
 
     def enviar_processo(
         self,
-        unidade_origem: str,
         protocolo_procedimento: str,
         unidades_destino: list,
         sin_manter_aberto_unidade: str = "N",
@@ -569,7 +568,6 @@ class SeiClient:
         sin_reabrir: str = "S",
     ) -> bool:
         """Envia um processo para uma unidade ou mais unidades."""
-        assert unidade_origem in self.unidades, f"Unidade inválida: {unidade_origem}"
         # Estas unidades não são limitadas pelo acesso da chave, então não é possível checar dinamicamente
         # assert all(
         #     u in self.unidades for u in unidades_destino
@@ -580,7 +578,7 @@ class SeiClient:
         unidades_destino = [self.unidades[u]["IdUnidade"] for u in unidades_destino]
         chamada = self._chamar_servico(
             "enviarProcesso",
-            IdUnidade=self._validar_unidade(unidade_origem),
+            IdUnidade=self.id_unidade,
             ProtocoloProcedimento=protocolo_procedimento,
             UnidadesDestino=unidades_destino,
             SinManterAbertoUnidade=sin_manter_aberto_unidade,
