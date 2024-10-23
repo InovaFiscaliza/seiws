@@ -193,8 +193,8 @@ class SeiClient:
 
     def anexar_processo(
         self,
-        protocolo_processo_principal: str,
-        protocolo_processo_anexado: dict,
+        protocolo_procedimento_principal: str,
+        protocolo_procedimento_anexado: dict,
     ) -> bool:
         """Anexa um processo ao outro.
 
@@ -209,15 +209,15 @@ class SeiClient:
         chamada = self._chamar_servico(
             "anexarProcesso",
             IdUnidade=self.id_unidade,
-            ProtocoloProcedimentoPrincipal=protocolo_processo_principal,
-            ProtocoloProcedimentoAnexado=protocolo_processo_anexado,
+            ProtocoloProcedimentoPrincipal=protocolo_procedimento_principal,
+            ProtocoloProcedimentoAnexado=protocolo_procedimento_anexado,
         )
 
         return chamada == "1"
 
     def bloquear_processo(
         self,
-        protocolo_processo: str,
+        protocolo_procedimento: str,
     ) -> bool:
         """Bloqueia um processo no sistema SEI.
         Somente com o processo aberto. Não é possível bloquear processos sigilosos.
@@ -232,7 +232,7 @@ class SeiClient:
         chamada = self._chamar_servico(
             "bloquearProcesso",
             IdUnidade=self.id_unidade,
-            ProtocoloProcesso=protocolo_processo,
+            ProtocoloProcedimento=protocolo_procedimento,
         )
 
         return chamada == "1"
@@ -897,7 +897,12 @@ if __name__ == "__main__":
 
     load_dotenv(find_dotenv(), override=True)
 
-    sigla_sistema = "InovaFiscaliza"
+    sigla_sistema = "Fiscaliza"
+
+    if sigla_sistema == "InovaFiscaliza":
+        chave_api = os.getenv("SEI_HM_API_KEY_BLOQUEIO")
+    elif sigla_sistema == "Fiscaliza":
+        chave_api = os.getenv("SEI_HM_API_KEY_FISCALIZA")
 
     wsdl_file = download_wsdl("homologação")
 
@@ -906,7 +911,7 @@ if __name__ == "__main__":
     cliente_sei = SeiClient(
         cliente_soap=cliente_soap,
         sigla_sistema=sigla_sistema,
-        chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
+        chave_api=chave_api,
         sigla_unidade="FISF",
     )
 
@@ -925,7 +930,11 @@ if __name__ == "__main__":
 
     andamento = "Processo recebido na unidade"
 
-    cliente_sei.incluir_documento()
+    # cliente_sei.anexar_processo("53500.000124/2024-04", "53500.201128/2014-28")
+
+    cliente_sei.bloquear_processo("53500.201128/2014-28")
+
+    # cliente_sei.incluir_documento(documento)
 
     # cliente_sei.listar_andamentos("FISF", "53500.000124/2024-04", "S", andamento)
 
@@ -937,4 +946,4 @@ if __name__ == "__main__":
 
     # cliente_sei.incluir_processo_bloco("3755", "53500.201128/2014-28", "Assine tudo!")
 
-    cliente_sei.listar_tipos_processo()
+    # cliente_sei.listar_tipos_processo()
