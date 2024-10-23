@@ -323,6 +323,43 @@ class SeiClient:
             SinRetornarProtocolos=sin_retornar_protocolos,
         )
 
+    def concluir_controle_prazo(
+        self,
+        protocolos_procedimentos: List[str],
+    ):
+        """Conclui um controle de prazo para um ou mais processos no sistema SEI.
+
+        Args:
+            protocolos_procedimentos (List[str]): Lista de protocolos de processos a serem concluídos o controle de prazo.
+        """
+        return self._chamar_servico(
+            "concluirControlePrazo",
+            IdUnidade=self.id_unidade,
+            ProtocolosProcedimentos=protocolos_procedimentos,
+        )
+
+    def concluir_processo(
+        self,
+        protocolo_procedimento: str,
+    ) -> bool:
+        """Conclui um processo no sistema SEI.
+
+        Args:
+            protocolo_procedimento (str): O número de protocolo do processo a ser concluído.
+
+        Returns:
+            bool: True se o processo foi concluído com sucesso, False caso contrário.
+
+        """
+        return (
+            self._chamar_servico(
+                "concluirProcesso",
+                IdUnidade=self.id_unidade,
+                ProtocoloProcedimento=protocolo_procedimento,
+            )
+            == "1"
+        )
+
     def consultar_documento(
         self,
         # Sigla da unidade no SEI
@@ -973,7 +1010,9 @@ if __name__ == "__main__":
 
     # cliente_sei.cancelar_disponibilizacao_bloco("3723")
 
-    cliente_sei.cancelar_documento("0208314", "Cancelamento por falta de informações")
+    # cliente_sei.cancelar_documento("0208314", "Cancelamento por falta de informações")
+
+    cliente_sei.concluir_controle_prazo(["53500.000124/2024-04"])
 
     # cliente_sei.incluir_documento(documento)
 
