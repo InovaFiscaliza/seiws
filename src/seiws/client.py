@@ -1076,6 +1076,7 @@ if __name__ == "__main__":
     from datetime import datetime
     from pathlib import Path
     import base64
+    from zeep import xsd
 
     from dotenv import find_dotenv, load_dotenv
 
@@ -1131,7 +1132,12 @@ if __name__ == "__main__":
 
     unidades = {"110000965", "110001021"}
 
-    atributos_andamento = {"DESCRICAO": "Teste InovaFiscaliza"}
+    element = cliente_sei.cliente.get_type("ns0:AtributoAndamento")
+    atributos_andamento = element(
+        Nome="Atualização de Andamento",
+        Valor="Teste InovaFiscaliza",
+        IdOrigem="3130803",
+    )
 
     # cliente_sei.anexar_processo("53500.000124/2024-04", "53500.201128/2014-28")
 
@@ -1157,13 +1163,20 @@ if __name__ == "__main__":
 
     # cliente_sei.incluir_documento(documento)
 
-    # cliente_sei.lancar_andamento("53500.000124/2024-04", atributos=atributos_andamento)
+    # cliente_sei.lancar_andamento(
+    #     "53500.000124/2024-04",
+    #     id_tarefa=65,
+    #     id_tarefa_modulo=xsd.SkipValue,
+    #     atributos=atributos_andamento,
+    # )
 
-    # cliente_sei.listar_andamentos("53500.000124/2024-04", "S", {""}, {""}, {""})
+    # cliente_sei.listar_andamentos(
+    #     "53500.000124/2024-04", "S", xsd.SkipValue, ["65"], xsd.SkipValue
+    # )
 
-    # cliente_sei.listar_andamentos_marcadores("53500.000124/2024-04", "")
+    cliente_sei.listar_andamentos_marcadores("53500.000124/2024-04", xsd.SkipValue)
 
-    cliente_sei.listar_cargos()
+    # cliente_sei.listar_cargos()
 
     # cliente_sei.consultar_bloco("3754", "S")
 
