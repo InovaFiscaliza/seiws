@@ -7,7 +7,7 @@ from typing import Dict, List
 from dotenv import find_dotenv, load_dotenv
 from zeep import Client, xsd
 
-
+from seiws.estrutura_de_dados import EXTENSOES
 from seiws.exceptions import (
     InvalidAmbienteError,
     InvalidWSDLError,
@@ -183,6 +183,26 @@ class SeiClient:
     def _validar_email(self, email: str):
         if not re.match(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", email):
             raise ValueError(f"Email inválido: {email}")
+
+    def _validar_pais(self, sigla_pais: str) -> str:
+        """
+        Valida e retorna o ID do pais correspondente à sigla fornecida.
+
+        Args:
+            sigla_pais (str): A sigla do pais a ser validada.
+
+        Returns:
+            str: O ID do pais correspondente à sigla fornecida.
+
+        Raises:
+            ValueError: Se a sigla do pais não for encontrada no dicionário de paises.
+
+        Esta função verifica se a sigla do pais fornecida existe no dicionário de paises.
+        Se existir, retorna o ID correspondente. Caso contrário, lança uma exceção ValueError.
+        """
+        if sigla_pais not in self.paises:
+            raise ValueError(f"Pais inválido: {sigla_pais}")
+        return self.paises[sigla_pais]["IdPais"]
 
     def atribuir_processo(
         self,
@@ -883,6 +903,61 @@ class SeiClient:
             "listarHipotesesLegais", IdUnidade=self.id_unidade, NivelAcesso=nivel_acesso
         )
 
+    def listar_contatos(
+        self,
+        id_tipo_contato: str = "",
+        pagina_registros: int = 1,
+        pagina_atual: int = 1,
+        sigla: str = "",
+        nome: str = "",
+        cpf: str = "",
+        cnpj: str = "",
+        matricula: str = "",
+        id_contatos: str = "",
+    ) -> List[Dict[str, str]]:
+        """Lista os contatos na unidade informada.
+        Args:
+            id_tipo_contato (str, optional): Filtra o tipo de contato. Valores possíveis: Qualquer id válido de tipo de contato. A string vazia ("") indica que nenhum filtro é aplicado.
+            pagina_registros (int, optional): Filtra a página de registros. Valores possíveis: Valores de 1 a 1000.
+            pagina_atual (int, optional): Filtra a página atual. Valores possíveis: Valores de 1 a 1000.
+            sigla (str, optional): Filtra o nome do contato. Valores possíveis: Qualquer nome de contato. A string vazia ("") indica que nenhum filtro é aplicado.
+            nome (str, optional): Filtra o nome do contato. Valores possíveis: Qualquer nome de contato. A string vazia ("") indica que nenhum filtro é aplicado.
+            cpf (str, optional): Filtra o CPF do contato. Valores possíveis: Qualquer CPF válido. A string vazia ("") indica que nenhum filtro é aplicado.
+            cnpj (str, optional): Filtra o CNPJ do contato. Valores possíveis: Qualquer CNPJ válido. A string vazia ("") indica que nenhum filtro é aplicado.
+            matricula (str, optional): Filtra a matrícula do contato. Valores possíveis: Qualquer matrícula válida. A string vazia ("") indica que nenhum filtro é aplicado.
+            id_contatos (str, optional): Filtra o ID do contato. Valores possíveis: Qualquer ID válido de contato. A string vazia ("") indica que nenhum filtro é aplicado.
+        Returns:
+            Uma lista de dicionários com os contatos com acesso configurado para a chave de acesso informada.
+        """
+        self._chamar_servico(
+            "listarContatos",
+            IdUnidade=self.id_unidade,
+            IdTipoContato=id_tipo_contato,
+            PaginaRegistros=pagina_registros,
+            PaginaAtual=pagina_atual,
+            Sigla=sigla,
+            Nome=nome,
+            Cpf=cpf,
+            Cnpj=cnpj,
+            Matricula=matricula,
+            IdContatos=id_contatos,
+        )
+
+    def listar_estados(self, sigla_pais: str = "") -> List[Dict[str, str]]:
+        """Lista os estados com acesso configurado para a chave de acesso informada.
+        Args:
+            sigla_pais (str, optional): Filtra o estado. Valores possíveis: Qualquer sigla de pais válida. A string vazia ("") indica que nenhum filtro é aplicado.
+        Returns:
+            Uma lista de dicionários com os estados com acesso configurado para a chave de acesso informada.
+        """
+        if sigla_pais:
+            id_pais = self._validar_pais(sigla_pais)
+        else:
+            id_pais = ""
+        return self._chamar_servico(
+            "listarEstados", IdUnidade=self.id_unidade, IdPais=id_pais
+        )
+
     def listar_extensoes_permitidas(self, id_arquivo_extensao: str = "") -> list:
         """Lista as extensões de arquivo permitidas para o documento.
         Args:
@@ -891,64 +966,9 @@ class SeiClient:
             Uma lista de strings com as extensões de arquivo permitidas para o documento.
         """
         if id_arquivo_extensao:
-            assert id_arquivo_extensao in [
-                ".pdf",
-                ".jpg",
-                ".jpeg",
-                ".png",
-                ".gif",
-                ".bmp",
-                ".tif",
-                ".tiff",
-                ".doc",
-                ".docx",
-                ".xls",
-                ".xlsx",
-                ".ppt",
-                ".pptx",
-                ".txt",
-                ".rtf",
-                ".html",
-                ".htm",
-                ".xml",
-                ".zip",
-                ".rar",
-                ".7z",
-                ".pdf",
-                ".odt",
-                ".ods",
-                ".ott",
-                ".csv",
-                ".xls",
-                ".xlsx",
-                ".ppt",
-                ".pptx",
-                ".txt",
-                ".rtf",
-                ".html",
-                ".htm",
-                ".xml",
-                ".zip",
-                ".rar",
-                ".7z",
-                ".pdf",
-                ".odt",
-                ".ods",
-                ".ott",
-                ".csv",
-                ".xls",
-                ".xlsx",
-                ".ppt",
-                ".pptx",
-                ".txt",
-                ".rtf",
-                ".html",
-                ".htm",
-                ".xml",
-                ".zip",
-                ".rar",
-                ".7z",
-            ]
+            assert (
+                id_arquivo_extensao in EXTENSOES
+            ), f"Extensão inválida: {id_arquivo_extensao}"
         return self._chamar_servico(
             "listarExtensoesPermitidas",
             IdUnidade=self.id_unidade,
@@ -1286,6 +1306,10 @@ class SeiClient:
         return {d["Extensao"]: d for d in self.listar_extensoes_permitidas()}
 
     @cached_property
+    def paises(self):
+        return {d["Nome"]: d for d in self.listar_paises()}
+
+    @cached_property
     def processos(self):
         return {d["Nome"]: d for d in self.listar_tipos_procedimento()}
 
@@ -1429,6 +1453,14 @@ if __name__ == "__main__":
 
     # cliente_sei.incluir_processo_bloco("3755", "53500.201128/2014-28", "Assine tudo!")
 
+    cliente_sei.listar_contatos(
+        "1", 1, 1, xsd.SkipValue, xsd.SkipValue, xsd.SkipValue, "1"
+    )
+
+    # cliente_sei.listar_estados()
+
+    # cliente_sei.listar_extensoes_permitidas()
+
     # cliente_sei.listar_tipos_prioridade()
 
     # cliente_sei.listar_tipos_conferencia()
@@ -1440,8 +1472,6 @@ if __name__ == "__main__":
     # cliente_sei.listar_hipoteses_legais()
 
     # cliente_sei.listar_marcadores_unidade()
-
-    cliente_sei.listar_extensoes_permitidas()
 
     # cliente_sei.sobrestar_processo(
     #     protocolo_procedimento="53500.000124/2024-04",
