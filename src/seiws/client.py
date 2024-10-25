@@ -5,7 +5,8 @@ from pathlib import Path
 from typing import Dict, List
 
 from dotenv import find_dotenv, load_dotenv
-from zeep import Client
+from zeep import Client, xsd
+
 
 from seiws.exceptions import (
     InvalidAmbienteError,
@@ -865,6 +866,113 @@ class SeiClient:
             IdCargo=id_cargo,
         )
 
+    def listar_hipoteses_legais(self, nivel_acesso: str = "") -> list:
+        """Lista os hipoteses legais com acesso configurado para a chave de acesso informada.
+
+        Args:
+            nivel_acesso (str): O nível de acesso a ser consultado. 1 - restrito, 2 - sigiloso, 3 - total.
+
+        Returns:
+            Uma lista de strings com os hipoteses legais.
+        """
+        if nivel_acesso:
+            assert (
+                nivel_acesso in ["1", "2"]
+            ), "Valor inválido para nivel_acesso. Valores possíveis: 1 - restrito, 2 - sigiloso"
+        return self._chamar_servico(
+            "listarHipotesesLegais", IdUnidade=self.id_unidade, NivelAcesso=nivel_acesso
+        )
+
+    def listar_extensoes_permitidas(self, id_arquivo_extensao: str = "") -> list:
+        """Lista as extensões de arquivo permitidas para o documento.
+        Args:
+            id_arquivo_extensao (str, optional): Filtra a extensão do arquivo. Valores possíveis: Qualquer extensão válida de arquivo. A string vazia ("") indica que nenhum filtro é aplicado.
+        Returns:
+            Uma lista de strings com as extensões de arquivo permitidas para o documento.
+        """
+        if id_arquivo_extensao:
+            assert id_arquivo_extensao in [
+                ".pdf",
+                ".jpg",
+                ".jpeg",
+                ".png",
+                ".gif",
+                ".bmp",
+                ".tif",
+                ".tiff",
+                ".doc",
+                ".docx",
+                ".xls",
+                ".xlsx",
+                ".ppt",
+                ".pptx",
+                ".txt",
+                ".rtf",
+                ".html",
+                ".htm",
+                ".xml",
+                ".zip",
+                ".rar",
+                ".7z",
+                ".pdf",
+                ".odt",
+                ".ods",
+                ".ott",
+                ".csv",
+                ".xls",
+                ".xlsx",
+                ".ppt",
+                ".pptx",
+                ".txt",
+                ".rtf",
+                ".html",
+                ".htm",
+                ".xml",
+                ".zip",
+                ".rar",
+                ".7z",
+                ".pdf",
+                ".odt",
+                ".ods",
+                ".ott",
+                ".csv",
+                ".xls",
+                ".xlsx",
+                ".ppt",
+                ".pptx",
+                ".txt",
+                ".rtf",
+                ".html",
+                ".htm",
+                ".xml",
+                ".zip",
+                ".rar",
+                ".7z",
+            ]
+        return self._chamar_servico(
+            "listarExtensoesPermitidas",
+            IdUnidade=self.id_unidade,
+            IdArquivoExtensao=id_arquivo_extensao,
+        )
+
+    def listar_marcadores_unidade(self) -> List[str]:
+        """Lista os marcadores de unidades com acesso configurado para a chave de acesso informada.
+
+        Returns:
+            Uma lista de strings com os marcadores de unidades.
+        """
+        return self._chamar_servico(
+            "listarMarcadoresUnidade", IdUnidade=self.id_unidade
+        )
+
+    def listar_paises(self) -> List[str]:
+        """Lista os paises com acesso configurado para a chave de acesso informada.
+
+        Returns:
+            Uma lista de strings com os códigos dos paises.
+        """
+        return self._chamar_servico("listarPaises", IdUnidade=self.id_unidade)
+
     def listar_series(
         self,
         sigla_unidade: str = "",  # Opcional. Filtra a unidade
@@ -1170,20 +1278,24 @@ class SeiClient:
         )
 
     @cached_property
+    def documentos(self):
+        return {d["Nome"]: d for d in self.listar_series()}
+
+    @cached_property
+    def extensoes(self):
+        return {d["Extensao"]: d for d in self.listar_extensoes_permitidas()}
+
+    @cached_property
+    def processos(self):
+        return {d["Nome"]: d for d in self.listar_tipos_procedimento()}
+
+    @cached_property
     def unidades(self):
         return {d["Sigla"]: d for d in self.listar_unidades()}
 
     @cached_property
     def usuarios(self):
         return {d["Sigla"]: d for d in self.listar_usuarios()}
-
-    @cached_property
-    def documentos(self):
-        return {d["Nome"]: d for d in self.listar_series()}
-
-    @cached_property
-    def processos(self):
-        return {d["Nome"]: d for d in self.listar_tipos_procedimento()}
 
 
 if __name__ == "__main__":
@@ -1319,9 +1431,17 @@ if __name__ == "__main__":
 
     # cliente_sei.listar_tipos_prioridade()
 
-    cliente_sei.listar_tipos_conferencia()
+    # cliente_sei.listar_tipos_conferencia()
 
     # cliente_sei.listar_tipos_procedimento()
+
+    # cliente_sei.listar_paises()
+
+    # cliente_sei.listar_hipoteses_legais()
+
+    # cliente_sei.listar_marcadores_unidade()
+
+    cliente_sei.listar_extensoes_permitidas()
 
     # cliente_sei.sobrestar_processo(
     #     protocolo_procedimento="53500.000124/2024-04",
