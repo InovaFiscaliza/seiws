@@ -1075,6 +1075,33 @@ class SeiClient:
             == "1"
         )
 
+    def sobrestar_processo(
+        self,
+        protocolo_procedimento: str,
+        protocolo_procedimento_vinculado: str,
+        motivo: str,
+    ) -> bool:
+        """Sobrestar um processo no sistema SEI.
+
+        Args:
+            protocolo_procedimento (str): O número de protocolo do processo a ser sobrestado.
+            protocolo_procedimento_vinculado (str): O número de protocolo do processo vinculado.
+            motivo (str): Motivo da sobrestação.
+
+        Returns:
+            bool: True se o processo foi sobrestado com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "sobrestarProcesso",
+                IdUnidade=self.id_unidade,
+                ProtocoloProcedimento=protocolo_procedimento,
+                ProtocoloProcedimentoVinculado=protocolo_procedimento_vinculado,
+                Motivo=motivo,
+            )
+            == "1"
+        )
+
     @cached_property
     def unidades(self):
         return {d["Sigla"]: d for d in self.listar_unidades()}
@@ -1135,13 +1162,6 @@ if __name__ == "__main__":
     }
 
     andamento = "Processo recebido na unidade"
-
-    definicao_marcador = {
-        "ProtocoloProcedimento": "53500.000124/2024-04",
-        "IdMarcador": "1",
-        "Texto": "Marcador de teste",
-    }
-
     unidades = {
         "IdUnidade": "110000965",
         "Sigla": "SFI",
@@ -1160,9 +1180,30 @@ if __name__ == "__main__":
         IdOrigem="3130803",
     )
 
+    DefinicaoMarcador = cliente_sei.cliente.get_type("ns0:DefinicaoMarcador")
+
+    definicao_marcador = xsd.AnyObject(
+        DefinicaoMarcador,
+        DefinicaoMarcador(
+            ProtocoloProcedimento="53500.000124/2024-04",
+            IdMarcador=90,
+            Texto="Marcador de teste",
+        ),
+    )
+
+    definicao_marcador = DefinicaoMarcador(
+        ProtocoloProcedimento="53500.000124/2024-04",
+        IdMarcador="90",
+        Texto="Marcador de teste",
+    )
+
+    ArrayOfDefinicaoMarcador = cliente_sei.cliente.get_element("ns1:Array")
+
+    array_definicao_marcador = ArrayOfDefinicaoMarcador(_value_1=[definicao_marcador])
+
     # cliente_sei.anexar_processo("53500.000124/2024-04", "53500.201128/2014-28")
 
-    cliente_sei.bloquear_documento("0208319")
+    # cliente_sei.bloquear_documento("0208319")
 
     # cliente_sei.bloquear_processo("53500.201128/2014-28")
 
@@ -1210,3 +1251,9 @@ if __name__ == "__main__":
     # cliente_sei.incluir_processo_bloco("3755", "53500.201128/2014-28", "Assine tudo!")
 
     # cliente_sei.listar_tipos_processo()
+
+    cliente_sei.sobrestar_processo(
+        protocolo_procedimento="53500.000124/2024-04",
+        protocolo_procedimento_vinculado="53500.201128/2014-28",
+        motivo="Teste",
+    )
