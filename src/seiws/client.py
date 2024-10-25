@@ -896,7 +896,18 @@ class SeiClient:
             IdTipoProcedimento=id_tipo_procedimento,
         )
 
-    def listar_tipos_processo(
+    def listar_tipos_conferencia(self) -> List[Dict[str, str]]:
+        """Lista os tipos de conferencia disponíveis na unidade.
+
+        Returns:
+            List[Dict[str, str]]: Lista de tipos de conferencia disponíveis na unidade.
+        """
+        return self._chamar_servico(
+            "listarTiposConferencia",
+            IdUnidade=self.id_unidade,
+        )
+
+    def listar_tipos_procedimento(
         self,
         sigla_unidade: str = None,
         tipo_de_documento: str = None,
@@ -926,6 +937,17 @@ class SeiClient:
             IdUnidade=id_unidade,
             IdSerie=id_serie,
             SinIndividual=sin_individual,
+        )
+
+    def listar_tipos_prioridade(self) -> List[Dict[str, str]]:
+        """Lista os tipos de prioridade disponíveis na unidade.
+
+        Returns:
+            List[Dict[str, str]]: Lista de tipos de prioridade disponíveis na unidade.
+        """
+        return self._chamar_servico(
+            "listarTiposPrioridade",
+            IdUnidade=self.id_unidade,
         )
 
     def listar_unidades(
@@ -1075,6 +1097,30 @@ class SeiClient:
             == "1"
         )
 
+    def remover_relacionamento_processo(
+        self,
+        protocolo_procedimento1: str,
+        protocolo_procedimento2: str,
+    ) -> bool:
+        """Remove o relacionamento entre dois processos no sistema SEI.
+
+        Args:
+            protocolo_processo1 (str): O número do processo a ser removido.
+            protocolo_processo2 (str): O número do processo a ser removido.
+
+        Returns:
+            bool: True se os processos foram removidos do relacionamento com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "removerRelacionamentoProcesso",
+                IdUnidade=self.id_unidade,
+                ProtocoloProcedimento1=protocolo_procedimento1,
+                ProtocoloProcedimento2=protocolo_procedimento2,
+            )
+            == "1"
+        )
+
     def remover_sobrestamento_processo(
         self,
         protocolo_procedimento: str,
@@ -1137,7 +1183,7 @@ class SeiClient:
 
     @cached_property
     def processos(self):
-        return {d["Nome"]: d for d in self.listar_tipos_processo()}
+        return {d["Nome"]: d for d in self.listar_tipos_procedimento()}
 
 
 if __name__ == "__main__":
@@ -1271,7 +1317,11 @@ if __name__ == "__main__":
 
     # cliente_sei.incluir_processo_bloco("3755", "53500.201128/2014-28", "Assine tudo!")
 
-    # cliente_sei.listar_tipos_processo()
+    # cliente_sei.listar_tipos_prioridade()
+
+    cliente_sei.listar_tipos_conferencia()
+
+    # cliente_sei.listar_tipos_procedimento()
 
     # cliente_sei.sobrestar_processo(
     #     protocolo_procedimento="53500.000124/2024-04",
@@ -1279,6 +1329,11 @@ if __name__ == "__main__":
     #     motivo="Teste",
     # )
 
-    cliente_sei.remover_sobrestamento_processo(
-        protocolo_procedimento="53500.000124/2024-04"
-    )
+    # cliente_sei.remover_relacionamento_processo(
+    #     protocolo_procedimento1="53500.000124/2024-04",
+    #     protocolo_procedimento2="53500.201128/2014-28",
+    # )
+
+    # cliente_sei.remover_sobrestamento_processo(
+    #     protocolo_procedimento="53500.000124/2024-04"
+    # )
