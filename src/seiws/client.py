@@ -235,6 +235,27 @@ class SeiClient:
 
         return chamada == "1"
 
+    def bloquear_documento(
+        self,
+        protocolo_documento: str,
+    ) -> bool:
+        """Bloqueia um documento no sistema SEI.
+
+        Args:
+            protocolo_documento (str): O número do documento a ser bloqueado.
+
+        Returns:
+            bool: True se o documento foi bloqueado com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "bloquearDocumento",
+                IdUnidade=self.id_unidade,
+                ProtocoloDocumento=protocolo_documento,
+            )
+            == "1"
+        )
+
     def bloquear_processo(
         self,
         protocolo_procedimento: str,
@@ -1141,6 +1162,8 @@ if __name__ == "__main__":
 
     # cliente_sei.anexar_processo("53500.000124/2024-04", "53500.201128/2014-28")
 
+    cliente_sei.bloquear_documento("0208319")
+
     # cliente_sei.bloquear_processo("53500.201128/2014-28")
 
     # cliente_sei.concluir_bloco("3723")
@@ -1174,7 +1197,7 @@ if __name__ == "__main__":
     #     "53500.000124/2024-04", "S", xsd.SkipValue, ["65"], xsd.SkipValue
     # )
 
-    cliente_sei.listar_andamentos_marcadores("53500.000124/2024-04", xsd.SkipValue)
+    # cliente_sei.listar_andamentos_marcadores("53500.000124/2024-04", xsd.SkipValue)
 
     # cliente_sei.listar_cargos()
 
