@@ -1075,6 +1075,27 @@ class SeiClient:
             == "1"
         )
 
+    def remover_sobrestamento_processo(
+        self,
+        protocolo_procedimento: str,
+    ) -> bool:
+        """Remove o sobrestamento de um processo no sistema SEI.
+
+        Args:
+            protocolo_procedimento (str): O número de protocolo do processo a ser removido do sobrestamento.
+
+        Returns:
+            bool: True se o processo foi removido do sobrestamento com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "removerSobrestamentoProcesso",
+                IdUnidade=self.id_unidade,
+                ProtocoloProcedimento=protocolo_procedimento,
+            )
+            == "1"
+        )
+
     def sobrestar_processo(
         self,
         protocolo_procedimento: str,
@@ -1086,7 +1107,7 @@ class SeiClient:
         Args:
             protocolo_procedimento (str): O número de protocolo do processo a ser sobrestado.
             protocolo_procedimento_vinculado (str): O número de protocolo do processo vinculado.
-            motivo (str): Motivo da sobrestação.
+            motivo (str): Motivo do sobrestamento.
 
         Returns:
             bool: True se o processo foi sobrestado com sucesso, False caso contrário.
@@ -1252,8 +1273,12 @@ if __name__ == "__main__":
 
     # cliente_sei.listar_tipos_processo()
 
-    cliente_sei.sobrestar_processo(
-        protocolo_procedimento="53500.000124/2024-04",
-        protocolo_procedimento_vinculado="53500.201128/2014-28",
-        motivo="Teste",
+    # cliente_sei.sobrestar_processo(
+    #     protocolo_procedimento="53500.000124/2024-04",
+    #     protocolo_procedimento_vinculado="53500.201128/2014-28",
+    #     motivo="Teste",
+    # )
+
+    cliente_sei.remover_sobrestamento_processo(
+        protocolo_procedimento="53500.000124/2024-04"
     )
