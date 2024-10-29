@@ -1210,6 +1210,22 @@ class SeiClient:
         )
         return chamada == "1"
 
+    def registrar_anotacao(self, anotacoes: dict) -> bool:
+        """Registra uma anotação no sistema SEI.
+        Args:
+            anotacao (dict): conjunto de anotações a serem registradas.
+        Returns:
+            bool: True se o processo foi registrado com sucesso, False caso contrário.
+        """
+        return (
+            self._chamar_servico(
+                "registrarAnotacao",
+                IdUnidade=self.id_unidade,
+                Anotacoes=anotacoes,
+            )
+            == "1"
+        )
+
     def relacionar_processo(
         self, protocolo_processo1: str, protocolo_processo2: str
     ) -> bool:
@@ -1474,11 +1490,13 @@ if __name__ == "__main__":
         "IdHipoteseLegal": xsd.SkipValue,
     }
 
-    Anotacao = {
-        "ProtocoloProcedimento": "53500.000612/2024-11",
-        "Descricao": "Teste de Anotação",
-        "SinPrioridade": "N",
-    }
+    Anotacoes = [
+        {
+            "ProtocoloProcedimento": "53500.000612/2024-11",
+            "Descricao": "Teste de Anotação",
+            "SinPrioridade": "N",
+        }
+    ]
 
     # cliente_sei.anexar_processo("53500.000124/2024-04", "53500.201128/2014-28")
 
@@ -1528,6 +1546,8 @@ if __name__ == "__main__":
     # cliente_sei.incluir_documento_bloco("3755", "0208319", "Autografe por obséquio")
 
     # cliente_sei.retirar_documento_bloco("3755", "0208319")
+
+    cliente_sei.registrar_anotacao(Anotacao)
 
     # cliente_sei.incluir_processo_bloco("3755", "53500.201128/2014-28", "Assine tudo!")
 
