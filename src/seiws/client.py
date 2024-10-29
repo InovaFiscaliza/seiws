@@ -739,9 +739,9 @@ class SeiClient:
         id_marcador: str = xsd.SkipValue,
         texto_marcador: str = "",
         data_controle_prazo: str = xsd.SkipValue,
-        dias_controle_prazo: str =xsd.SkipValue,
+        dias_controle_prazo: str = xsd.SkipValue,
         sin_dias_uteis_controle_prazo: str = "N",
-    )-> dict:
+    ) -> dict:
         """Gera um processo no sistema SEI.
 
         Args:
@@ -781,6 +781,7 @@ class SeiClient:
             DiasControlePrazo=dias_controle_prazo,
             SinDiasUteisControlePrazo=sin_dias_uteis_controle_prazo,
         )
+
     def incluir_documento(
         self,
         documento: dict,
@@ -1460,6 +1461,25 @@ if __name__ == "__main__":
 
     array_definicao_marcador = ArrayOfDefinicaoMarcador(_value_1=[definicao_marcador])
 
+    Procedimento = {
+        "IdTipoProcedimento": "100000623",
+        "NumeroProtocolo": xsd.SkipValue,
+        "DataAutuacao": xsd.SkipValue,
+        "Especificacao": "Teste de Geração de Procedimento - InovaFiscaliza",
+        "IdTipoPrioridade": xsd.SkipValue,
+        "Assuntos": xsd.SkipValue,
+        "Interessados": xsd.SkipValue,
+        "Observacao": xsd.SkipValue,
+        "NivelAcesso": "0",
+        "IdHipoteseLegal": xsd.SkipValue,
+    }
+
+    Anotacao = {
+        "ProtocoloProcedimento": "53500.000612/2024-11",
+        "Descricao": "Teste de Anotação",
+        "SinPrioridade": "N",
+    }
+
     # cliente_sei.anexar_processo("53500.000124/2024-04", "53500.201128/2014-28")
 
     # cliente_sei.bloquear_documento("0208319")
@@ -1484,7 +1504,7 @@ if __name__ == "__main__":
     #     "A", "Bloco de assinatura", unidades, ["0208314", "0208319"], "S"
     # )
 
-    cliente_sei.gerar_procedimento(
+    # cliente_sei.gerar_procedimento(Procedimento)
 
     # cliente_sei.incluir_documento(documento)
 
