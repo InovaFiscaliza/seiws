@@ -216,7 +216,7 @@ class SeiClient:
             id_unidade (str): ID da unidade.
             protocolo_procedimento (str): Protocolo do processo.
             id_usuario (str): ID do usuário.
-            sin_reabrir (str, optional): Sinal de reabertura. Valores possíveis: S - Sim, N - Não. Valor padrão: S.
+            sin_reabrir (str, opcional): Sinal de reabertura. Valores possíveis: S - Sim, N - Não. Valor padrão: S.
 
         Returns:
             bool: True se o processo foi atribuído com sucesso, False caso contrário.
@@ -703,7 +703,7 @@ class SeiClient:
             descricao (str): Descrição do bloco a ser gerado.
             unidades_disponibilizacao (Dict[str, str]): Dicionário com as unidades a serem disponibilizadas no bloco.
             documentos (List[str]): Lista de documentos a serem incluídos no bloco.
-            sin_disponibilizar (str, optional): Sinal de disponibilização. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+            sin_disponibilizar (str, opcional): Sinal de disponibilização. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
 
         Returns:
             str: Número do bloco gerado.
@@ -725,6 +725,62 @@ class SeiClient:
             SinDisponibilizar=sin_disponibilizar,
         )
 
+    def gerar_procedimento(
+        self,
+        procedimento: dict,
+        documentos: list = xsd.SkipValue,
+        procedimentos_relacionados: list = xsd.SkipValue,
+        unidades_envio: list = xsd.SkipValue,
+        sin_manter_aberto_unidade: str = "N",
+        sin_enviar_email_notificacao: str = "N",
+        data_retorno_programado: str = xsd.SkipValue,
+        dias_retorno_programado: str = xsd.SkipValue,
+        sin_dias_uteis_retorno_programado: str = "N",
+        id_marcador: str = xsd.SkipValue,
+        texto_marcador: str = "",
+        data_controle_prazo: str = xsd.SkipValue,
+        dias_controle_prazo: str =xsd.SkipValue,
+        sin_dias_uteis_controle_prazo: str = "N",
+    )-> dict:
+        """Gera um processo no sistema SEI.
+
+        Args:
+            procedimento (dict): Dicionário com os atributos do procedimento.
+            documentos (List[str], opcional): Lista de documentos a serem incluídos no bloco. Valor padrão: Nulo.
+            procedimentos_relacionados (List[str], opcional): Lista de procedimentos relacionados. Valor padrão: Nulo.
+            unidades_envio (List[str], opcional): Lista de unidades de destino. Valor padrão: Nulo.
+            sin_manter_aberto_unidade (str, opcional): Sinal de manter aberto unidade. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+            sin_enviar_email_notificacao (str, opcional): Sinal de enviar email notificação. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+            data_retorno_programado (str, opcional): Data de retorno programado. Valores possíveis: Data ISO 8601. Valor padrão: N.
+            dias_retorno_programado (str, opcional): Dias de retorno programado. Valores possíveis: Valores de 1 a 1000. Valor padrão: N.
+            sin_dias_uteis_retorno_programado (str, opcional): Sinal de dias uteis de retorno programado. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+            id_marcador (str, opcional): Identificador do marcador. Valor padrão: Nulo.
+            texto_marcador (str, opcional): Texto do marcador. Valor padrão: N.
+            data_controle_prazo (str, opcional): Data de controle de prazo. Valores possíveis: Data ISO 8601. Valor padrão: Nulo.
+            dias_controle_prazo (str, opcional): Dias de controle de prazo. Valores possíveis: Valores de 1 a 1000. Valor padrão: Nulo.
+            sin_dias_uteis_controle_prazo (str, opcional): Sinal de dias uteis de controle de prazo. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+
+        Returns:
+            dict: Dicionário com os atributos do procedimento.
+        """
+        return self._chamar_servico(
+            "gerarProcedimento",
+            IdUnidade=self.id_unidade,
+            Procedimento=procedimento,
+            Documentos=documentos,
+            ProcedimentosRelacionados=procedimentos_relacionados,
+            UnidadesEnvio=unidades_envio,
+            SinManterAbertoUnidade=sin_manter_aberto_unidade,
+            SinEnviarEmailNotificacao=sin_enviar_email_notificacao,
+            DataRetornoProgramado=data_retorno_programado,
+            DiasRetornoProgramado=dias_retorno_programado,
+            SinDiasUteisRetornoProgramado=sin_dias_uteis_retorno_programado,
+            IdMarcador=id_marcador,
+            TextoMarcador=texto_marcador,
+            DataControlePrazo=data_controle_prazo,
+            DiasControlePrazo=dias_controle_prazo,
+            SinDiasUteisControlePrazo=sin_dias_uteis_controle_prazo,
+        )
     def incluir_documento(
         self,
         documento: dict,
@@ -832,10 +888,10 @@ class SeiClient:
 
         Args:
             protocolo_procedimento (str): O número de protocolo do processo a ser relacionado.
-            sin_retornar_atributos (str, optional): Sinal de retorno de atributos. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
-            andamentos (str, optional): Filtra os andamentos. Valores possíveis: Qualquer id válido de andamento. A string vazia ("") indica que nenhum filtro é aplicado.
-            tarefas (str, optional): Filtra as tarefas. Valores possíveis: Qualquer id válido de tarefa. A string vazia ("") indica que nenhum filtro é aplicado.
-            tarefas_modulos (str, optional): Filtra os módulos de tarefas. Valores possíveis: Qualquer id válido de módulo de tarefa. A string vazia ("") indica que nenhum filtro é aplicado.
+            sin_retornar_atributos (str, opcional): Sinal de retorno de atributos. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+            andamentos (str, opcional): Filtra os andamentos. Valores possíveis: Qualquer id válido de andamento. A string vazia ("") indica que nenhum filtro é aplicado.
+            tarefas (str, opcional): Filtra as tarefas. Valores possíveis: Qualquer id válido de tarefa. A string vazia ("") indica que nenhum filtro é aplicado.
+            tarefas_modulos (str, opcional): Filtra os módulos de tarefas. Valores possíveis: Qualquer id válido de módulo de tarefa. A string vazia ("") indica que nenhum filtro é aplicado.
 
         Returns:
             List[Dict[str, str]]: Lista de andamentos de um processo.
@@ -859,7 +915,7 @@ class SeiClient:
 
         Args:
             protocolo_procedimento (str): O número de protocolo do processo a ser relacionado.
-            marcadores (str, optional): Filtra os andamentos com marcadores. Valores possíveis: Qualquer id válido de marcador. A string vazia ("") indica que nenhum filtro é aplicado.
+            marcadores (str, opcional): Filtra os andamentos com marcadores. Valores possíveis: Qualquer id válido de marcador. A string vazia ("") indica que nenhum filtro é aplicado.
 
         Returns:
             List[Dict[str, str]]: Lista de andamentos de um processo com marcador.
@@ -875,7 +931,7 @@ class SeiClient:
         """Lista os cargos disponíveis na unidade.
 
         Args:
-            id_cargo (str, optional): Filtra o cargo. Valores possíveis: Qualquer id válido de cargo. A string vazia ("") indica que nenhum filtro é aplicado.
+            id_cargo (str, opcional): Filtra o cargo. Valores possíveis: Qualquer id válido de cargo. A string vazia ("") indica que nenhum filtro é aplicado.
 
         Returns:
             Um conjunto de ocorrências da estrutura Cargo.
@@ -917,15 +973,15 @@ class SeiClient:
     ) -> List[Dict[str, str]]:
         """Lista os contatos na unidade informada.
         Args:
-            id_tipo_contato (str, optional): Filtra o tipo de contato. Valores possíveis: Qualquer id válido de tipo de contato. A string vazia ("") indica que nenhum filtro é aplicado.
-            pagina_registros (int, optional): Filtra a página de registros. Valores possíveis: Valores de 1 a 1000.
-            pagina_atual (int, optional): Filtra a página atual. Valores possíveis: Valores de 1 a 1000.
-            sigla (str, optional): Filtra o nome do contato. Valores possíveis: Qualquer nome de contato. A string vazia ("") indica que nenhum filtro é aplicado.
-            nome (str, optional): Filtra o nome do contato. Valores possíveis: Qualquer nome de contato. A string vazia ("") indica que nenhum filtro é aplicado.
-            cpf (str, optional): Filtra o CPF do contato. Valores possíveis: Qualquer CPF válido. A string vazia ("") indica que nenhum filtro é aplicado.
-            cnpj (str, optional): Filtra o CNPJ do contato. Valores possíveis: Qualquer CNPJ válido. A string vazia ("") indica que nenhum filtro é aplicado.
-            matricula (str, optional): Filtra a matrícula do contato. Valores possíveis: Qualquer matrícula válida. A string vazia ("") indica que nenhum filtro é aplicado.
-            id_contatos (str, optional): Filtra o ID do contato. Valores possíveis: Qualquer ID válido de contato. A string vazia ("") indica que nenhum filtro é aplicado.
+            id_tipo_contato (str, opcional): Filtra o tipo de contato. Valores possíveis: Qualquer id válido de tipo de contato. A string vazia ("") indica que nenhum filtro é aplicado.
+            pagina_registros (int, opcional): Filtra a página de registros. Valores possíveis: Valores de 1 a 1000.
+            pagina_atual (int, opcional): Filtra a página atual. Valores possíveis: Valores de 1 a 1000.
+            sigla (str, opcional): Filtra o nome do contato. Valores possíveis: Qualquer nome de contato. A string vazia ("") indica que nenhum filtro é aplicado.
+            nome (str, opcional): Filtra o nome do contato. Valores possíveis: Qualquer nome de contato. A string vazia ("") indica que nenhum filtro é aplicado.
+            cpf (str, opcional): Filtra o CPF do contato. Valores possíveis: Qualquer CPF válido. A string vazia ("") indica que nenhum filtro é aplicado.
+            cnpj (str, opcional): Filtra o CNPJ do contato. Valores possíveis: Qualquer CNPJ válido. A string vazia ("") indica que nenhum filtro é aplicado.
+            matricula (str, opcional): Filtra a matrícula do contato. Valores possíveis: Qualquer matrícula válida. A string vazia ("") indica que nenhum filtro é aplicado.
+            id_contatos (str, opcional): Filtra o ID do contato. Valores possíveis: Qualquer ID válido de contato. A string vazia ("") indica que nenhum filtro é aplicado.
         Returns:
             Uma lista de dicionários com os contatos com acesso configurado para a chave de acesso informada.
         """
@@ -946,7 +1002,7 @@ class SeiClient:
     def listar_estados(self, sigla_pais: str = "") -> List[Dict[str, str]]:
         """Lista os estados com acesso configurado para a chave de acesso informada.
         Args:
-            sigla_pais (str, optional): Filtra o estado. Valores possíveis: Qualquer sigla de pais válida. A string vazia ("") indica que nenhum filtro é aplicado.
+            sigla_pais (str, opcional): Filtra o estado. Valores possíveis: Qualquer sigla de pais válida. A string vazia ("") indica que nenhum filtro é aplicado.
         Returns:
             Uma lista de dicionários com os estados com acesso configurado para a chave de acesso informada.
         """
@@ -961,7 +1017,7 @@ class SeiClient:
     def listar_extensoes_permitidas(self, id_arquivo_extensao: str = "") -> list:
         """Lista as extensões de arquivo permitidas para o documento.
         Args:
-            id_arquivo_extensao (str, optional): Filtra a extensão do arquivo. Valores possíveis: Qualquer extensão válida de arquivo. A string vazia ("") indica que nenhum filtro é aplicado.
+            id_arquivo_extensao (str, opcional): Filtra a extensão do arquivo. Valores possíveis: Qualquer extensão válida de arquivo. A string vazia ("") indica que nenhum filtro é aplicado.
         Returns:
             Uma lista de strings com as extensões de arquivo permitidas para o documento.
         """
@@ -1086,8 +1142,8 @@ class SeiClient:
         """Lista as unidades com acesso configurado para a chave de acesso informada.
 
         Args:
-            id_tipo_procedimento (str, optional): Filtra o tipo do processo. Valores possíveis: Qualquer id válido de processo. A string vazia ("") indica que nenhum filtro é aplicado.
-            tipo_de_documento (str, optional): Filtra o tipo de documento. Valores possíveis: Qualquer tipo válido de documento. A string vazia ("") indica que nenhum filtro é aplicado.
+            id_tipo_procedimento (str, opcional): Filtra o tipo do processo. Valores possíveis: Qualquer id válido de processo. A string vazia ("") indica que nenhum filtro é aplicado.
+            tipo_de_documento (str, opcional): Filtra o tipo de documento. Valores possíveis: Qualquer tipo válido de documento. A string vazia ("") indica que nenhum filtro é aplicado.
 
         Returns:
             List[Dict[str, str]]: Lista de unidades com acesso configurado para a chave de acesso informada.
@@ -1109,7 +1165,7 @@ class SeiClient:
 
         Args:
             sigla_unidade (str): Sigla da unidade.
-            id_usuario (str, optional): Filtra o usuário. Valores possíveis: Qualquer id válido de usuário. A string vazia ("") indica que nenhum filtro é aplicado.
+            id_usuario (str, opcional): Filtra o usuário. Valores possíveis: Qualquer id válido de usuário. A string vazia ("") indica que nenhum filtro é aplicado.
 
         Returns:
             List[Dict[str, str]]: Lista de usuários que possuem o perfil "Básico" do SEI na unidade..
@@ -1428,6 +1484,8 @@ if __name__ == "__main__":
     #     "A", "Bloco de assinatura", unidades, ["0208314", "0208319"], "S"
     # )
 
+    cliente_sei.gerar_procedimento(
+
     # cliente_sei.incluir_documento(documento)
 
     # cliente_sei.lancar_andamento(
@@ -1453,9 +1511,9 @@ if __name__ == "__main__":
 
     # cliente_sei.incluir_processo_bloco("3755", "53500.201128/2014-28", "Assine tudo!")
 
-    cliente_sei.listar_contatos(
-        "1", 1, 1, xsd.SkipValue, xsd.SkipValue, xsd.SkipValue, "1"
-    )
+    # cliente_sei.listar_contatos(
+    #     "1", 1, 1, xsd.SkipValue, xsd.SkipValue, xsd.SkipValue, "1"
+    # )
 
     # cliente_sei.listar_estados()
 
