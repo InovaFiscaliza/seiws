@@ -402,16 +402,23 @@ class SeiClient:
 
     def consultar_documento(
         self,
-        # Sigla da unidade no SEI
         protocolo_documento: str,  # Número do documento visível para o usuário, ex: 0003934
         sin_retornar_andamento_geracao: str = "N",  # S/N - sinalizador para retorno do andamento de geração
         sin_retornar_assinaturas: str = "N",  # S/N - sinalizador para retorno das assinaturas do documento
         sin_retornar_publicacao: str = "N",  # S/N - sinalizador para retorno dos dados de publicação
         sin_retornar_campos: str = "N",  # S/N - sinalizador para retorno dos campos do formulário
         sin_retornar_blocos: str = "N",  #  S/N - sinalizador para retorno dos blocos na unidade que contém o documento
-    ):
-        """
-        Retorna estrutura de dados com informações sobre o documento.
+    ) -> "Documento":
+        """Retorna estrutura de dados com informações sobre o documento.
+        Args:
+            protocolo_documento (str): Número do documento visível para o usuário, ex: 0003934.
+            sin_retornar_andamento_geracao (str, opcional): S/N - sinalizador para retorno do andamento de geração. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+            sin_retornar_assinaturas (str, opcional): S/N - sinalizador para retorno das assinaturas do documento. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+            sin_retornar_publicacao (str, opcional): S/N - sinalizador para retorno dos dados de publicação. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+            sin_retornar_campos (str, opcional): S/N - sinalizador para retorno dos campos do formulário. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+            sin_retornar_blocos (str, opcional): S/N - sinalizador para retorno dos blocos na unidade que contém o documento. Valores possíveis: S - Sim, N - Não. Valor padrão: N.
+        Returns:
+            Documento: Estrutura Documento.
 
         Observações: Documento de processos sigilosos não são retornados. Cada um dos sinalizadores implica em processamento
         adicional realizado pelo sistema, sendo assim, recomenda-se que seja solicitado o retorno somente para infor-
@@ -1524,7 +1531,7 @@ if __name__ == "__main__":
 
     # cliente_sei.gerar_procedimento(Procedimento)
 
-    # cliente_sei.incluir_documento(documento)
+    cliente_sei.incluir_documento(documento)
 
     # cliente_sei.lancar_andamento(
     #     "53500.000124/2024-04",
@@ -1547,7 +1554,7 @@ if __name__ == "__main__":
 
     # cliente_sei.retirar_documento_bloco("3755", "0208319")
 
-    cliente_sei.registrar_anotacao(Anotacao)
+    # cliente_sei.registrar_anotacao(Anotacao)
 
     # cliente_sei.incluir_processo_bloco("3755", "53500.201128/2014-28", "Assine tudo!")
 
