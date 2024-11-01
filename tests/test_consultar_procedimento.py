@@ -6,6 +6,8 @@ from seiws.client import SeiClient
 PROCESSOS_HM = [
     "53500.000124/2024-04",  # Demanda Externa: Ministério Público Federal",
     "53500.201128/2014-28",  # Demanda Externa: Órgãos Governamentais Federais
+    "53500.059070/2019-18",  # Demanda Externa: Judiciário
+    "53569.200039/2014-70",  # Procuradoria: Cumprimento de Decisão Judicial
 ]
 
 UNIDADES = ["SFI", "FISF", "FIGF"]
