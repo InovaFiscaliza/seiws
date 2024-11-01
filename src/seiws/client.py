@@ -5,13 +5,9 @@ from pathlib import Path
 from typing import Dict, List
 
 from dotenv import find_dotenv, load_dotenv
-from zeep import Client, xsd
+from zeep import xsd
 
 from seiws.estrutura_de_dados import EXTENSOES
-from seiws.exceptions import (
-    InvalidAmbienteError,
-    InvalidWSDLError,
-)
 
 load_dotenv(find_dotenv(), override=True)
 
@@ -26,52 +22,11 @@ logging.basicConfig(
 )
 
 
-def download_wsdl(ambiente: str):
-    """Download the appropriate WSDL file based on the provided environment.
-
-    Args:
-        ambiente (str): The environment, either "homologação" or "produção".
-
-    Returns:
-        str: The path to the WSDL file, either a local file or a URL.
-
-    Raises:
-        InvalidAmbienteError: If the provided environment is not "homologação" or "produção".
-    """
-    if ambiente == "homologação":
-        WSDL_URL = "https://{}.anatel.gov.br/sei/controlador_ws.php?servico=sei"
-        WSDL_HM = Path(__file__).parent / "seihm.wsdl"
-        return str(WSDL_HM) if WSDL_HM.is_file() else WSDL_URL.format("seihm")
-    elif ambiente == "produção":
-        WSDL_URL = "https://{}.anatel.gov.br/sei/controlador_ws.php?servico=sei"
-        WSDL_PD = Path(__file__).parent / "sei.wsdl"
-        return str(WSDL_PD) if WSDL_PD.is_file() else WSDL_URL.format("sei")
-    else:
-        raise InvalidAmbienteError(f"Ambiente inválido: {ambiente}")
-
-
-def instanciar_cliente_soap(wsdl_file: str) -> Client:
-    """Instantiates a SOAP client using the provided WSDL file.
-
-    Args:
-        wsdl_file (str): The path or URL to the WSDL file.
-
-    Returns:
-        Client: The SOAP client instance.
-
-    Raises:
-        InvalidWSDLError: If there is an error creating the SOAP client.
-    """
-    try:
-        return Client(wsdl_file)
-    except Exception as e:
-        raise InvalidWSDLError(f"Erro ao criar o cliente SOAP: {e}")
-
 
 class SeiClient:
     def __init__(
         self,
-        cliente_soap: Client,  # Cliente SOAP instanciado com o WSDL do SEI
+        cliente_soap,  # Cliente SOAP instanciado com o WSDL do SEI
         sigla_sistema: str,  # SiglaSistema - Valor informado no cadastro do sistema realizado no SEI
         chave_api: str,  # IdentificacaoServico - Chave de acesso ao Web Service do SEI.
         sigla_unidade: str,  # Sigla da unidade no SEI
