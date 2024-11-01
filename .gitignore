@@ -13,3 +13,6 @@ wheels/
 *.log
 *.txt
 .aider*
+
+# Response from the server to be used for testing
+tests/responses.py
