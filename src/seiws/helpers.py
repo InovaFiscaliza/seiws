@@ -1,11 +1,12 @@
-from zeep import Client, xsd
+from pathlib import Path
+
+from zeep import Client
 
 
 from seiws.exceptions import (
     InvalidAmbienteError,
     InvalidWSDLError,
 )
-
 
 
 def download_wsdl(ambiente: str):
@@ -20,19 +21,22 @@ def download_wsdl(ambiente: str):
     Raises:
         InvalidAmbienteError: If the provided environment is not "homologação" or "produção".
     """
+
     def _download_wsdl(url, file):
         import urllib3
+
         http = urllib3.PoolManager()
-        response = http.request('GET', url)
+        response = http.request("GET", url)
         file.write_bytes(response.data)
         return str(file)
+
     if ambiente == "homologação":
         WSDL_URL = "https://{}.anatel.gov.br/sei/controlador_ws.php?servico=sei"
         WSDL_HM = Path(__file__).parent / "seihm.wsdl"
         if WSDL_HM.is_file():
             return str(WSDL_HM)
         else:
-            return _download_wsdl(WSDL_URL.format("seihm"), WSDL_HM)   
+            return _download_wsdl(WSDL_URL.format("seihm"), WSDL_HM)
     elif ambiente == "produção":
         WSDL_URL = "https://{}.anatel.gov.br/sei/controlador_ws.php?servico=sei"
         WSDL_PD = Path(__file__).parent / "sei.wsdl"
