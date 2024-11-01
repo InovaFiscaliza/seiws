@@ -1,0 +1,3 @@
+- Use types everywhere possible.
+- Write docstrings for all public methods using the ReStructuredText format.
+- Write docstrings and name methods in Brazilian Portuguese.

@@ -23,16 +23,16 @@ USUARIOS_SFI = [
 ]
 
 sei_client = SeiClient(
-    sigla_sistema="InovaFiscaliza",
+    sigla_sistema=os.getenv("SIGLA_SISTEMA"),
     chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
 )
 
 USUARIOS_FISF = [
-    u["IdUsuario"] for u in sei_client.listar_usuarios(id_unidade="110000973")
+    u["IdUsuario"] for u in sei_client.listar_usuarios(sigla_unidade="FISF")
 ]
 
 USUARIOS_FIGF = [
-    u["IdUsuario"] for u in sei_client.listar_usuarios(id_unidade="110000966")
+    u["IdUsuario"] for u in sei_client.listar_usuarios(sigla_unidade="FIGF")
 ]
 
 
@@ -52,7 +52,7 @@ class TestAtribuirProcesso:
     # @pytest.fixture
     # def sei_client(self):
     #     return SeiClient(
-    #         sigla_sistema="InovaFiscaliza",
+    #         sigla_sistema=os.getenv("SIGLA_SISTEMA"),
     #         chave_api=os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
     #     )
 
@@ -60,7 +60,7 @@ class TestAtribuirProcesso:
     @pytest.mark.parametrize("id_usuario", USUARIOS_SFI)
     def test_atribuir_processo_hm_sfi(self, protocolo_procedimento, id_usuario):
         assert sei_client.atribuir_processo(
-            id_unidade="110000965",  # SFI
+            sigla_unidade="SFI",
             protocolo_procedimento=protocolo_procedimento,
             id_usuario=id_usuario,
             sin_reabrir="S",
@@ -74,7 +74,7 @@ class TestAtribuirProcesso:
         protocolo_procedimento,
     ):
         assert sei_client.atribuir_processo(
-            id_unidade="110000973",  # FISF
+            sigla_unidade="FISF",  # FISF
             protocolo_procedimento=protocolo_procedimento,
             id_usuario=id_usuario,
             sin_reabrir="S",
@@ -88,7 +88,7 @@ class TestAtribuirProcesso:
         protocolo_procedimento,
     ):
         assert sei_client.atribuir_processo(
-            id_unidade="110000966",  # FIGF
+            sigla_unidade="FIGF",  # FIGF
             protocolo_procedimento=protocolo_procedimento,
             id_usuario=id_usuario,
             sin_reabrir="S",
