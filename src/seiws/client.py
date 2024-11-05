@@ -22,7 +22,6 @@ logging.basicConfig(
 )
 
 
-
 class SeiClient:
     def __init__(
         self,
@@ -162,20 +161,20 @@ class SeiClient:
     def atribuir_processo(
         self,
         protocolo_procedimento: str,
-        id_usuario: str,
+        sigla_usuario: str,
         sin_reabrir: str = "S",
     ) -> bool:
         """Atribui um processo a um usuário.
 
         Args:
-            id_unidade (str): ID da unidade.
             protocolo_procedimento (str): Protocolo do processo.
-            id_usuario (str): ID do usuário.
+            sigla_usuario (str): Sigla (login) do usuário.
             sin_reabrir (str, opcional): Sinal de reabertura. Valores possíveis: S - Sim, N - Não. Valor padrão: S.
 
         Returns:
             bool: True se o processo foi atribuído com sucesso, False caso contrário.
         """
+        id_usuario = self._validar_usuario(sigla_usuario)
         self._validar_booleano("sin_reabrir", sin_reabrir)
         chamada = self._chamar_servico(
             "atribuirProcesso",
@@ -394,7 +393,7 @@ class SeiClient:
             SinRetornarBlocos=sin_retornar_blocos,
         )
 
-    def consultar_processo(
+    def consultar_procedimento(
         self,
         # Sigla da unidade no SEI
         protocolo_processo: str,  # Número do processo visível para o usuário, ex: 12.1.000000077-4
@@ -1121,22 +1120,20 @@ class SeiClient:
             IdSerie=id_serie,
         )
 
-    def listar_usuarios(
-        self, sigla_unidade: str, id_usuario: str = ""
-    ) -> List[Dict[str, str]]:
+    def listar_usuarios(self, id_usuario: str = "") -> List[Dict[str, str]]:
         """Retorna o conjunto de usuários que possuem o perfil "Básico" do SEI na unidade.
 
         Args:
             sigla_unidade (str): Sigla da unidade.
-            id_usuario (str, opcional): Filtra o usuário. Valores possíveis: Qualquer id válido de usuário. A string vazia ("") indica que nenhum filtro é aplicado.
+            id_usuario (str, opcional): Filtra determinado usuário. Valores possíveis: Qualquer id válido de usuário. A string vazia ("") indica que nenhum filtro é aplicado.
 
         Returns:
             List[Dict[str, str]]: Lista de usuários que possuem o perfil "Básico" do SEI na unidade..
         """
         return self._chamar_servico(
             "listarUsuarios",
-            IdUnidade=self._validar_unidade(sigla_unidade),
-            IdUsuario=self.id_usuario,
+            IdUnidade=self.id_unidade,
+            IdUsuario=id_usuario,
         )
 
     def reabrir_bloco(self, id_bloco: str) -> bool:
@@ -1366,14 +1363,16 @@ if __name__ == "__main__":
 
     from dotenv import find_dotenv, load_dotenv
 
+    from seiws.helpers import download_wsdl, instanciar_cliente_soap
+
     load_dotenv(find_dotenv(), override=True)
 
     sigla_sistema = "InovaFiscaliza"
 
     if sigla_sistema == "InovaFiscaliza":
-        chave_api = os.getenv("SEI_HM_API_KEY_BLOQUEIO")
+        chave_api = os.environ["SEI_HM_API_KEY_BLOQUEIO"]
     elif sigla_sistema == "Fiscaliza":
-        chave_api = os.getenv("SEI_HM_API_KEY_FISCALIZA")
+        chave_api = os.environ["SEI_HM_API_KEY_FISCALIZA"]
 
     wsdl_file = download_wsdl("homologação")
 
@@ -1413,7 +1412,7 @@ if __name__ == "__main__":
 
     element = cliente_sei.cliente.get_type("ns0:AtributoAndamento")
     atributos_andamento = element(
-        Nome="Atualização de Andamento",
+        Nome="DESCRICAO",
         Valor="Teste InovaFiscaliza",
         IdOrigem="3130803",
     )
@@ -1478,6 +1477,19 @@ if __name__ == "__main__":
 
     # cliente_sei.concluir_controle_prazo(["53500.000124/2024-04"])
 
+    # cliente_sei.consultar_procedimento(
+    #     "53500.201128/2014-28",
+    #     sin_retornar_assuntos="S",
+    #     sin_retornar_interessados="S",
+    #     sin_retornar_observacoes="S",
+    #     sin_retornar_andamento_geracao="S",
+    #     sin_retornar_andamento_conclusao="S",
+    #     sin_retornar_ultimo_andamento="S",
+    #     sin_retornar_unidades_procedimento_aberto="S",
+    #     sin_retornar_procedimentos_relacionados="S",
+    #     sin_retornar_procedimentos_anexados="S",
+    # )
+
     # cliente_sei.definir_marcador(definicao_marcador)
 
     # cliente_sei.gerar_bloco(
@@ -1486,18 +1498,42 @@ if __name__ == "__main__":
 
     # cliente_sei.gerar_procedimento(Procedimento)
 
-    cliente_sei.incluir_documento(documento)
+    # cliente_sei.incluir_documento(documento)
 
     # cliente_sei.lancar_andamento(
     #     "53500.000124/2024-04",
     #     id_tarefa=65,
     #     id_tarefa_modulo=xsd.SkipValue,
     #     atributos=atributos_andamento,
+    #     Nome="DESCRICAO",
     # )
 
-    # cliente_sei.listar_andamentos(
-    #     "53500.000124/2024-04", "S", xsd.SkipValue, ["65"], xsd.SkipValue
-    # )
+    Andamento = [
+        {
+            "IdAndamento": None,
+            "IdTarefa": None,
+            "IdTarefaModulo": None,
+            "Descricao": "Processo recebido na unidade",
+            # 'DataHora': '17/10/2024 01:39:06',
+            # 'Unidade': {
+            #     'IdUnidade': '110000966',
+            #     'Sigla': 'FIGF',
+            #     'Descricao': 'Gerência de Fiscalização',
+            #     'SinProtocolo': None,
+            #     'SinArquivamento': None,
+            #     'SinOuvidoria': None
+            # },
+            # 'Usuario': {
+            #     'IdUsuario': '100001310',
+            #     'Sigla': 'rsilva',
+            #     'Nome': 'Ronaldo da Silva Alves Batista'
+            # },
+        }
+    ]
+
+    cliente_sei.listar_andamentos(
+        "53500.000124/2024-04", "S", ["1"], xsd.SkipValue, xsd.SkipValue
+    )
 
     # cliente_sei.listar_andamentos_marcadores("53500.000124/2024-04", xsd.SkipValue)
 
@@ -1532,6 +1568,8 @@ if __name__ == "__main__":
     # cliente_sei.listar_hipoteses_legais()
 
     # cliente_sei.listar_marcadores_unidade()
+
+    # cliente_sei.listar_unidades()
 
     # cliente_sei.sobrestar_processo(
     #     protocolo_procedimento="53500.000124/2024-04",
