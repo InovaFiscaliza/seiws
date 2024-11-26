@@ -3,7 +3,7 @@ from dotenv import find_dotenv, load_dotenv
 
 load_dotenv(find_dotenv(), override=True)
 
-AMBIENTES_DE_DESENVOLVIMENTO = ["desenvolvimento", "homologação", "produção"]
+AMBIENTES_DE_DESENVOLVIMENTO = ["homologacao", "producao"]
 
 # Esse parâmetro é específico para o cadastro de serviços no SEI para o InovaFiscaliza
 # Talvez faça sentido ficar parametrizado somente num módulo de teste.
@@ -25,8 +25,8 @@ IDENTIFICADOR_POR_PROCESSO = {
 }
 
 CHAVES_API = {
-    "homologação": os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
-    "produção": os.getenv("SEI_PD_API_KEY_BLOQUEIO"),
+    "homologacao": os.getenv("SEI_HM_API_KEY_BLOQUEIO"),
+    "producao": os.getenv("SEI_PD_API_KEY_BLOQUEIO"),
 }
 
 # CHAVES_API = {
