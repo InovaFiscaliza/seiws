@@ -30,14 +30,14 @@ def download_wsdl(ambiente: str):
         file.write_bytes(response.data)
         return str(file)
 
-    if ambiente == "homologação":
+    if ambiente == "homologacao":
         WSDL_URL = "https://{}.anatel.gov.br/sei/controlador_ws.php?servico=sei"
         WSDL_HM = Path(__file__).parent / "seihm.wsdl"
         if WSDL_HM.is_file():
             return str(WSDL_HM)
         else:
             return _download_wsdl(WSDL_URL.format("seihm"), WSDL_HM)
-    elif ambiente == "produção":
+    elif ambiente == "producao":
         WSDL_URL = "https://{}.anatel.gov.br/sei/controlador_ws.php?servico=sei"
         WSDL_PD = Path(__file__).parent / "sei.wsdl"
         if WSDL_PD.is_file():

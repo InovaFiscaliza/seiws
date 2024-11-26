@@ -8,6 +8,8 @@ from dotenv import find_dotenv, load_dotenv
 from zeep import xsd
 
 from seiws.estrutura_de_dados import EXTENSOES
+from seiws.helpers import download_wsdl, instanciar_cliente_soap
+
 
 load_dotenv(find_dotenv(), override=True)
 
@@ -1354,6 +1356,18 @@ class SeiClient:
         return {d["Sigla"]: d for d in self.listar_usuarios()}
 
 
+def instanciar_cliente_sei(
+    ambiente: str, sigla_sistema: str, chave_api: str, sigla_unidade: str
+):
+    assert ambiente in ["homologacao", "producao"], f"Ambiente inválido: {ambiente}"
+    return SeiClient(
+        cliente_soap=instanciar_cliente_soap(download_wsdl(ambiente)),
+        sigla_sistema=sigla_sistema,
+        chave_api=chave_api,
+        sigla_unidade=sigla_unidade,
+    )
+
+
 if __name__ == "__main__":
     import os
     from datetime import datetime
@@ -1362,8 +1376,6 @@ if __name__ == "__main__":
     from zeep import xsd
 
     from dotenv import find_dotenv, load_dotenv
-
-    from seiws.helpers import download_wsdl, instanciar_cliente_soap
 
     load_dotenv(find_dotenv(), override=True)
 
@@ -1374,12 +1386,8 @@ if __name__ == "__main__":
     elif sigla_sistema == "Fiscaliza":
         chave_api = os.environ["SEI_HM_API_KEY_FISCALIZA"]
 
-    wsdl_file = download_wsdl("homologação")
-
-    cliente_soap = instanciar_cliente_soap(wsdl_file)
-
-    cliente_sei = SeiClient(
-        cliente_soap=cliente_soap,
+    cliente_sei = instanciar_cliente_sei(
+        ambiente="homologacao",
         sigla_sistema=sigla_sistema,
         chave_api=chave_api,
         sigla_unidade="FISF",
